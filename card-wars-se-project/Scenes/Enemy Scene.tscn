@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://d2iv4sdpdkc6g"]
+
+[ext_resource type="Script" path="res://Scripts/enemy_scene_script.gd" id="1_v8pv1"]
+[ext_resource type="Texture2D" uid="uid://ckna80p1myo3o" path="res://Assets/300 Characters Free! 128x128/Monster_Creatures_Fantasy(Version 1.3)/Flying eye/Attack3.png" id="2_4408r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ln5x"]
+atlas = ExtResource("2_4408r")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_boybh"]
+atlas = ExtResource("2_4408r")
+region = Rect2(150, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vk5ek"]
+atlas = ExtResource("2_4408r")
+region = Rect2(300, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ubhsc"]
+atlas = ExtResource("2_4408r")
+region = Rect2(450, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ouen"]
+atlas = ExtResource("2_4408r")
+region = Rect2(600, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3l2u"]
+atlas = ExtResource("2_4408r")
+region = Rect2(750, 0, 150, 150)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p2wwg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ln5x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_boybh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vk5ek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ubhsc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ouen")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3l2u")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[node name="EnemyScene" type="Node2D"]
+script = ExtResource("1_v8pv1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_p2wwg")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame = 5
+frame_progress = 0.476948
