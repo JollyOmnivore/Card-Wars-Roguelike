@@ -1,8 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://t42er6uydctj"]
+[gd_scene load_steps=13 format=3 uid="uid://dsktid2l72u01"]
 
 [ext_resource type="Script" path="res://Scenes/combat_scene_script.gd" id="1_rogkm"]
 [ext_resource type="Texture2D" uid="uid://cmwg00y7t4jxk" path="res://Assets/Free-Summer-Pixel-Art-Backgrounds/PNG/summer7/2.png" id="2_n8ppu"]
-[ext_resource type="PackedScene" uid="uid://e3vfpxi7llhh" path="res://Scenes/PlayerHand Scene.tscn" id="2_p02g3"]
+[ext_resource type="PackedScene" uid="uid://c2t3oou0lhiqv" path="res://Scenes/PlayerHand Scene.tscn" id="2_p02g3"]
 [ext_resource type="Texture2D" uid="uid://cmaw1h0eutf8c" path="res://Assets/Free-Summer-Pixel-Art-Backgrounds/PNG/summer7/1.png" id="3_8o4lx"]
 [ext_resource type="PackedScene" uid="uid://d2iv4sdpdkc6g" path="res://Scenes/Enemy Scene.tscn" id="3_vpa1x"]
 [ext_resource type="Texture2D" uid="uid://d2cp16knrukta" path="res://Assets/223.png" id="6_rprr5"]
