@@ -4,8 +4,9 @@ extends Control
 @onready var player_health_bar = $PlayerHealthBar
 @onready var turn_indicator = $TurnIndicator
 @onready var player_hand_container = $PlayerHandContainer
-
+@onready var attackAnimation = $attackAnimation
 func _ready():
+	attackAnimation.visible = false
 	print("Combat Scene Initialized")
 	update_health_display()
 	load_player_hand()
@@ -41,3 +42,16 @@ func update_turn_indicator():
 func on_turn_change():
 	print("on_turn_change() called")
 	update_turn_indicator()
+	
+	
+func playAttackAnimation():
+	attackAnimation.visible = true
+	attackAnimation.play('default')
+	await attackAnimation.animation_finished
+	attackAnimation.visible= false
+
+	
+	
+
+	
+	

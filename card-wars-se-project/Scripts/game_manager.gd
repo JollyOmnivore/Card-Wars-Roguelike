@@ -39,6 +39,7 @@ func start_combat():
 
 
 func player_action(action: String):
+	var combat_scene = get_tree().root.get_node_or_null("CombatScene")
 	print("Player action triggered:", action)
 	if not player_turn:
 		print("Not player's turn, action ignored.")
@@ -47,19 +48,22 @@ func player_action(action: String):
 	match action:
 		"attack":
 			enemy_health -= 20
+			combat_scene.playAttackAnimation()#plays animation in combat scene
 			print("Player attacks! Enemy Health:", enemy_health)
+			#add win check here
 		"heal":
 			player_health += 15
 			print("Player heals! Player Health:", player_health)
 		"defend":
-			print("Player defends!")
+			print("Player defends!")#defending does nothing yet
 
 	# DEBUGGING Check if CombatScene exists
-	var combat_scene = get_tree().root.get_node_or_null("CombatScene")
+	
 	if combat_scene:
 		print("CombatScene found, updating UI")
 		combat_scene.update_health_display()
 		combat_scene.on_turn_change()
+		
 	else:
 		print("ERROR: CombatScene not found!")
 
@@ -68,12 +72,13 @@ func player_action(action: String):
 # Handles enemy's turn
 func enemy_turn():
 	print("Enemy's turn started...")
-	var enemy_action = randi() % 2  # Simple AI: 0 = attack, 1 = heal. I told you this would be easier Logan
+	var enemy_action = randi() % 2  #Simple AI: 0 = attack, 1 = heal. I told you this would be easier Logan
 	print("Enemy chose action:", enemy_action)
 	
 	if enemy_action == 0:
 		player_health -= 15
 		print("Enemy attacks! Player Health:", player_health)
+		#add game end check here
 	else:
 		enemy_health += 10
 		print("Enemy heals! Enemy Health:", enemy_health)
