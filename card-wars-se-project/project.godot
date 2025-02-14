@@ -11,9 +11,17 @@ config_version=5
 [application]
 
 config/name="Card Wars SE Project"
-run/main_scene="res://Scenes/Test2.tscn"
+run/main_scene="res://Scenes/CombatScene.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameManager="*res://Scripts/game_manager.gd"
+
+[editor]
+
+version_control/autoload_on_startup=true
 
 [rendering]
 

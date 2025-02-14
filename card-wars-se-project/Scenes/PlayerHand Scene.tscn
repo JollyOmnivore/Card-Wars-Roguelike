@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://e3vfpxi7llhh"]
+
+[ext_resource type="Script" path="res://Scenes/player_hand_scene.gd" id="1_iqkki"]
+
+[node name="PlayerHandScene" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_iqkki")
+
+[node name="AttackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = -63.0
+offset_top = -17.0
+offset_right = 45.0
+offset_bottom = 130.0
+text = "Attack"
+
+[node name="HealButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 61.0
+offset_top = -17.0
+offset_right = 167.0
+offset_bottom = 132.0
+text = "Heal"
+
+[node name="DefendButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = -192.0
+offset_top = -19.0
+offset_right = -80.0
+offset_bottom = 129.0
+text = "Defend
+"

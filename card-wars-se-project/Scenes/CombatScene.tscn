@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=3 uid="uid://t42er6uydctj"]
+
+[ext_resource type="Script" path="res://Scenes/combat_scene_script.gd" id="1_rogkm"]
+[ext_resource type="Texture2D" uid="uid://cmwg00y7t4jxk" path="res://Assets/Free-Summer-Pixel-Art-Backgrounds/PNG/summer7/2.png" id="2_n8ppu"]
+[ext_resource type="PackedScene" uid="uid://e3vfpxi7llhh" path="res://Scenes/PlayerHand Scene.tscn" id="2_p02g3"]
+[ext_resource type="Texture2D" uid="uid://cmaw1h0eutf8c" path="res://Assets/Free-Summer-Pixel-Art-Backgrounds/PNG/summer7/1.png" id="3_8o4lx"]
+[ext_resource type="PackedScene" uid="uid://d2iv4sdpdkc6g" path="res://Scenes/Enemy Scene.tscn" id="3_vpa1x"]
+
+[node name="CombatScene" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_rogkm")
+
+[node name="EnemyHealthBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 822.0
+offset_top = 30.0
+offset_right = 996.0
+offset_bottom = 57.0
+
+[node name="Grass" type="Sprite2D" parent="EnemyHealthBar"]
+show_behind_parent = true
+position = Vector2(-232, 348.5)
+scale = Vector2(2.03819, 1.66975)
+texture = ExtResource("2_n8ppu")
+
+[node name="Sky" type="Sprite2D" parent="EnemyHealthBar/Grass"]
+show_behind_parent = true
+light_mask = 2
+visibility_layer = 2
+position = Vector2(-5.88757, -58.6913)
+scale = Vector2(0.988075, 1.02588)
+texture = ExtResource("3_8o4lx")
+
+[node name="PlayerHealthBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 471.0
+offset_top = 407.0
+offset_right = 680.0
+offset_bottom = 434.0
+
+[node name="TurnIndicator" type="Label" parent="."]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 317.0
+offset_right = 235.0
+offset_bottom = 340.0
+
+[node name="PlayerHandContainer" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 367.0
+offset_top = 464.0
+offset_right = 779.0
+offset_bottom = 668.0
+
+[node name="PlayerHandScene" parent="PlayerHandContainer" instance=ExtResource("2_p02g3")]
+offset_left = 217.0
+offset_top = 45.0
+offset_right = 217.0
+offset_bottom = 45.0
+
+[node name="EnemyScene" parent="." instance=ExtResource("3_vpa1x")]
+position = Vector2(543, 238)
+scale = Vector2(5, 5)
