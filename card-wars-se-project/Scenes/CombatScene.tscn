@@ -110,6 +110,7 @@ scale = Vector2(0.988075, 1.122)
 texture = ExtResource("3_8o4lx")
 
 [node name="attackAnimation" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(575, 230)
 scale = Vector2(3.95, 3.95)
 sprite_frames = SubResource("SpriteFrames_01hk5")
