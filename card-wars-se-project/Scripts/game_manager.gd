@@ -78,6 +78,7 @@ func enemy_turn():
 	if enemy_action == 0:
 		player_health -= 15
 		print("Enemy attacks! Player Health:", player_health)
+		
 		#add game end check here
 	else:
 		enemy_health += 10
