@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://chvyg0ymgwf5d"]
+
+[ext_resource type="Texture2D" uid="uid://dwqpnx0cu66ao" path="res://Assets/32 Backgrounds Free!/32 Backgrounds Free!/Horizontal/4.png" id="1_m36sa"]
+
+[node name="Combat Defeat" type="Control"]
+layout_mode = 3
+anchor_right = 0.557
+anchor_bottom = 0.674
+offset_right = -620.664
+offset_bottom = -417.752
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(576.5, 324.75)
+scale = Vector2(1.79844, 1.48621)
+texture = ExtResource("1_m36sa")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 234.0
+offset_top = 336.0
+offset_right = 871.0
+offset_bottom = 533.0
+theme_override_colors/font_color = Color(0.988235, 0, 0, 1)
+theme_override_font_sizes/font_size = 144
+text = "Defeated"

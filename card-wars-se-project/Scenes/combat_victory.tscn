@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbr7d3vfi5j23"]
+
+[ext_resource type="Texture2D" uid="uid://deyi8pbyti8h2" path="res://Assets/32 Backgrounds Free!/32 Backgrounds Free!/Horizontal/17.png" id="1_djn5t"]
+
+[node name="CombatVictory" type="Control"]
+layout_mode = 3
+anchor_right = 0.556
+anchor_bottom = 0.556
+offset_right = -619.512
+offset_bottom = -329.288
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("1_djn5t")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 269.0
+offset_top = 381.0
+offset_right = 879.0
+offset_bottom = 578.0
+theme_override_font_sizes/font_size = 144
+text = "You Win!"
