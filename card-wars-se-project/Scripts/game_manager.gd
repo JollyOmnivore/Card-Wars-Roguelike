@@ -4,6 +4,8 @@ extends Node
 @export var EnemyScene: PackedScene
 @export var PlayerHandScene: PackedScene 
 
+const PLAYER_MAX_HEALTH = 100 # subject to change in the future
+const ENEMY_MAX_HEALTH = 100 # subject to change in the the future
 var enemy_health: int = 100
 var player_health: int = 100
 var player_turn: bool = true
@@ -55,7 +57,10 @@ func player_action(action: String):
 				get_tree().change_scene_to_file("res://Scenes/combat_victory.tscn")
 				return
 		"heal":
-			player_health += 15
+			if player_health < PLAYER_MAX_HEALTH:
+				player_health += 15
+			if player_health > PLAYER_MAX_HEALTH:
+				player_health = PLAYER_MAX_HEALTH
 			print("Player heals! Player Health:", player_health)
 		"defend":
 			print("Player defends!") # defending does nothing yet
@@ -90,9 +95,14 @@ func enemy_turn():
 			get_tree().change_scene_to_file("res://Scenes/combat_defeat.tscn")
 			return
 
-	else:
-		enemy_health += 10
+	elif enemy_action == 1:
+		if enemy_health < ENEMY_MAX_HEALTH:
+			enemy_health += 10
+		if enemy_health > ENEMY_MAX_HEALTH:
+			enemy_health = ENEMY_MAX_HEALTH
 		print("Enemy heals! Enemy Health:", enemy_health)
+	else:
+		print("Unknown Enemy Action Error")
 
 	# Update Combat Scene UI
 	var combat_scene = get_tree().root.get_node_or_null("CombatScene")
