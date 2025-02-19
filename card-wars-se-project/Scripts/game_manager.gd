@@ -50,7 +50,6 @@ func player_action(action: String):
 			enemy_health -= 20
 			combat_scene.playAttackAnimation()#plays animation in combat scene
 			print("Player attacks! Enemy Health:", enemy_health)
-			#add win check here
 			if enemy_health <= 0:
 				print("player wins. switch to victory scene")
 				get_tree().change_scene_to_file("res://Scenes/combat_victory.tscn")
@@ -59,7 +58,6 @@ func player_action(action: String):
 			player_health += 15
 			print("Player heals! Player Health:", player_health)
 		"defend":
-			print("Player defends!")#defending does nothing yet
 			print("Player defends!") # defending does nothing yet
 
 	# DEBUGGING Check if CombatScene exists
@@ -83,15 +81,15 @@ func enemy_turn():
 	if enemy_action == 0:
 		player_health -= 15
 		print("Enemy attacks! Player Health:", player_health)
-<<<<<<< HEAD
+
 		
 		#add game end check here
-=======
+
 		if player_health <= 0:
 			print("enemy wins. switch to game over")
 			get_tree().change_scene_to_file("res://Scenes/combat_defeat.tscn")
 			return
->>>>>>> origin/Feature-26-Victory-Screen
+
 	else:
 		enemy_health += 10
 		print("Enemy heals! Enemy Health:", enemy_health)
