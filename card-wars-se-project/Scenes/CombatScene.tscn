@@ -78,6 +78,14 @@ offset_top = 317.0
 offset_right = 235.0
 offset_bottom = 340.0
 
+[node name="PlayerDef" type="Label" parent="."]
+layout_mode = 0
+offset_left = 706.0
+offset_top = 404.0
+offset_right = 746.0
+offset_bottom = 427.0
+text = "Def: 0"
+
 [node name="PlayerHandContainer" type="Control" parent="."]
 anchors_preset = 0
 offset_left = 367.0

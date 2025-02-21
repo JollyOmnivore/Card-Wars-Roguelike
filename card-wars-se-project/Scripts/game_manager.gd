@@ -9,6 +9,7 @@ const ENEMY_MAX_HEALTH = 100 # subject to change in the the future
 var enemy_health: int = 100
 var player_health: int = 100
 var player_turn: bool = true
+var player_def: int = 0
 var card_types = ["attack", "heal", "defend"] 
 var combat_instance = null  # Declare combat_instance globally
 
@@ -63,7 +64,8 @@ func player_action(action: String):
 				player_health = PLAYER_MAX_HEALTH
 			print("Player heals! Player Health:", player_health)
 		"defend":
-			print("Player defends!") # defending does nothing yet
+			player_def += 10
+			print("Player defends!")
 
 	# DEBUGGING Check if CombatScene exists
 	
@@ -71,6 +73,7 @@ func player_action(action: String):
 		print("CombatScene found, updating UI")
 		combat_scene.update_health_display()
 		combat_scene.on_turn_change()
+		combat_scene.update_defense_display()
 		
 	else:
 		print("ERROR: CombatScene not found!")
@@ -84,7 +87,8 @@ func enemy_turn():
 	print("Enemy chose action:", enemy_action)
 	
 	if enemy_action == 0:
-		player_health -= 15
+		var damage = max(0, 15 - player_def)  # Reduce damage by defense value
+		player_health -= damage
 		print("Enemy attacks! Player Health:", player_health)
 
 		
@@ -103,12 +107,14 @@ func enemy_turn():
 		print("Enemy heals! Enemy Health:", enemy_health)
 	else:
 		print("Unknown Enemy Action Error")
+	player_def = 0
 
 	# Update Combat Scene UI
 	var combat_scene = get_tree().root.get_node_or_null("CombatScene")
 	if combat_scene:
 		print("Updating Combat Scene UI after enemy turn")
 		combat_scene.update_health_display()
+		combat_scene.update_defense_display()
 		combat_scene.on_turn_change()
 	else:
 		print("ERROR: CombatScene not found!")
@@ -129,5 +135,6 @@ func reset_game():
 	print("Resetting game...")
 	player_health = 100
 	enemy_health = 100
+	player_def = 0
 	player_turn = true
 	print("Game Reset - Player Health:", player_health, "Enemy Health:", enemy_health)
