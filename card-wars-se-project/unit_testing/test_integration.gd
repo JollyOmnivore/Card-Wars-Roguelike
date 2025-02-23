@@ -28,23 +28,21 @@ func after_each() -> void:
 	playerHandScene.queue_free()
 	await get_tree().process_frame 
 
-# TEST 1: Clicking Attack Button Signals GM
+# Integration TEST 1: Clicking Attack Button Signals GM
 func test_attack_button_triggers_game_manager():
 	var initial_enemy_health = gameManager.enemy_health
 	gameManager.player_action("attack")
 	await get_tree().process_frame  # Allow time for processing
-	print("DEBUG: Enemy health after attack:", gameManager.enemy_health)
-	print("DEBUG: Player turn after attack:", gameManager.player_turn)
 	assert_true(gameManager.enemy_health < initial_enemy_health, "Enemy should lose health when attack button is clicked")
 	assert_eq(gameManager.player_turn, false, "Turn should switch after attack")
 
 
 
-# Integration Test 2 Attack Action Triggers Animation in CombatScene
+# Integration TEST 2 Attack Action Triggers Animation in CombatScene
 func test_attack_triggers_animation():
 	gameManager.player_action("attack")
-	await get_tree().process_frame  # Allow animation triggerode
+	await get_tree().process_frame 
 	var attack_anim = combatScene.get_node_or_null("attackAnimation")
 	assert_not_null(attack_anim, "attackAnimation node should exist in CombatScene")
-	await attack_anim.animation_finished # didnt have this before and was casuing fails due to a quick visiblity switch
+	await attack_anim.animation_finished # didn't have this before and was casuing fails due to a quick visiblity switch
 	assert_true(attack_anim.visible, "Attack animation should be visible during attack") 
