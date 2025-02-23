@@ -34,16 +34,17 @@ func start_combat():
 		var player_hand_instance = PlayerHandScene.instantiate()
 		combat_instance.add_child(player_hand_instance)
 
-	# Print all root nodes to confirm CombatScene exists
+	# Print all root nodes
 	print("Root Nodes in Scene Tree AFTER CombatScene added:")
 	for node in get_tree().root.get_children():
 		print(" -", node.name)
-
+		
 
 
 func player_action(action: String):
 	var combat_scene = get_tree().root.get_node_or_null("CombatScene")
 	print("Player action triggered:", action)
+	
 	if not player_turn:
 		print("Not player's turn, action ignored.")
 		return
@@ -51,7 +52,9 @@ func player_action(action: String):
 	match action:
 		"attack":
 			enemy_health -= 20
-			combat_scene.playAttackAnimation()#plays animation in combat scene
+			print("Unit test check", enemy_health)
+			if combat_scene:
+				combat_scene.playAttackAnimation()  # Only call if combat_scene is valid
 			print("Player attacks! Enemy Health:", enemy_health)
 			if enemy_health <= 0:
 				print("player wins. switch to victory scene")
@@ -67,35 +70,30 @@ func player_action(action: String):
 			player_def += 10
 			print("Player defends!")
 
-	# DEBUGGING Check if CombatScene exists
-	
 	if combat_scene:
 		print("CombatScene found, updating UI")
 		combat_scene.update_health_display()
 		combat_scene.on_turn_change()
 		combat_scene.update_defense_display()
-		
 	else:
 		print("ERROR: CombatScene not found!")
 
 	end_turn()
 
-# Handles enemy's turn
+
+
 func enemy_turn():
 	print("Enemy's turn started...")
-	var enemy_action = randi() % 2  #Simple AI: 0 = attack, 1 = heal. I told you this would be easier Logan
+	var enemy_action = randi() % 2
 	print("Enemy chose action:", enemy_action)
-	
+
 	if enemy_action == 0:
-		var damage = max(0, 15 - player_def)  # Reduce damage by defense value
+		var damage = max(0, 15 - player_def) 
 		player_health -= damage
 		print("Enemy attacks! Player Health:", player_health)
 
-		
-		#add game end check here
-
 		if player_health <= 0:
-			print("enemy wins. switch to game over")
+			print("Enemy wins. Switching to game over.")
 			get_tree().change_scene_to_file("res://Scenes/combat_defeat.tscn")
 			return
 
@@ -105,11 +103,12 @@ func enemy_turn():
 		if enemy_health > ENEMY_MAX_HEALTH:
 			enemy_health = ENEMY_MAX_HEALTH
 		print("Enemy heals! Enemy Health:", enemy_health)
+
 	else:
 		print("Unknown Enemy Action Error")
+
 	player_def = 0
 
-	# Update Combat Scene UI
 	var combat_scene = get_tree().root.get_node_or_null("CombatScene")
 	if combat_scene:
 		print("Updating Combat Scene UI after enemy turn")
@@ -119,16 +118,28 @@ func enemy_turn():
 	else:
 		print("ERROR: CombatScene not found!")
 
+
 	end_turn()
+
 
 # Ends the turn and switches between player and enemy 
 func end_turn():
-	print("Ending turn. Player's turn:", player_turn)
-	player_turn = !player_turn
+	print("Ending turn. Player's turn before toggle:", player_turn)
+	player_turn = !player_turn  # Toggle turn
+	var combat_scene = get_tree().root.get_node_or_null("CombatScene")
+	if combat_scene:
+		combat_scene.on_turn_change()
+		combat_scene.update_health_display()
+		combat_scene.update_defense_display()
 	if not player_turn:
-		print("Waiting for enemy's turn...")
-		await get_tree().create_timer(1.0).timeout
+		print("Waiting for enemy's turn")
+		await get_tree().create_timer(0.75).timeout 
 		enemy_turn()
+
+
+
+
+
 
 # Resets the game, for debugging later down the line
 func reset_game():

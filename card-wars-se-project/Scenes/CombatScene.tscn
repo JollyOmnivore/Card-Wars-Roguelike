@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dsktid2l72u01"]
+[gd_scene load_steps=13 format=3 uid="uid://c1hvj4xe2a8v6"]
 
 [ext_resource type="Script" path="res://Scenes/combat_scene_script.gd" id="1_rogkm"]
 [ext_resource type="Texture2D" uid="uid://cmwg00y7t4jxk" path="res://Assets/Free-Summer-Pixel-Art-Backgrounds/PNG/summer7/2.png" id="2_n8ppu"]
