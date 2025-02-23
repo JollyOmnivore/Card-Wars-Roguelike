@@ -5,11 +5,11 @@ var gameManager: GameManager
 
 func before_each() -> void:
 	gameManager = GameManager.new()
-	assert_not_null(gameManager, "ERROR: gameManager failed to instantiate!") 
+	assert_not_null(gameManager, "gameManager failed to instantiate!") 
 	gameManager.CombatScene = preload("res://Scenes/CombatScene.tscn")  # Mock CombatScene
 	add_child(gameManager)
 	await get_tree().process_frame  
-	assert_not_null(gameManager, "ERROR: gameManager became null before start_combat!")
+	assert_not_null(gameManager, "null before start_combat!")
 	gameManager.start_combat()
 
 
