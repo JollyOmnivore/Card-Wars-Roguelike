@@ -1,0 +1,125 @@
+[gd_scene load_steps=13 format=3 uid="uid://dsktid2l72u01"]
+
+[ext_resource type="Script" path="res://Scenes/combat_scene_script.gd" id="1_rogkm"]
+[ext_resource type="Texture2D" uid="uid://cmwg00y7t4jxk" path="res://Assets/Free-Summer-Pixel-Art-Backgrounds/PNG/summer7/2.png" id="2_n8ppu"]
+[ext_resource type="PackedScene" uid="uid://c2t3oou0lhiqv" path="res://Scenes/PlayerHand Scene.tscn" id="2_p02g3"]
+[ext_resource type="Texture2D" uid="uid://cmaw1h0eutf8c" path="res://Assets/Free-Summer-Pixel-Art-Backgrounds/PNG/summer7/1.png" id="3_8o4lx"]
+[ext_resource type="PackedScene" uid="uid://d2iv4sdpdkc6g" path="res://Scenes/Enemy Scene.tscn" id="3_vpa1x"]
+[ext_resource type="Texture2D" uid="uid://d2cp16knrukta" path="res://Assets/223.png" id="6_rprr5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owc4n"]
+atlas = ExtResource("6_rprr5")
+region = Rect2(0, 0, 60, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ykqc6"]
+atlas = ExtResource("6_rprr5")
+region = Rect2(64, 0, 60, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swvqr"]
+atlas = ExtResource("6_rprr5")
+region = Rect2(128, 0, 60, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12gg6"]
+atlas = ExtResource("6_rprr5")
+region = Rect2(192, 0, 60, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8v5sb"]
+atlas = ExtResource("6_rprr5")
+region = Rect2(256, 0, 60, 67)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_01hk5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_owc4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ykqc6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swvqr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12gg6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8v5sb")
+}],
+"loop": false,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="CombatScene" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_rogkm")
+
+[node name="EnemyHealthBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 327.0
+offset_top = 31.0
+offset_right = 810.0
+offset_bottom = 58.0
+
+[node name="PlayerHealthBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 471.0
+offset_top = 407.0
+offset_right = 680.0
+offset_bottom = 434.0
+
+[node name="TurnIndicator" type="Label" parent="."]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 317.0
+offset_right = 235.0
+offset_bottom = 340.0
+
+[node name="PlayerDef" type="Label" parent="."]
+layout_mode = 0
+offset_left = 706.0
+offset_top = 404.0
+offset_right = 746.0
+offset_bottom = 427.0
+text = "Def: 0"
+
+[node name="PlayerHandContainer" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 367.0
+offset_top = 464.0
+offset_right = 779.0
+offset_bottom = 668.0
+
+[node name="PlayerHandScene" parent="PlayerHandContainer" instance=ExtResource("2_p02g3")]
+offset_left = 217.0
+offset_top = 45.0
+offset_right = 217.0
+offset_bottom = 45.0
+
+[node name="EnemyScene" parent="." instance=ExtResource("3_vpa1x")]
+position = Vector2(543, 238)
+scale = Vector2(5, 5)
+
+[node name="Grass" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(577, 375)
+scale = Vector2(2.03819, 1.66975)
+texture = ExtResource("2_n8ppu")
+
+[node name="Sky" type="Sprite2D" parent="Grass"]
+show_behind_parent = true
+light_mask = 2
+visibility_layer = 2
+position = Vector2(-0.981296, -47.3125)
+scale = Vector2(0.988075, 1.122)
+texture = ExtResource("3_8o4lx")
+
+[node name="attackAnimation" type="AnimatedSprite2D" parent="."]
+position = Vector2(575, 230)
+scale = Vector2(3.95, 3.95)
+sprite_frames = SubResource("SpriteFrames_01hk5")
+frame = 4
+frame_progress = 1.0
