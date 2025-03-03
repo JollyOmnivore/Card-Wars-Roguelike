@@ -84,6 +84,7 @@ func player_action(action: String):
 
 func enemy_turn():
 	print("Enemy's turn started...")
+	await get_tree().create_timer(0.75).timeout 
 	var enemy_action = randi() % 2
 	print("Enemy chose action:", enemy_action)
 
