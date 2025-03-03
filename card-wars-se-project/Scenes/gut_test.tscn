@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://nhlhvj5o45ni"]
 
-[ext_resource type="Script" path="res://addons/gut/test.gd" id="1_61nhg"]
+[ext_resource type="Script" uid="uid://bqmc1f0rinpbl" path="res://addons/gut/test.gd" id="1_61nhg"]
 
 [node name="GutTest" type="Node"]
 script = ExtResource("1_61nhg")
