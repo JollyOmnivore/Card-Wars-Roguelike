@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://dsktid2l72u01"]
+[gd_scene load_steps=40 format=3 uid="uid://dsktid2l72u01"]
 
 [ext_resource type="Script" uid="uid://cwxrv2q38a2ua" path="res://Scenes/combat_scene_script.gd" id="1_rogkm"]
 [ext_resource type="Texture2D" uid="uid://cmwg00y7t4jxk" path="res://Assets/Free-Summer-Pixel-Art-Backgrounds/PNG/summer7/2.png" id="2_n8ppu"]
@@ -15,6 +15,7 @@
 [ext_resource type="FontFile" uid="uid://bmy0dltdp5oyx" path="res://Assets/Harmonic.ttf" id="13_7d6hk"]
 [ext_resource type="Texture2D" uid="uid://f6vsyvesaxcs" path="res://Assets/11019728.png" id="14_vruw2"]
 [ext_resource type="Texture2D" uid="uid://dq4upjfte7ubi" path="res://Assets/healing_potion.png" id="15_t6l0c"]
+[ext_resource type="Texture2D" uid="uid://dy270qqw437uh" path="res://Assets/HealOverlay.png" id="16_7t358"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_owc4n"]
 atlas = ExtResource("6_rprr5")
@@ -345,3 +346,9 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("13_7d6hk")
 theme_override_font_sizes/font_size = 20
 text = "Enemy is Going to Heal"
+
+[node name="HealOverlay" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(557, 287)
+scale = Vector2(0.741977, 0.723647)
+texture = ExtResource("16_7t358")

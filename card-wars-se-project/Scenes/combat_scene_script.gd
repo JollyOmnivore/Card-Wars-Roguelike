@@ -14,6 +14,7 @@ extends Control
 @onready var healing_icon: Sprite2D = $HealingIcon
 @onready var enraged_label: Label = $EnragedLabel
 @onready var heal_label: Label = $HealLabel
+@onready var heal_overlay: Sprite2D = $HealOverlay
 
 func _ready():
 	attackAnimation.visible = false
@@ -67,6 +68,11 @@ func PlayerTakeDamage():
 	damage_overlay.modulate.a8 = 90
 	await get_tree().create_timer(0.9).timeout 
 	damage_overlay.modulate.a8 = 0
+
+func PlayerHealEffect():
+	heal_overlay.modulate.a8 = 90
+	await get_tree().create_timer(0.9).timeout 
+	heal_overlay.modulate.a8 = 0
 	
 func playEnemyHealAnimation():
 	enemy_heal_animation.visible = true

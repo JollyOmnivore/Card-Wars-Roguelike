@@ -71,6 +71,7 @@ func player_action(action: String):
 				player_health += 15
 			if player_health > PLAYER_MAX_HEALTH:
 				player_health = PLAYER_MAX_HEALTH
+			combat_scene.PlayerHealEffect()
 			print("Player heals! Player Health:", player_health)
 		"defend":
 			player_def += 10
