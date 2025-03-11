@@ -12,6 +12,8 @@ var player_turn: bool = true
 var player_def: int = 0
 var card_types = ["attack", "heal", "defend"] 
 var combat_instance = null  # Declare combat_instance globally
+var enemy_next_action = 0
+
 
 func _ready():
 	print("Game Manager Initialized")
@@ -19,6 +21,7 @@ func _ready():
 
 func start_combat():
 	print("Starting combat...")
+	
 
 	await get_tree().process_frame  # Let the scene process for 1 frame
 
@@ -27,6 +30,7 @@ func start_combat():
 		combat_instance = CombatScene.instantiate()
 		get_tree().root.add_child(combat_instance)  # Ensure it's added to root
 		combat_instance.name = "CombatScene"  # Rename it for easy access
+
 		print("Combat Scene Added! Name in Tree:", combat_instance.name)
 
 	if PlayerHandScene and combat_instance:
@@ -51,11 +55,13 @@ func player_action(action: String):
 
 	match action:
 		"attack":
-			enemy_health -= 20
-			print("Unit test check", enemy_health)
 			if combat_scene:
 				combat_scene.playAttackAnimation()  # Only call if combat_scene is valid
-			print("Player attacks! Enemy Health:", enemy_health)
+				print("Player attacks! Enemy Health:", enemy_health)
+				await get_tree().create_timer(0.3).timeout # time to increase impact of attack effect causing damage
+			enemy_health -= 20
+			print("Unit test check", enemy_health)
+
 			if enemy_health <= 0:
 				print("player wins. switch to victory scene")
 				get_tree().change_scene_to_file("res://Scenes/combat_victory.tscn")
@@ -86,7 +92,13 @@ func enemy_turn():
 	var combat_scene = get_tree().root.get_node_or_null("CombatScene")
 	print("Enemy's turn started...")
 	await get_tree().create_timer(0.75).timeout 
-	var enemy_action = randi() % 2
+	
+	
+	#var enemy_action = randi() % 2 #old attack action 
+	var enemy_action = enemy_next_action
+	enemy_next_action = randi() % 2
+	combat_scene.updateEnemyNextMoveIndicator(enemy_next_action)
+	
 	print("Enemy chose action:", enemy_action)
 
 	if enemy_action == 0:

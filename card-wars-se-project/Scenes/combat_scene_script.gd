@@ -9,7 +9,11 @@ extends Control
 @onready var enemy_heal_animation: AnimatedSprite2D = $EnemyHealAnimation
 @onready var damage_overlay: Sprite2D = $DamageOverlay
 @onready var texture_player_health_bar: TextureProgressBar = $TexturePlayerHealthBar
-@onready var texture_enemy_health_bar: TextureProgressBar = $EnemyHealthBar/TextureEnemyHealthBar
+@onready var texture_enemy_health_bar: TextureProgressBar = $TextureEnemyHealthBar
+@onready var enraged_icon: Sprite2D = $EnragedIcon
+@onready var healing_icon: Sprite2D = $HealingIcon
+@onready var enraged_label: Label = $EnragedLabel
+@onready var heal_label: Label = $HealLabel
 
 func _ready():
 	attackAnimation.visible = false
@@ -77,3 +81,17 @@ func update_defense_display():
 		print("Defense Display Updated - Defense:", game_manager.player_def)
 	else:
 		print("ERROR: GameManager not found!")
+
+
+func updateEnemyNextMoveIndicator(enemy_next_action):
+	if enemy_next_action == 0:
+		enraged_icon.visible = true
+		healing_icon.visible= false
+		enraged_label.visible = true
+		heal_label.visible= false
+	elif enemy_next_action == 1:
+		enraged_icon.visible = false
+		healing_icon.visible= true
+		enraged_label.visible = false
+		heal_label.visible= true
+		

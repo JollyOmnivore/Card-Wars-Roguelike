@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dsktid2l72u01"]
+[gd_scene load_steps=39 format=3 uid="uid://dsktid2l72u01"]
 
 [ext_resource type="Script" uid="uid://cwxrv2q38a2ua" path="res://Scenes/combat_scene_script.gd" id="1_rogkm"]
 [ext_resource type="Texture2D" uid="uid://cmwg00y7t4jxk" path="res://Assets/Free-Summer-Pixel-Art-Backgrounds/PNG/summer7/2.png" id="2_n8ppu"]
@@ -12,6 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://d2cp16knrukta" path="res://Assets/223.png" id="6_rprr5"]
 [ext_resource type="Texture2D" uid="uid://ctravmh4bs4ib" path="res://Assets/Holy VFX 01-02/Holy VFX 02/Holy VFX 02.png" id="7_6puio"]
 [ext_resource type="Texture2D" uid="uid://coq5jqevmjjga" path="res://Assets/DamageOverlay.jpg" id="9_pbl8q"]
+[ext_resource type="FontFile" uid="uid://bmy0dltdp5oyx" path="res://Assets/Harmonic.ttf" id="13_7d6hk"]
+[ext_resource type="Texture2D" uid="uid://f6vsyvesaxcs" path="res://Assets/11019728.png" id="14_vruw2"]
+[ext_resource type="Texture2D" uid="uid://dq4upjfte7ubi" path="res://Assets/healing_potion.png" id="15_t6l0c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_owc4n"]
 atlas = ExtResource("6_rprr5")
@@ -184,9 +187,35 @@ offset_bottom = 40.0
 script = ExtResource("1_rogkm")
 
 [node name="ShieldIcon" type="Sprite2D" parent="."]
-position = Vector2(728, 419)
+position = Vector2(728, 440)
 scale = Vector2(2.9375, 2.9375)
 texture = ExtResource("2_scup6")
+
+[node name="Grass" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(577, 375)
+scale = Vector2(2.15819, 1.82975)
+texture = ExtResource("2_n8ppu")
+
+[node name="Sky" type="Sprite2D" parent="Grass"]
+show_behind_parent = true
+light_mask = 2
+visibility_layer = 2
+position = Vector2(-0.981296, -47.3125)
+scale = Vector2(0.988075, 1.122)
+texture = ExtResource("3_8o4lx")
+
+[node name="TextureEnemyHealthBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 330.0
+offset_top = 71.0
+offset_right = 722.0
+offset_bottom = 111.0
+scale = Vector2(1.24, 1.16)
+nine_patch_stretch = true
+texture_under = ExtResource("4_7d6hk")
+texture_over = ExtResource("3_b8x4h")
+texture_progress = ExtResource("5_vruw2")
 
 [node name="EnemyHealthBar" type="ProgressBar" parent="."]
 visible = false
@@ -195,18 +224,6 @@ offset_left = 327.0
 offset_top = 31.0
 offset_right = 810.0
 offset_bottom = 58.0
-
-[node name="TextureEnemyHealthBar" type="TextureProgressBar" parent="EnemyHealthBar"]
-layout_mode = 0
-offset_left = 3.0
-offset_top = -9.0
-offset_right = 395.0
-offset_bottom = 31.0
-scale = Vector2(1.24, 1.16)
-nine_patch_stretch = true
-texture_under = ExtResource("4_7d6hk")
-texture_over = ExtResource("3_b8x4h")
-texture_progress = ExtResource("5_vruw2")
 
 [node name="PlayerHealthBar" type="ProgressBar" parent="."]
 visible = false
@@ -219,13 +236,21 @@ offset_bottom = 469.0
 [node name="TexturePlayerHealthBar" type="TextureProgressBar" parent="."]
 layout_mode = 0
 offset_left = 450.0
-offset_top = 396.0
+offset_top = 425.0
 offset_right = 685.0
-offset_bottom = 436.0
+offset_bottom = 465.0
 nine_patch_stretch = true
 texture_under = ExtResource("4_7d6hk")
 texture_over = ExtResource("3_b8x4h")
 texture_progress = ExtResource("5_vruw2")
+
+[node name="PlayerDef" type="Label" parent="."]
+layout_mode = 0
+offset_left = 706.0
+offset_top = 425.0
+offset_right = 751.0
+offset_bottom = 448.0
+text = "Def: 0"
 
 [node name="TurnIndicator" type="Label" parent="."]
 layout_mode = 0
@@ -233,14 +258,10 @@ offset_left = 26.0
 offset_top = 317.0
 offset_right = 235.0
 offset_bottom = 340.0
-
-[node name="PlayerDef" type="Label" parent="."]
-layout_mode = 0
-offset_left = 706.0
-offset_top = 404.0
-offset_right = 746.0
-offset_bottom = 427.0
-text = "Def: 0"
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("13_7d6hk")
+theme_override_font_sizes/font_size = 30
 
 [node name="PlayerHandContainer" type="Control" parent="."]
 anchors_preset = 0
@@ -259,20 +280,6 @@ offset_bottom = 45.0
 position = Vector2(543, 238)
 scale = Vector2(5, 5)
 
-[node name="Grass" type="Sprite2D" parent="."]
-show_behind_parent = true
-position = Vector2(577, 375)
-scale = Vector2(2.15819, 1.82975)
-texture = ExtResource("2_n8ppu")
-
-[node name="Sky" type="Sprite2D" parent="Grass"]
-show_behind_parent = true
-light_mask = 2
-visibility_layer = 2
-position = Vector2(-0.981296, -47.3125)
-scale = Vector2(0.988075, 1.122)
-texture = ExtResource("3_8o4lx")
-
 [node name="attackAnimation" type="AnimatedSprite2D" parent="."]
 position = Vector2(575, 230)
 scale = Vector2(3.95, 3.95)
@@ -290,3 +297,51 @@ modulate = Color(1, 1, 1, 0)
 top_level = true
 position = Vector2(581, 308)
 texture = ExtResource("9_pbl8q")
+
+[node name="Enemy Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 434.0
+offset_top = 39.0
+offset_right = 734.305
+offset_bottom = 68.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("13_7d6hk")
+theme_override_font_sizes/font_size = 25
+text = "Ugly Flying Eyeball's Health"
+
+[node name="EnragedIcon" type="Sprite2D" parent="."]
+position = Vector2(847, 92)
+scale = Vector2(0.09375, 0.09375)
+texture = ExtResource("14_vruw2")
+
+[node name="HealingIcon" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(843, 97)
+scale = Vector2(0.384115, 0.384115)
+texture = ExtResource("15_t6l0c")
+
+[node name="EnragedLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 881.0
+offset_top = 84.0
+offset_right = 1055.0
+offset_bottom = 107.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("13_7d6hk")
+theme_override_font_sizes/font_size = 20
+text = "The Enemy in Enraged"
+
+[node name="HealLabel" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 874.0
+offset_top = 83.0
+offset_right = 1182.0
+offset_bottom = 106.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("13_7d6hk")
+theme_override_font_sizes/font_size = 20
+text = "Enemy is Going to Heal"
