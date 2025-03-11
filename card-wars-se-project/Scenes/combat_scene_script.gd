@@ -7,6 +7,9 @@ extends Control
 @onready var attackAnimation = $attackAnimation
 @onready var player_def: Label = $PlayerDef
 @onready var enemy_heal_animation: AnimatedSprite2D = $EnemyHealAnimation
+@onready var damage_overlay: Sprite2D = $DamageOverlay
+@onready var texture_player_health_bar: TextureProgressBar = $TexturePlayerHealthBar
+@onready var texture_enemy_health_bar: TextureProgressBar = $EnemyHealthBar/TextureEnemyHealthBar
 
 func _ready():
 	attackAnimation.visible = false
@@ -21,8 +24,9 @@ func update_health_display():
 	var game_manager = get_tree().root.get_node_or_null("GameManager")
 	if game_manager:
 		print("Updating health bars - Player:", game_manager.player_health, "Enemy:", game_manager.enemy_health)
+		texture_player_health_bar.value = game_manager.player_health
 		player_health_bar.value = game_manager.player_health
-		enemy_health_bar.value = game_manager.enemy_health
+		texture_enemy_health_bar.value = game_manager.enemy_health
 	else:
 		print("ERROR: GameManager not found!")
 
@@ -54,6 +58,11 @@ func playAttackAnimation():
 	attackAnimation.play('default')
 	await attackAnimation.animation_finished
 	attackAnimation.visible= false
+	
+func PlayerTakeDamage():
+	damage_overlay.modulate.a8 = 90
+	await get_tree().create_timer(0.9).timeout 
+	damage_overlay.modulate.a8 = 0
 	
 func playEnemyHealAnimation():
 	enemy_heal_animation.visible = true

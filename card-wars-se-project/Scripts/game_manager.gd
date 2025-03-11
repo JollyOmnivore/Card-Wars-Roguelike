@@ -92,6 +92,7 @@ func enemy_turn():
 	if enemy_action == 0:
 		var damage = max(0, 15 - player_def) 
 		player_health -= damage
+		combat_scene.PlayerTakeDamage()
 		print("Enemy attacks! Player Health:", player_health)
 
 		if player_health <= 0:
