@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c1hvj4xe2a8v6"]
+[gd_scene load_steps=14 format=3 uid="uid://c1hvj4xe2a8v6"]
 
 [ext_resource type="Script" uid="uid://cwxrv2q38a2ua" path="res://Scenes/combat_scene_script.gd" id="1_rogkm"]
 [ext_resource type="Texture2D" uid="uid://cmwg00y7t4jxk" path="res://Assets/Free-Summer-Pixel-Art-Backgrounds/PNG/summer7/2.png" id="2_n8ppu"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cmaw1h0eutf8c" path="res://Assets/Free-Summer-Pixel-Art-Backgrounds/PNG/summer7/1.png" id="3_8o4lx"]
 [ext_resource type="PackedScene" uid="uid://d2iv4sdpdkc6g" path="res://Scenes/Enemy Scene.tscn" id="3_vpa1x"]
 [ext_resource type="Texture2D" uid="uid://d2cp16knrukta" path="res://Assets/223.png" id="6_rprr5"]
+[ext_resource type="PackedScene" uid="uid://bfaj7hfueuxa6" path="res://Scenes/combat_manager.tscn" id="7_6puio"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_owc4n"]
 atlas = ExtResource("6_rprr5")
@@ -56,6 +57,8 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_rogkm")
+
+[node name="CombatManager" parent="." instance=ExtResource("7_6puio")]
 
 [node name="EnemyHealthBar" type="ProgressBar" parent="."]
 layout_mode = 0
