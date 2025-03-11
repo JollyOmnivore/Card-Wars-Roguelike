@@ -6,9 +6,11 @@ extends Control
 @onready var player_hand_container = $PlayerHandContainer
 @onready var attackAnimation = $attackAnimation
 @onready var player_def: Label = $PlayerDef
+@onready var enemy_heal_animation: AnimatedSprite2D = $EnemyHealAnimation
 
 func _ready():
 	attackAnimation.visible = false
+	enemy_heal_animation.visible = false
 	print("Combat Scene Initialized")
 	update_health_display()
 	update_defense_display()
@@ -52,11 +54,17 @@ func playAttackAnimation():
 	attackAnimation.play('default')
 	await attackAnimation.animation_finished
 	attackAnimation.visible= false
+	
+func playEnemyHealAnimation():
+	enemy_heal_animation.visible = true
+	enemy_heal_animation.play('default')
+	await enemy_heal_animation.animation_finished
+	enemy_heal_animation.visible= false
 
 func update_defense_display():
 	var game_manager = get_tree().root.get_node_or_null("GameManager")
 	if game_manager:
-		player_def.text = "Defense: " + str(game_manager.player_def)
+		player_def.text = "Def: " + str(game_manager.player_def)
 		print("Defense Display Updated - Defense:", game_manager.player_def)
 	else:
 		print("ERROR: GameManager not found!")

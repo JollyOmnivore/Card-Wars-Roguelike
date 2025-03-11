@@ -83,6 +83,7 @@ func player_action(action: String):
 
 
 func enemy_turn():
+	var combat_scene = get_tree().root.get_node_or_null("CombatScene")
 	print("Enemy's turn started...")
 	await get_tree().create_timer(0.75).timeout 
 	var enemy_action = randi() % 2
@@ -99,6 +100,7 @@ func enemy_turn():
 			return
 
 	elif enemy_action == 1:
+		combat_scene.playEnemyHealAnimation() 
 		if enemy_health < ENEMY_MAX_HEALTH:
 			enemy_health += 10
 		if enemy_health > ENEMY_MAX_HEALTH:
@@ -110,7 +112,7 @@ func enemy_turn():
 
 	player_def = 0
 
-	var combat_scene = get_tree().root.get_node_or_null("CombatScene")
+
 	if combat_scene:
 		print("Updating Combat Scene UI after enemy turn")
 		combat_scene.update_health_display()
