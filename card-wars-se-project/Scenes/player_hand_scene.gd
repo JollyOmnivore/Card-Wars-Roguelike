@@ -3,7 +3,7 @@ extends Control
 @onready var button_1: Button = $Button1
 @onready var button_2: Button = $Button2
 @onready var button_3: Button = $Button3
-var HackCardArray = ["Attack","Attack","Attack","Defend","Defend","Heal"]
+var HackCardArray = ["Attack","Attack","Attack","Attack","Attack","Defend","Defend","Heal"]
 
 func _ready() -> void:
 	# Connect signals manually
