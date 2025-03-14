@@ -72,8 +72,9 @@ func test_victory_condition():
 func test_defeat_condition():
 	gameManager.player_health = 10
 	gameManager.player_def = 0
-	gameManager.enemy_turn()
+	await gameManager.enemy_turn()  # Wait for the enemy turn to finish
 	assert_true(gameManager.player_health <= 0, "Player should be defeated")
+
 
 func test_reset_game():
 	gameManager.player_health = 50
