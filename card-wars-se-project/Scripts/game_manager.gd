@@ -76,11 +76,6 @@ func player_action_attack(value: int, combat_scene: Node):
 		combat_scene.master_update()
 		print("Unit test check", enemy_health)
 
-		if enemy_health <= 0:
-			print("player wins. switch to victory scene")
-			get_tree().change_scene_to_file("res://Scenes/combat_victory.tscn")
-			return
-
 func player_action_heal(value: int, combat_scene: Node):
 	if player_health < PLAYER_MAX_HEALTH:
 		player_health += value
@@ -128,12 +123,6 @@ func enemy_action_exectute(action: int, value: int, combat_scene: Node):
 		player_health -= damage
 		combat_scene.PlayerTakeDamage()
 		print("Enemy attacks! Player Health:", player_health)
-
-		if player_health <= 0:
-			print("Enemy wins. Switching to game over.")
-			get_tree().change_scene_to_file("res://Scenes/combat_defeat.tscn")
-			return
-
 	elif action == 1:
 		combat_scene.playEnemyHealAnimation() 
 		if enemy_health < ENEMY_MAX_HEALTH:
@@ -148,6 +137,14 @@ func enemy_action_exectute(action: int, value: int, combat_scene: Node):
 
 # Ends the turn and switches between player and enemy 
 func end_turn(combat_scene: Node):
+	if enemy_health <= 0:
+			print("player wins. switch to victory scene")
+			get_tree().change_scene_to_file("res://Scenes/combat_victory.tscn")
+			return
+	if player_health <= 0:
+			print("Enemy wins. Switching to game over.")
+			get_tree().change_scene_to_file("res://Scenes/combat_defeat.tscn")
+			return
 	print("Ending turn. Player's turn before toggle:", player_turn)
 	player_turn = !player_turn  # Toggle turn
 	if combat_scene:
