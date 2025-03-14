@@ -4,22 +4,27 @@ var GameManager = preload("res://Scripts/game_manager.gd") # Instance of GM
 var gameManager: GameManager
 
 func before_each() -> void:
+
+	if not get_parent():
+		get_tree().root.add_child(self)
 	gameManager = GameManager.new()
-	assert_not_null(gameManager, "gameManager failed to instantiate!") 
-	gameManager.CombatScene = preload("res://Scenes/CombatScene.tscn")  # Mock CombatScene
+	assert_not_null(gameManager, "gameManager failed to instantiate!")
+	gameManager.CombatScene = preload("res://Scenes/CombatScene.tscn") 
 	add_child(gameManager)
-	await get_tree().process_frame  
+	await get_tree().idle_frame  
 	assert_not_null(gameManager, "null before start_combat!")
 	gameManager.start_combat()
 
 
+
 func after_each() -> void:
-	if gameManager and gameManager.get_parent(): 
+	if gameManager and gameManager.get_parent():
 		gameManager.queue_free()
-		await get_tree().process_frame 
-	gameManager = null  
+		await get_tree().idle_frame  
+	gameManager = null
 	if get_tree():
-		await get_tree().process_frame  
+		await get_tree().idle_frame
+
 
 
 func test_starting_state():
@@ -64,14 +69,17 @@ func test_enemy_turn_heal():
 	gameManager.enemy_turn()
 	assert_true(gameManager.enemy_health >= 50 and gameManager.enemy_health <= 60, "Enemy should heal if it chooses to heal")
 
-func test_victory_condition():
+func test_victory_condition(): # for some reason this is failing here 
 	gameManager.enemy_health = 20
+	assert_true(gameManager.enemy_health == 20, "Enemy health modified in test")
 	gameManager.player_action("attack")
+	await get_tree().create_timer(0.8).timeout
 	assert_true(gameManager.enemy_health <= 0, "Enemy should be defeated")
 
 func test_defeat_condition():
 	gameManager.player_health = 10
 	gameManager.player_def = 0
+	await get_tree().create_timer(0.7).timeout
 	await gameManager.enemy_turn()  # Wait for the enemy turn to finish
 	assert_true(gameManager.player_health <= 0, "Player should be defeated")
 
