@@ -50,3 +50,11 @@ func test_initial_button_setup():
 	assert_eq(btn1.text, "Defend", "Button1 should be set to 'Defend'")
 	assert_eq(btn2.text, "Attack", "Button2 should be set to 'Attack'")
 	assert_eq(btn3.text, "Heal", "Button3 should be set to 'Heal'")
+
+
+func test_button_1_pressed() -> void:
+	await hand_instance._on_button_1_pressed()
+	var btn1 = hand_instance.get_node("Button1") as Button
+	assert_true(btn1.visible, "Button1 should be visible after the delay")
+	var possible_values = ["Attack", "Attack", "Attack", "Attack", "Attack", "Defend", "Defend", "Heal"]
+	assert_true(btn1.text in possible_values, "Button1 text should be one of the expected card values")
