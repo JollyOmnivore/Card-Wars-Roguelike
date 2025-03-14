@@ -58,3 +58,20 @@ func test_button_1_pressed() -> void:
 	assert_true(btn1.visible, "Button1 should be visible after the delay")
 	var possible_values = ["Attack", "Attack", "Attack", "Attack", "Attack", "Defend", "Defend", "Heal"]
 	assert_true(btn1.text in possible_values, "Button1 text should be one of the expected card values")
+	
+	
+		
+func test_button_selected_disables_buttons() -> void:
+	var btn1 = hand_instance.get_node("Button1") as Button
+	var btn2 = hand_instance.get_node("Button2") as Button
+	var btn3 = hand_instance.get_node("Button3") as Button
+	
+	assert_false(btn1.disabled, "Button1 should start enabled")
+	assert_false(btn2.disabled, "Button2 should start enabled")
+	assert_false(btn3.disabled, "Button3 should start enabled")
+	
+	await hand_instance.Button_Selected()
+	
+	assert_false(btn1.disabled, "Button1 should be re-enabled after Button_Selected()")
+	assert_false(btn2.disabled, "Button2 should be re-enabled after Button_Selected()")
+	assert_false(btn3.disabled, "Button3 should be re-enabled after Button_Selected()")
