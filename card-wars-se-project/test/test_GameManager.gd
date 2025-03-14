@@ -29,9 +29,12 @@ func test_starting_state():
 	assert_eq(gameManager.player_def, 0, "Player defense should start at 0")
 
 func test_player_attack():
+	gameManager.enemy_health = 100
 	gameManager.player_action("attack")
+	await get_tree().create_timer(0.4).timeout  # Wait for async timer in attack to complete
 	assert_eq(gameManager.enemy_health, 80, "Enemy should take 20 damage from attack")
 	assert_eq(gameManager.player_turn, false, "Turn should switch after attack")
+
 
 func test_player_heal():
 	gameManager.player_health = 50
