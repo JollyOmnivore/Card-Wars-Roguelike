@@ -4,6 +4,10 @@ extends Control
 @onready var button_2: Button = $Button2
 @onready var button_3: Button = $Button3
 var HackCardArray = ["Attack","Attack","Attack","Attack","Attack","Defend","Defend","Heal"]
+#3 arrays
+#deck - pulled from GM (deck gm) pop 3 to player hand
+#player hand - stored in ph, check for max hand, and values for buttons, pop played hand into discard
+#discard pile - popped when played, push onto deck array when deck is empty
 
 func _ready() -> void:
 	# Connect signals manually

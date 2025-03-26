@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bbnfyqmi11hdw"]
+
+[node name="DeckScene" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 162.0
+offset_bottom = 94.0
+text = "deck:"
