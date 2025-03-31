@@ -27,9 +27,11 @@ func _ready():
 
 func master_update():
 	var game_manager = get_tree().root.get_node_or_null("GameManager")
+	
 	update_health_display(game_manager)
 	update_defense_display(game_manager)
 	update_turn_indicator(game_manager)
+	
 
 func update_health_display(game_manager):
 	if game_manager:

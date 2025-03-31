@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbnfyqmi11hdw"]
+
+[ext_resource type="Script" uid="uid://dwgfjqhu4k13a" path="res://Scripts/deck_scene_script.gd" id="1_cecux"]
+
+[node name="DeckScene" type="Node2D"]
+script = ExtResource("1_cecux")
+
+[node name="card3Vals" type="Label" parent="."]
+offset_left = 73.0
+offset_top = -46.0
+offset_right = 146.0
+offset_bottom = 46.0
+text = "card3"
+
+[node name="card2Vals" type="Label" parent="."]
+offset_left = -29.0
+offset_top = -49.0
+offset_right = 44.0
+offset_bottom = 43.0
+text = "card2"
+
+[node name="card1Vals" type="Label" parent="."]
+offset_left = -145.0
+offset_top = -46.0
+offset_right = -72.0
+offset_bottom = 46.0
+text = "card1"
+
+[node name="printVals" type="Label" parent="."]
+offset_left = -47.0
+offset_top = 101.0
+offset_right = 32.0
+offset_bottom = 195.0
+text = "deck:"
