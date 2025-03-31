@@ -24,6 +24,12 @@ func _ready() -> void:
 	button_1.text = handCards[0]
 	button_2.text = handCards[1]
 	button_3.text = handCards[2]
+	
+func CardUpdates():
+	if HackCardArray.size() == 0 and discardCards.size() > 0:
+		HackCardArray = discardCards.duplicate()
+		discardCards.clear()
+		HackCardArray.shuffle()
 
 func _on_button_1_pressed():
 	Button_Selected()
@@ -32,11 +38,15 @@ func _on_button_1_pressed():
 	game_manager.player_action(button_1_card.to_lower())
 	button_1.visible= false
 	button_1.text = handCards[0]
-	discardCards.append(handCards.pop_at[0])
+	discardCards.append(handCards.pop_at(0))
+	
+	CardUpdates()
+	
+	handCards.insert(0, HackCardArray.pop_back())
+	button_3.text = handCards[0]
 	
 	await get_tree().create_timer(1.5).timeout
 	button_1.visible= true
-	#print(button_1_card.to_lower())
 
 
 func _on_button_2_pressed():
@@ -46,7 +56,13 @@ func _on_button_2_pressed():
 	game_manager.player_action(button_2_card.to_lower())
 	button_2.visible= false
 	button_2.text = handCards[1]
-	#discardCards.append(handCards.pop_at[0])
+	discardCards.append(handCards.pop_at(1))
+	
+	CardUpdates()
+	
+	handCards.insert(1, HackCardArray.pop_back())
+	button_2.text = handCards[1]
+	
 	await get_tree().create_timer(1.5).timeout
 	button_2.visible= true
 
@@ -58,15 +74,18 @@ func _on_button_3_pressed():
 	game_manager.player_action(button_3_card.to_lower())
 	button_3.visible= false
 	button_3.text = handCards[2]
-	#discardCards.append(handCards.pop_at[0])
+	discardCards.append(handCards.pop_at(2))
+	
+	CardUpdates()
+	
+	handCards.insert(2, HackCardArray.pop_back())
+	button_3.text = handCards[2]
+	
 	await get_tree().create_timer(1.5).timeout
 	button_3.visible= true
 	
-func Card_Updates():
-	if HackCardArray.size() <= 0:
-		HackCardArray = discardCards
-		HackCardArray.shuffle()
-		discardCards = []
+	
+	
 	
 	
 	
