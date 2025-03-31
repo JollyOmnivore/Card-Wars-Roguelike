@@ -1,5 +1,6 @@
 extends Node
 
+
 @export var CombatScene: PackedScene
 @export var EnemyScene: PackedScene
 @export var PlayerHandScene: PackedScene 
@@ -58,7 +59,7 @@ func player_action(action: String):
 		"heal":
 			player_action_heal(15, combat_scene)
 		"defend":
-			player_action_defend(10)
+			player_action_defend(10,combat_scene)
 
 	if combat_scene:
 		print("CombatScene found, updating UI")
@@ -84,9 +85,12 @@ func player_action_heal(value: int, combat_scene: Node):
 	combat_scene.PlayerHealEffect()
 	print("Player heals! Player Health:", player_health)
 
-func player_action_defend(value: int):
+func player_action_defend(value: int, combat_scene: Node):
+	combat_scene.SheildFlickerAnimation()
 	player_def = value
 	print("Player defends! Player Defense:", player_def)
+
+
 
 
 func enemy_turn():
@@ -119,6 +123,8 @@ func enemy_turn():
 
 func enemy_action_exectute(action: int, value: int, combat_scene: Node):
 	if action == 0:
+		if player_def > 0:
+			combat_scene.sheildBlockAnimation()
 		var damage = max(0, value - player_def) 
 		player_health -= damage
 		combat_scene.PlayerTakeDamage()
@@ -156,6 +162,7 @@ func end_turn(combat_scene: Node):
 
 
 
+	
 
 
 

@@ -15,6 +15,8 @@ extends Control
 @onready var enraged_label: Label = $EnragedLabel
 @onready var heal_label: Label = $HealLabel
 @onready var heal_overlay: Sprite2D = $HealOverlay
+@onready var sheild_animations: AnimationPlayer = $SheildAnimations
+@onready var player_blocked_animation_player: AnimationPlayer = $PlayerBlockedAnimationPlayer
 
 func _ready():
 	attackAnimation.visible = false
@@ -83,6 +85,12 @@ func update_defense_display(game_manager):
 		print("Defense Display Updated - Defense:", game_manager.player_def)
 	else:
 		print("ERROR: GameManager not found!")
+
+func SheildFlickerAnimation():
+	sheild_animations.play("SheildAnimationFlicker")
+
+func sheildBlockAnimation():
+	player_blocked_animation_player.play("PlayerBlocked")
 
 
 func updateEnemyNextMoveIndicator(enemy_next_action):
