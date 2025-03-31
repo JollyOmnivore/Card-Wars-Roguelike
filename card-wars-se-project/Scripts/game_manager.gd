@@ -110,7 +110,7 @@ func enemy_turn():
 	if (not combat_scene):
 		print("ERROR: CombatScene not found!")
 		return
-	var enemy_action = enemy_next_action
+	enemy_action = enemy_next_action
 	enemy_next_action = enemy_action_choose()
 
 	combat_scene.updateEnemyNextMoveIndicator(enemy_next_action)
@@ -149,7 +149,7 @@ func enemy_action_choose() -> int:
 				enemy_action_repeat = 0
 				print("Forced enemy action change to attack")
 				return ENEMY_ACTION_ATTACK
-		elif enemy_action_repeat > 3: # if the enemy tries to attack four times (or more) in a row, it will heal instead
+		elif enemy_action_repeat > 2: # if the enemy tries to attack four times (or more) in a row, it will heal instead
 			if next == ENEMY_ACTION_ATTACK:
 				enemy_action_repeat = 0
 				print("Forced enemy action change to heal")
