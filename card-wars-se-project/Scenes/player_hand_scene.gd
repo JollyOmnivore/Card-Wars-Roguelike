@@ -30,6 +30,7 @@ func CardUpdates():
 		HackCardArray = discardCards.duplicate()
 		discardCards.clear()
 		HackCardArray.shuffle()
+		print("\n Deck shuffled")
 
 func _on_button_1_pressed():
 	Button_Selected()
