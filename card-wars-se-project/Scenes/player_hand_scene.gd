@@ -44,7 +44,7 @@ func _on_button_1_pressed():
 	CardUpdates()
 	
 	handCards.insert(0, HackCardArray.pop_back())
-	button_3.text = handCards[0]
+	button_1.text = handCards[0]
 	
 	await get_tree().create_timer(1.5).timeout
 	button_1.visible= true
