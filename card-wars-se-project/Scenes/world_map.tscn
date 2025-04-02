@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dlf7cmuljvt8q"]
+[gd_scene load_steps=5 format=3 uid="uid://dlf7cmuljvt8q"]
 
+[ext_resource type="Script" uid="uid://us6nbs48yn83" path="res://Scripts/world_map.gd" id="1_g8h5j"]
 [ext_resource type="Texture2D" uid="uid://7bxoo33k7mql" path="res://Assets/32 Backgrounds Free!/32 Backgrounds Free!/Horizontal/26.png" id="1_rvr0e"]
 [ext_resource type="Texture2D" uid="uid://bahiqwvx4urwy" path="res://Assets/simple-dotted-line-png.png" id="2_b7gke"]
+[ext_resource type="FontFile" uid="uid://bmy0dltdp5oyx" path="res://Assets/Harmonic.ttf" id="4_g8h5j"]
 
 [node name="WorldMap" type="Control"]
 layout_mode = 3
@@ -10,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_g8h5j")
 
 [node name="map_background" type="Sprite2D" parent="."]
 position = Vector2(578.5, 328.75)
@@ -20,3 +23,35 @@ texture = ExtResource("1_rvr0e")
 position = Vector2(576, 380)
 scale = Vector2(0.23125, 0.221667)
 texture = ExtResource("2_b7gke")
+
+[node name="node_start" type="Button" parent="."]
+offset_left = 161.0
+offset_top = 329.0
+offset_right = 366.0
+offset_bottom = 428.0
+theme_override_fonts/font = ExtResource("4_g8h5j")
+theme_override_font_sizes/font_size = 90
+text = "Start"
+
+[node name="node_enemy1" type="Button" parent="."]
+offset_left = 470.0
+offset_top = 331.0
+offset_right = 692.0
+offset_bottom = 430.0
+theme_override_fonts/font = ExtResource("4_g8h5j")
+theme_override_font_sizes/font_size = 90
+text = "Enemy"
+
+[node name="player_indicator" type="Sprite2D" parent="."]
+
+[node name="node_enemy2" type="Button" parent="."]
+offset_left = 790.0
+offset_top = 325.0
+offset_right = 1012.0
+offset_bottom = 424.0
+theme_override_fonts/font = ExtResource("4_g8h5j")
+theme_override_font_sizes/font_size = 90
+text = "Enemy"
+
+[connection signal="pressed" from="node_enemy1" to="." method="_on_node_enemy_1_pressed"]
+[connection signal="pressed" from="node_enemy2" to="." method="_on_node_enemy_2_pressed"]

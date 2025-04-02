@@ -4,6 +4,7 @@ extends Node
 @export var CombatScene: PackedScene
 @export var EnemyScene: PackedScene
 @export var PlayerHandScene: PackedScene 
+@export var WorldMap: PackedScene
 
 const PLAYER_MAX_HEALTH = 100 # subject to change in the future
 const ENEMY_MAX_HEALTH = 100 # subject to change in the the future
@@ -19,6 +20,7 @@ var card_types = ["attack", "heal", "defend"]
 var combat_instance = null  # Declare combat_instance globally
 var enemy_next_action = ENEMY_ACTION_ATTACK
 var enemy_action = ENEMY_ACTION_ATTACK
+var map_progression = 0
 
 var Player_Deck = ["Attack","Defend","Attack","Attack","Attack","Defend","Attack","Heal"]
 
@@ -201,8 +203,8 @@ func end_turn(combat_scene: Node):
 
 
 # Resets the game, for debugging later down the line
-func reset_game():
-	print("Resetting game...")
+func reset_combat():
+	print("Resetting combat...")
 	player_health = 100
 	enemy_health = 100
 	player_def = 0
