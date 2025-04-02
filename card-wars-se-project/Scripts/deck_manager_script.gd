@@ -11,14 +11,24 @@ extends Node2D
 @onready var button_8: Button = $Button8
 
 var newDeck = GameManager.Player_Deck
-#var game_manager = get_node("/root/GameManager")
 
+#var game_manager = get_node("/root/GameManager")
+#GameManager.Player_Deck = new Deck
+
+
+#GameManager.Player_Deck = newDeck
 #var game_manager = get_tree().root.get_node_or_null("GameManager")
 
 func _ready():
 	pass
-	# use this to laod card values into buttons
+	var newDeck = GameManager.Player_Deck
 
+	
+func changeCard():
+	newDeck[7] = "Attack"
+	GameManager.Player_Deck = newDeck
+	
+	
 func _on_reward_card_pressed() -> void:
 	pass # Replace with function body.
 

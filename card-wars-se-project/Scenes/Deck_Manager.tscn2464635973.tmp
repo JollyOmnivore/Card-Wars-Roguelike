@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://ylihonmfxllv" path="res://Scripts/deck_manager_script.gd" id="1_3fjyc"]
 [ext_resource type="FontFile" uid="uid://bmy0dltdp5oyx" path="res://Assets/Harmonic.ttf" id="2_d0y6b"]
 
-[node name="DeckManagerNode2d" type="Node2D"]
+[node name="Node2D" type="Node2D"]
 script = ExtResource("1_3fjyc")
 
 [node name="Label" type="Label" parent="."]
