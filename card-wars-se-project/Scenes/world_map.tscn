@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlf7cmuljvt8q"]
+
+[ext_resource type="Texture2D" uid="uid://7bxoo33k7mql" path="res://Assets/32 Backgrounds Free!/32 Backgrounds Free!/Horizontal/26.png" id="1_rvr0e"]
+[ext_resource type="Texture2D" uid="uid://bahiqwvx4urwy" path="res://Assets/simple-dotted-line-png.png" id="2_b7gke"]
+
+[node name="WorldMap" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="map_background" type="Sprite2D" parent="."]
+position = Vector2(578.5, 328.75)
+scale = Vector2(1.82344, 1.53678)
+texture = ExtResource("1_rvr0e")
+
+[node name="path" type="Sprite2D" parent="."]
+position = Vector2(576, 380)
+scale = Vector2(0.23125, 0.221667)
+texture = ExtResource("2_b7gke")
