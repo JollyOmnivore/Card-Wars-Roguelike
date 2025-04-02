@@ -23,6 +23,8 @@ var enemy_action = ENEMY_ACTION_ATTACK
 var Player_Deck = ["Attack","Defend","Attack","Attack","Attack","Defend","Attack","Heal"]
 
 
+
+
 func _ready():
 	print("Game Manager Initialized")
 	start_combat()
@@ -196,7 +198,8 @@ func end_turn(combat_scene: Node):
 
 
 
-	
+func ModifyDeck(NewDeck: Array):
+	Player_Deck = NewDeck
 
 
 
