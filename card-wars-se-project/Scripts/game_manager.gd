@@ -198,11 +198,6 @@ func end_turn(combat_scene: Node):
 
 
 
-func ModifyDeck(NewDeck: Array):
-	Player_Deck = NewDeck
-
-
-
 # Resets the game, for debugging later down the line
 func reset_game():
 	print("Resetting game...")

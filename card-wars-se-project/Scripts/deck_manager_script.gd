@@ -12,22 +12,21 @@ extends Node2D
 
 var newDeck = GameManager.Player_Deck
 
-#var game_manager = get_node("/root/GameManager")
-#GameManager.Player_Deck = new Deck
-
-
-#GameManager.Player_Deck = newDeck
-#var game_manager = get_tree().root.get_node_or_null("GameManager")
-
 func _ready():
 	pass
 	var newDeck = GameManager.Player_Deck
-
+	button_1.text = newDeck[0]
+	button_2.text = newDeck[1]
+	button_3.text = newDeck[2]
+	button_4.text = newDeck[3]
+	button_5.text = newDeck[4]
+	button_6.text = newDeck[5]
+	button_7.text = newDeck[6]
+	button_8.text = newDeck[7]
 	
 func changeCard():
 	newDeck[7] = "Attack"
 	GameManager.Player_Deck = newDeck
-	
 	
 func _on_reward_card_pressed() -> void:
 	pass # Replace with function body.
