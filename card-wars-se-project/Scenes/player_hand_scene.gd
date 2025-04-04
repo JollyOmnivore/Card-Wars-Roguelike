@@ -3,29 +3,36 @@ extends Control
 @onready var button_1: Button = $Button1
 @onready var button_2: Button = $Button2
 @onready var button_3: Button = $Button3
-var HackCardArray = GameManager.Player_Deck
+
 
 #3 arrays
 #deck - pulled from GM (deck gm) pop 3 to player hand
 #player hand - stored in ph, check for max hand, and values for buttons, pop played hand into discard
 #discard pile - popped when played, push onto deck array when deck is empty
+var HackCardArray = GameManager.Player_Deck
 var handCards = []
 var discardCards = []
 
 
 func _ready() -> void:
-	# Connect signals manually
-	button_1.pressed.connect(_on_button_1_pressed)
-	button_2.pressed.connect(_on_button_2_pressed)
-	button_3.pressed.connect(_on_button_3_pressed)
+	HackCardArray = GameManager.Player_Deck
+	print("HEY LOOK HERE ")
+	print(HackCardArray)
+	handCards = []
+	discardCards = []
 	HackCardArray.shuffle()
 	for i in range(3):
 		if HackCardArray.size() > 0:
 			handCards.append(HackCardArray.pop_back())
-	button_1.text = handCards[0]
-	button_2.text = handCards[1]
-	button_3.text = handCards[2]
+	if HackCardArray.size() > 0:
+		button_1.text = handCards[0]
+		button_2.text = handCards[1]
+		button_3.text = handCards[2]
 	
+
+
+	
+
 func CardUpdates():
 	if HackCardArray.size() == 0 and discardCards.size() > 0:
 		HackCardArray = discardCards.duplicate()

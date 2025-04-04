@@ -24,7 +24,6 @@ var map_progression = 0
 
 var Player_Deck = ["Attack","Defend","Attack","Attack","Attack","Defend","Attack","Heal"]
 
-
 func _ready():
 	print("Game Manager Initialized")
 	start_combat()
@@ -109,7 +108,9 @@ func player_action_defend(value: int, combat_scene: Node):
 func enemy_turn():
 	if enemy_health <= 0:
 			print("player wins. switch to victory scene")
+			#get_tree().root.get_node_or_null("PlayerHandScene").free()
 			get_tree().change_scene_to_file("res://Scenes/combat_victory.tscn")
+			#PlayerHandScene.free()
 			return
 	var combat_scene = get_tree().root.get_node_or_null("CombatScene")
 	print("Enemy's turn started...")

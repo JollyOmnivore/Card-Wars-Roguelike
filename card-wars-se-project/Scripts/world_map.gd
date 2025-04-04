@@ -29,4 +29,5 @@ func _on_node_enemy_2_pressed() -> void:
 	GameManager.map_progression += 1
 	GameManager.reset_combat()
 	GameManager.start_combat()
+	
 	get_tree().change_scene_to_file("res://Scenes/CombatScene.tscn")
