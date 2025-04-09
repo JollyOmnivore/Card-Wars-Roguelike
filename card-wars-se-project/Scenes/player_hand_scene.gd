@@ -9,13 +9,14 @@ extends Control
 #deck - pulled from GM (deck gm) pop 3 to player hand
 #player hand - stored in ph, check for max hand, and values for buttons, pop played hand into discard
 #discard pile - popped when played, push onto deck array when deck is empty
-var HackCardArray = GameManager.Player_Deck
+var HackCardArray = GameManager.Player_Deck.duplicate()
+
 var handCards = []
 var discardCards = []
 
 
 func _ready() -> void:
-	HackCardArray = GameManager.Player_Deck
+	HackCardArray = GameManager.Player_Deck.duplicate()
 	print("HEY LOOK HERE ")
 	print(HackCardArray)
 	handCards = []
@@ -93,10 +94,7 @@ func _on_button_3_pressed():
 	await get_tree().create_timer(1.5).timeout
 	button_3.visible= true
 	
-	
-	
-	
-	
+
 	
 func Button_Selected():
 	button_1.disabled = true
