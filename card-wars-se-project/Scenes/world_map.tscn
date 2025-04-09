@@ -23,10 +23,10 @@ scale = Vector2(1.82344, 1.53678)
 texture = ExtResource("1_rvr0e")
 
 [node name="TextureEnemyHealthBar" type="TextureProgressBar" parent="map_background"]
-offset_left = -118.732
-offset_top = -209.366
-offset_right = 88.2684
-offset_bottom = -169.366
+offset_left = -72.6649
+offset_top = -204.161
+offset_right = 61.3351
+offset_bottom = -178.161
 scale = Vector2(1.24, 1.16)
 nine_patch_stretch = true
 texture_under = ExtResource("3_ecn11")
@@ -81,8 +81,8 @@ scale = Vector2(0.0827615, 0.112615)
 texture = ExtResource("2_b7gke")
 
 [node name="path9" type="Sprite2D" parent="."]
-position = Vector2(956, 405)
-rotation = -0.83236
+position = Vector2(936, 393)
+rotation = -0.635863
 scale = Vector2(0.0827615, 0.112615)
 texture = ExtResource("2_b7gke")
 
@@ -180,10 +180,10 @@ text = "Boss"
 
 [node name="Player Health" type="Label" parent="."]
 layout_mode = 0
-offset_left = 259.0
-offset_top = 33.0
-offset_right = 336.0
-offset_bottom = 64.0
+offset_left = 364.0
+offset_top = 25.0
+offset_right = 441.0
+offset_bottom = 56.0
 theme_override_fonts/font = ExtResource("4_g8h5j")
 theme_override_font_sizes/font_size = 30
 text = "Health"
@@ -209,6 +209,25 @@ theme_override_font_sizes/font_size = 40
 text = "
 "
 
+[node name="Camp1" type="Button" parent="."]
+layout_mode = 0
+offset_left = 371.0
+offset_top = 305.0
+offset_right = 535.0
+offset_bottom = 353.0
+theme_override_fonts/font = ExtResource("4_g8h5j")
+theme_override_font_sizes/font_size = 40
+text = "Camp Fire"
+
+[node name="Camp2" type="Button" parent="."]
+offset_left = 790.0
+offset_top = 302.0
+offset_right = 954.0
+offset_bottom = 350.0
+theme_override_fonts/font = ExtResource("4_g8h5j")
+theme_override_font_sizes/font_size = 40
+text = "Camp Fire"
+
 [connection signal="pressed" from="tier_1_node_enemy1" to="." method="_on_tier_1_node_enemy_1_pressed"]
 [connection signal="pressed" from="tier_1_node_enemy1" to="." method="_on_node_enemy_1_pressed"]
 [connection signal="pressed" from="tier_2_node_enemy2" to="." method="_on_node_enemy_2_pressed"]
@@ -225,3 +244,5 @@ text = "
 [connection signal="pressed" from="tier_4_node_enemy7" to="." method="_on_tier_4_node_enemy_7_pressed"]
 [connection signal="pressed" from="tier_5_node_boss" to="." method="_on_tier_5_node_boss_pressed"]
 [connection signal="pressed" from="tier_5_node_boss" to="." method="_on_node_enemy_2_pressed"]
+[connection signal="pressed" from="Camp1" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Camp2" to="." method="_on_button_2_pressed"]

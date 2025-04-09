@@ -206,7 +206,6 @@ func end_turn(combat_scene: Node):
 # Resets the game, for debugging later down the line
 func reset_combat():
 	print("Resetting combat...")
-	player_health = 100
 	enemy_health = 100
 	player_def = 0
 	player_turn = true

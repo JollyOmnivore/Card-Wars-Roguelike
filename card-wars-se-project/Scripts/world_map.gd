@@ -12,6 +12,8 @@ extends Control
 @onready var tier_5_node_boss: Button = $tier_5_node_boss
 @onready var progression_indicator: Label = $"Progression Indicator"
 @onready var texture_enemy_health_bar: TextureProgressBar = $map_background/TextureEnemyHealthBar
+@onready var camp_1: Button = $Camp1
+@onready var camp_2: Button = $Camp2
 
 
 func _ready() -> void:
@@ -30,6 +32,8 @@ func _ready() -> void:
 			tier_4_node_enemy_8.disabled = true
 			tier_4_node_enemy_7.disabled = true
 			tier_5_node_boss.disabled = true
+			camp_1.disabled = true	
+			camp_2.disabled = true	
 			#enabled
 			tier_1_node_enemy_1.disabled = false
 		2:
@@ -40,9 +44,11 @@ func _ready() -> void:
 			tier_4_node_enemy_8.disabled = true
 			tier_4_node_enemy_7.disabled = true
 			tier_5_node_boss.disabled = true
+			camp_2.disabled = true	
 			#enabled
 			tier_2_node_enemy_3.disabled = false
 			tier_2_node_enemy_2.disabled = false
+			camp_1.disabled = false	
 		3:
 			tier_1_node_enemy_1.disabled = true
 			tier_2_node_enemy_2.disabled = true
@@ -51,9 +57,12 @@ func _ready() -> void:
 			tier_4_node_enemy_8.disabled = true
 			tier_4_node_enemy_7.disabled = true
 			tier_5_node_boss.disabled = true
+			camp_1.disabled = true	
+			camp_2.disabled = true	
 			#enabled
 			tier_3_node_enemy_4.disabled = false
 			tier_3_node_enemy_5.disabled = false
+			
 		4:
 			tier_1_node_enemy_1.disabled = true
 			tier_2_node_enemy_2.disabled = true
@@ -62,9 +71,12 @@ func _ready() -> void:
 			tier_3_node_enemy_4.disabled = true
 			tier_3_node_enemy_5.disabled = true
 			tier_5_node_boss.disabled = true
+			camp_1.disabled = true	
 			#enabled
 			tier_4_node_enemy_8.disabled = false
 			tier_4_node_enemy_7.disabled = false
+			camp_2.disabled = false	
+			
 		5:
 			tier_1_node_enemy_1.disabled = true
 			node_start.disabled = true
@@ -74,6 +86,8 @@ func _ready() -> void:
 			tier_3_node_enemy_5.disabled = true
 			tier_4_node_enemy_8.disabled = true
 			tier_4_node_enemy_7.disabled = true
+			camp_1.disabled = true	
+			camp_2.disabled = true	
 			#enabled 
 			tier_5_node_boss.disabled = false
 			
@@ -134,3 +148,24 @@ func _on_tier_5_node_boss_pressed() -> void:
 	GameManager.reset_combat()
 	GameManager.start_combat()
 	get_tree().change_scene_to_file("res://Scenes/CombatScene.tscn")
+
+
+func _on_button_pressed() -> void:
+	if GameManager.player_health >= 51:
+		GameManager.player_health = 100
+	else:
+		GameManager.player_health += 50
+	var healthLabelInt = GameManager.player_health
+	texture_enemy_health_bar.value = float(healthLabelInt)
+	GameManager.map_progression += 1
+	get_tree().change_scene_to_file("res://Scenes/world_map.tscn")
+
+func _on_button_2_pressed() -> void:
+	if GameManager.player_health >= 51:
+		GameManager.player_health = 100
+	else:
+		GameManager.player_health += 50
+	var healthLabelInt = GameManager.player_health
+	texture_enemy_health_bar.value = float(healthLabelInt)
+	GameManager.map_progression += 1
+	get_tree().change_scene_to_file("res://Scenes/world_map.tscn")
