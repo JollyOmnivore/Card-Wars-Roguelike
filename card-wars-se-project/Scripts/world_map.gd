@@ -11,9 +11,12 @@ extends Control
 @onready var tier_4_node_enemy_7: Button = $tier_4_node_enemy7
 @onready var tier_5_node_boss: Button = $tier_5_node_boss
 @onready var progression_indicator: Label = $"Progression Indicator"
+@onready var texture_enemy_health_bar: TextureProgressBar = $map_background/TextureEnemyHealthBar
 
 
 func _ready() -> void:
+	var healthLabelInt = GameManager.player_health
+	texture_enemy_health_bar.value = float(healthLabelInt)
 	var labelprogress = GameManager.map_progression
 	progression_indicator.text = str(labelprogress)
 	match GameManager.map_progression:
