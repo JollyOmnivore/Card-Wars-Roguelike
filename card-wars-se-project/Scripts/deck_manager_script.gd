@@ -13,16 +13,20 @@ extends Node2D
 var newDeck = GameManager.Player_Deck
 
 func _ready():
-	pass
-	var newDeck = GameManager.Player_Deck
-	button_1.text = newDeck[0]
-	button_2.text = newDeck[1]
-	button_3.text = newDeck[2]
-	button_4.text = newDeck[3]
-	button_5.text = newDeck[4]
-	button_6.text = newDeck[5]
-	button_7.text = newDeck[6]
-	button_8.text = newDeck[7]
+	for i in range(min(newDeck.size(), 8)):
+		var card_data = newDeck[i].split(" ")
+		var card_type = card_data[0]
+		var card_value = card_data[1] if card_data.size() > 1 else "0"
+		
+		match i:
+			0: button_1.text = "%s\n%s" % [card_type, card_value]
+			1: button_2.text = "%s\n%s" % [card_type, card_value]
+			2: button_3.text = "%s\n%s" % [card_type, card_value]
+			3: button_4.text = "%s\n%s" % [card_type, card_value]
+			4: button_5.text = "%s\n%s" % [card_type, card_value]
+			5: button_6.text = "%s\n%s" % [card_type, card_value]
+			6: button_7.text = "%s\n%s" % [card_type, card_value]
+			7: button_8.text = "%s\n%s" % [card_type, card_value]
 	
 func changeCard():
 	newDeck[7] = "Attack"

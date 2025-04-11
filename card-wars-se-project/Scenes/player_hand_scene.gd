@@ -39,7 +39,8 @@ func _on_button_1_pressed():
 	var button_1_card = button_1.text
 	game_manager.player_action(button_1_card.to_lower())
 	button_1.visible= false
-	button_1.text = handCards[0]
+	button_1.text = "%s\n%s" % handCards[0].split(" ")
+	#button_1.text = handCards[0]
 	discardCards.append(handCards.pop_at(0))
 	
 	CardUpdates()
@@ -57,7 +58,8 @@ func _on_button_2_pressed():
 	var button_2_card = button_2.text
 	game_manager.player_action(button_2_card.to_lower())
 	button_2.visible= false
-	button_2.text = handCards[1]
+	button_2.text = "%s\n%s" % handCards[1].split(" ")
+	#button_2.text = handCards[1]
 	discardCards.append(handCards.pop_at(1))
 	
 	CardUpdates()
@@ -75,7 +77,8 @@ func _on_button_3_pressed():
 	var button_3_card = button_3.text
 	game_manager.player_action(button_3_card.to_lower())
 	button_3.visible= false
-	button_3.text = handCards[2]
+	button_3.text = "%s\n%s" % handCards[2].split(" ")
+	#button_3.text = handCards[2]
 	discardCards.append(handCards.pop_at(2))
 	
 	CardUpdates()

@@ -20,7 +20,7 @@ var combat_instance = null  # Declare combat_instance globally
 var enemy_next_action = ENEMY_ACTION_ATTACK
 var enemy_action = ENEMY_ACTION_ATTACK
 
-var Player_Deck = ["Attack","Defend","Attack","Attack","Attack","Defend","Attack","Heal"]
+var Player_Deck = ["Attack 10", "Defend 15", "Attack 12", "Attack 10", "Attack 10", "Defend 25", "Attack 15", "Heal 8"]
 
 
 
