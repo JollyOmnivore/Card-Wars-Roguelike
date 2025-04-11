@@ -36,58 +36,65 @@ func CardUpdates():
 func _on_button_1_pressed():
 	Button_Selected()
 	var game_manager = get_node("/root/GameManager")
-	var button_1_card = button_1.text
-	game_manager.player_action(button_1_card.to_lower())
-	button_1.visible= false
-	button_1.text = "%s\n%s" % handCards[0].split(" ")
-	#button_1.text = handCards[0]
+	var card_parts = handCards[0].split(" ")
+	var action_type = card_parts[0].to_lower()
+	var action_value = int(card_parts[1])
+
+	game_manager.player_action(action_type, action_value)
+	
+	button_1.visible = false
 	discardCards.append(handCards.pop_at(0))
 	
 	CardUpdates()
 	
-	handCards.insert(0, HackCardArray.pop_back())
-	button_1.text = handCards[0]
+	if HackCardArray.size() > 0:
+		handCards.insert(0, HackCardArray.pop_back())
 	
 	await get_tree().create_timer(1.5).timeout
-	button_1.visible= true
-
+	button_1.text = handCards[0]
+	button_1.visible = true
 
 func _on_button_2_pressed():
 	Button_Selected()
 	var game_manager = get_node("/root/GameManager")
-	var button_2_card = button_2.text
-	game_manager.player_action(button_2_card.to_lower())
-	button_2.visible= false
-	button_2.text = "%s\n%s" % handCards[1].split(" ")
-	#button_2.text = handCards[1]
+	var card_parts = handCards[1].split(" ")
+	var action_type = card_parts[0].to_lower()
+	var action_value = int(card_parts[1])
+	
+	game_manager.player_action(action_type, action_value)
+	
+	button_2.visible = false
 	discardCards.append(handCards.pop_at(1))
 	
 	CardUpdates()
 	
-	handCards.insert(1, HackCardArray.pop_back())
-	button_2.text = handCards[1]
+	if HackCardArray.size() > 0:
+		handCards.insert(1, HackCardArray.pop_back())
 	
 	await get_tree().create_timer(1.5).timeout
-	button_2.visible= true
-
+	button_2.text = handCards[1]
+	button_2.visible = true
 
 func _on_button_3_pressed():
 	Button_Selected()
 	var game_manager = get_node("/root/GameManager")
-	var button_3_card = button_3.text
-	game_manager.player_action(button_3_card.to_lower())
-	button_3.visible= false
-	button_3.text = "%s\n%s" % handCards[2].split(" ")
-	#button_3.text = handCards[2]
+	var card_parts = handCards[2].split(" ")
+	var action_type = card_parts[0].to_lower()
+	var action_value = int(card_parts[1])
+	
+	game_manager.player_action(action_type, action_value)
+	
+	button_3.visible = false
 	discardCards.append(handCards.pop_at(2))
 	
 	CardUpdates()
 	
-	handCards.insert(2, HackCardArray.pop_back())
-	button_3.text = handCards[2]
+	if HackCardArray.size() > 0:
+		handCards.insert(2, HackCardArray.pop_back())
 	
 	await get_tree().create_timer(1.5).timeout
-	button_3.visible= true
+	button_3.text = handCards[2]
+	button_3.visible = true
 	
 	
 	
