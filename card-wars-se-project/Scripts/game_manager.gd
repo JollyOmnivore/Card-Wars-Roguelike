@@ -22,7 +22,9 @@ var enemy_next_action = ENEMY_ACTION_ATTACK
 var enemy_action = ENEMY_ACTION_ATTACK
 var map_progression = 1
 
-var Player_Deck = ["Attack","Defend","Attack","Attack","Attack","Defend","Attack","Heal"]
+var Player_Deck = ["Attack 10", "Defend 15", "Attack 10", "Attack 10", "Attack 10", "Defend 15", "Attack 15", "Heal 10"]
+
+
 
 func _ready():
 	print("Game Manager Initialized")
@@ -52,33 +54,33 @@ func start_combat():
 		print(" -", node.name)
 		
 
-
-func player_action(action: String):
+func player_action(action: String, value: int):
 	if player_health <= 0:
-			print("Enemy wins. Switching to game over.")
-			get_tree().change_scene_to_file("res://Scenes/combat_defeat.tscn")
-			return
+		print("Enemy wins. Switching to game over.")
+		get_tree().change_scene_to_file("res://Scenes/combat_defeat.tscn")
+		return
+		
 	var combat_scene = get_tree().root.get_node_or_null("CombatScene")
-	print("Player action triggered:", action)
+	print("Player action:", action, " with value:", value)
 	
 	if not player_turn:
-		print("Not player's turn, action ignored.")
+		print("Not player's turn")
 		return
 
 	match action:
 		"attack":
-			player_action_attack(20, combat_scene)
+			player_action_attack(value, combat_scene)
 		"heal":
-			player_action_heal(15, combat_scene)
+			player_action_heal(value, combat_scene)
 		"defend":
-			player_action_defend(10,combat_scene)
+			player_action_defend(value, combat_scene)
 
 	if combat_scene:
-		print("CombatScene found, updating UI")
 		combat_scene.master_update()
 	else:
 		print("ERROR: CombatScene not found!")
 	end_turn(combat_scene)
+
 
 func player_action_attack(value: int, combat_scene: Node):
 	if combat_scene:
@@ -196,10 +198,6 @@ func end_turn(combat_scene: Node):
 		print("Waiting for enemy's turn")
 		await get_tree().create_timer(0.75).timeout 
 		enemy_turn()
-
-
-
-	
 
 
 
