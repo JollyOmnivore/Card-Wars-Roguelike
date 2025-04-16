@@ -6,11 +6,14 @@ extends Node
 @export var PlayerHandScene: PackedScene 
 @export var WorldMap: PackedScene
 
-const PLAYER_MAX_HEALTH = 100 # subject to change in the future
-const ENEMY_MAX_HEALTH = 100 # subject to change in the the future
+const PLAYER_MAX_HEALTH = 100
+const ENEMY_MAX_HEALTH = 100
+const ENEMY_BOSS_MAX_HEALTH = 250
 const ENEMY_ACTIONS = [ENEMY_ACTION_ATTACK, ENEMY_ACTION_ATTACK, ENEMY_ACTION_ATTACK, ENEMY_ACTION_HEAL, ENEMY_ACTION_HEAL]
 const ENEMY_ACTION_ATTACK = 0
 const ENEMY_ACTION_HEAL = 1
+const ENEMY_ATTACK_BASE = 6
+const ENEMY_HEAL_BASE = 3
 var enemy_action_repeat = 0
 var enemy_health: int = 100
 var player_health: int = 100
@@ -21,8 +24,9 @@ var combat_instance = null  # Declare combat_instance globally
 var enemy_next_action = ENEMY_ACTION_ATTACK
 var enemy_action = ENEMY_ACTION_ATTACK
 var map_progression = 1
+var difficulty_multiplier = 1.0
 
-var Player_Deck = ["Attack 10", "Defend 15", "Attack 10", "Attack 10", "Attack 10", "Defend 15", "Attack 15", "Heal 10"]
+var Player_Deck = ["Attack 20", "Defend 15", "Attack 20", "Attack 20", "Attack 20", "Defend 15", "Attack 30", "Heal 20"]
 
 
 
@@ -129,8 +133,7 @@ func enemy_turn():
 	print("Enemy current action:", enemy_action)
 	print("Enemy next action:", enemy_next_action)
 
-	# attack for 15, heal for 10
-	enemy_action_execute(enemy_action, 15 if enemy_action == ENEMY_ACTION_ATTACK else 10, combat_scene)
+	enemy_action_execute(enemy_action, (ENEMY_ATTACK_BASE + map_progression) * difficulty_multiplier if enemy_action == ENEMY_ACTION_ATTACK else (ENEMY_HEAL_BASE + map_progression) * difficulty_multiplier, combat_scene)
 
 	player_def = 0
 
@@ -143,8 +146,13 @@ func enemy_turn():
 	end_turn(combat_scene)
 
 func enemy_action_choose() -> int:
-	var next = ENEMY_ACTIONS.pick_random() 
-	if enemy_health == ENEMY_MAX_HEALTH:
+	var next = ENEMY_ACTIONS.pick_random()
+	var enemy_health_comparator = 0
+	if map_progression > 5:
+		enemy_health_comparator = ENEMY_BOSS_MAX_HEALTH * difficulty_multiplier
+	else:
+		enemy_health_comparator = (ENEMY_MAX_HEALTH + 5 * (map_progression - 2)) * difficulty_multiplier
+	if enemy_health >= enemy_health_comparator:
 			enemy_action_repeat += 1
 			print("Enemy action repeat count:", enemy_action_repeat)
 			return ENEMY_ACTION_ATTACK
@@ -177,11 +185,17 @@ func enemy_action_execute(action: int, value: int, combat_scene: Node):
 		combat_scene.PlayerTakeDamage()
 		print("Enemy attacks! Player Health:", player_health)
 	elif action == ENEMY_ACTION_HEAL:
-		combat_scene.playEnemyHealAnimation() 
-		if enemy_health < ENEMY_MAX_HEALTH:
-			enemy_health += value
-		if enemy_health > ENEMY_MAX_HEALTH:
-			enemy_health = ENEMY_MAX_HEALTH
+		combat_scene.playEnemyHealAnimation()
+		if map_progression > 5:
+			if enemy_health < ENEMY_BOSS_MAX_HEALTH * difficulty_multiplier:
+				enemy_health += value
+			if enemy_health > ENEMY_BOSS_MAX_HEALTH * difficulty_multiplier:
+				enemy_health = ENEMY_BOSS_MAX_HEALTH * difficulty_multiplier
+		else:
+			if enemy_health < ENEMY_MAX_HEALTH * difficulty_multiplier:
+				enemy_health += value
+			if enemy_health > ENEMY_MAX_HEALTH * difficulty_multiplier:
+				enemy_health = ENEMY_MAX_HEALTH * difficulty_multiplier
 		print("Enemy heals! Enemy Health:", enemy_health)
 
 	else:
@@ -204,7 +218,12 @@ func end_turn(combat_scene: Node):
 # Resets the game, for debugging later down the line
 func reset_combat():
 	print("Resetting combat...")
-	enemy_health = 100
+	if player_health <= 50:
+		difficulty_multiplier = 0.8
+	if (map_progression > 5):
+		enemy_health = ENEMY_BOSS_MAX_HEALTH * difficulty_multiplier
+	else:
+		enemy_health = (ENEMY_MAX_HEALTH + 5 * (map_progression - 2)) * difficulty_multiplier
 	player_def = 0
 	player_turn = true
 	print("Game Reset - Player Health:", player_health, "Enemy Health:", enemy_health)
