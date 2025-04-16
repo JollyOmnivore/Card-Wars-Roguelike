@@ -9,6 +9,7 @@ extends Node2D
 @onready var button_6: Button = $Button6
 @onready var button_7: Button = $Button7
 @onready var button_8: Button = $Button8
+@onready var confirm_button: Button = $ConfirmButton
 
 var newDeck = GameManager.Player_Deck
 
@@ -28,29 +29,52 @@ func _ready():
 			6: button_7.text = "%s\n%s" % [card_type, card_value]
 			7: button_8.text = "%s\n%s" % [card_type, card_value]
 	
-func changeCard():
-	newDeck[7] = "Attack"
-	GameManager.Player_Deck = newDeck
+	var reward_index = randi() % CardList.size()
+	reward_card.text = CardList[reward_index]
 	
-func _on_reward_card_pressed() -> void:
-	pass # Replace with function body.
-
-
+	
 func _on_button_1_pressed() -> void:
-	pass # Replace with function body.
-
+	var CardSwitch = button_1.text
+	button_1.text = reward_card.text
+	reward_card.text = CardSwitch
+	
 func _on_button_2_pressed() -> void:
-	pass # Replace with function body.
+	var CardSwitch = button_2.text
+	button_2.text = reward_card.text
+	reward_card.text = CardSwitch
 	
 func _on_button_3_pressed() -> void:
-	pass # Replace with function body.
+	var CardSwitch = button_3.text
+	button_3.text = reward_card.text
+	reward_card.text = CardSwitch
+	
 func _on_button_4_pressed() -> void:
-	pass # Replace with function body.
+	var CardSwitch = button_4.text
+	button_4.text = reward_card.text
+	reward_card.text = CardSwitch
+	
 func _on_button_5_pressed() -> void:
-	pass # Replace with function body.
+	var CardSwitch = button_5.text
+	button_5.text = reward_card.text
+	reward_card.text = CardSwitch
+	
 func _on_button_6_pressed() -> void:
-	pass # Replace with function body.
+	var CardSwitch = button_6.text
+	button_6.text = reward_card.text
+	reward_card.text = CardSwitch
+	
 func _on_button_7_pressed() -> void:
-	pass # Replace with function body.
+	var CardSwitch = button_7.text
+	button_7.text = reward_card.text
+	reward_card.text = CardSwitch
+	
 func _on_button_8_pressed() -> void:
-	pass # Replace with function body.
+	var CardSwitch = button_8.text
+	button_8.text = reward_card.text
+	reward_card.text = CardSwitch
+	
+	
+var CardList = ["Attack 20", "Attack 20", "Attack 18", "Heal 15", "Defend 25", "Defend 20"]
+
+func _on_confirm_button_pressed() -> void:
+	pass # BACK TO MAP SCENE
