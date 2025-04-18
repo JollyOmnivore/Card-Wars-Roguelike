@@ -7,7 +7,7 @@ extends Node
 @export var WorldMap: PackedScene
 
 const PLAYER_MAX_HEALTH = 100
-const ENEMY_MAX_HEALTH = 200
+const ENEMY_MAX_HEALTH = 100
 const ENEMY_BOSS_MAX_HEALTH = 250
 const ENEMY_ACTIONS = [ENEMY_ACTION_ATTACK, ENEMY_ACTION_ATTACK, ENEMY_ACTION_ATTACK, ENEMY_ACTION_HEAL, ENEMY_ACTION_HEAL]
 const ENEMY_ACTION_ATTACK = 0
@@ -60,11 +60,6 @@ func start_combat():
 		
 
 func player_action(action: String, value: int):
-	if player_health <= 0:
-		print("Enemy wins. Switching to game over.")
-		get_tree().change_scene_to_file("res://Scenes/combat_defeat.tscn")
-		return
-		
 	var combat_scene = get_tree().root.get_node_or_null("CombatScene")
 	print("Player action:", action, " with value:", value)
 	
@@ -206,6 +201,10 @@ func enemy_action_execute(action: int, value: int, combat_scene: Node):
 # Ends the turn and switches between player and enemy 
 func end_turn(combat_scene: Node):
 	print("Ending turn. Player's turn before toggle:", player_turn)
+	if player_health <= 0:
+		print("Enemy wins. Switching to game over.")
+		get_tree().change_scene_to_file("res://Scenes/combat_defeat.tscn")
+		return
 	player_turn = !player_turn  # Toggle turn
 	if combat_scene:
 		combat_scene.master_update()

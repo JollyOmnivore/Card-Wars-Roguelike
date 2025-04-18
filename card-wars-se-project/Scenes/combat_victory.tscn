@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://crgl87oq3plna"]
 
 [ext_resource type="Texture2D" uid="uid://deyi8pbyti8h2" path="res://Assets/32 Backgrounds Free!/32 Backgrounds Free!/Horizontal/17.png" id="1_djn5t"]
-[ext_resource type="Script" path="res://Scripts/combat_victory.gd" id="1_mqb4c"]
+[ext_resource type="Script" uid="uid://bxp88dk48f7yo" path="res://Scripts/combat_victory.gd" id="1_mqb4c"]
 [ext_resource type="FontFile" uid="uid://bmy0dltdp5oyx" path="res://Assets/Harmonic.ttf" id="2_3iq8o"]
 
 [node name="CombatVictory" type="Control"]
