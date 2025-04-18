@@ -27,6 +27,7 @@ func _ready():
 	print("Combat Scene Initialized")
 	master_update()
 	load_player_hand()
+	
 	texture_enemy_health_bar.max_value = enemymaxhealth
 	texture_enemy_health_bar.value = enemymaxhealth #weird fix
 

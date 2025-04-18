@@ -7,7 +7,7 @@ extends Node
 @export var WorldMap: PackedScene
 
 const PLAYER_MAX_HEALTH = 100
-const ENEMY_MAX_HEALTH = 200
+const ENEMY_MAX_HEALTH = 100
 const ENEMY_BOSS_MAX_HEALTH = 250
 const ENEMY_ACTIONS = [ENEMY_ACTION_ATTACK, ENEMY_ACTION_ATTACK, ENEMY_ACTION_ATTACK, ENEMY_ACTION_HEAL, ENEMY_ACTION_HEAL]
 const ENEMY_ACTION_ATTACK = 0
@@ -35,7 +35,9 @@ func _ready():
 	start_combat()
 
 func start_combat():
+
 	enemy_health_comparator = (ENEMY_MAX_HEALTH + 5 * (map_progression - 2)) * difficulty_multiplier
+
 	print("Starting combat...")
 
 	await get_tree().process_frame  # Let the scene process for 1 frame
@@ -221,11 +223,8 @@ func reset_combat():
 	print("Resetting combat...")
 	#if player_health <= 50:
 	#	difficulty_multiplier = 0.8
-	
-	if (map_progression > 5):
-		enemy_health = ENEMY_BOSS_MAX_HEALTH * difficulty_multiplier
-	else:
-		enemy_health = (ENEMY_MAX_HEALTH + 5 * (map_progression - 2)) * difficulty_multiplier
+
+	enemy_health = (ENEMY_MAX_HEALTH + 5 * (map_progression - 2)) * difficulty_multiplier
 	player_def = 0
 	player_turn = true
 	print("Game Reset - Player Health:", player_health, "Enemy Health:", enemy_health)

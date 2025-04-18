@@ -9,7 +9,15 @@ extends Control
 @onready var tier_3_node_enemy_5: Button = $tier_3_node_enemy5
 @onready var tier_4_node_enemy_8: Button = $tier_4_node_enemy8
 @onready var tier_4_node_enemy_7: Button = $tier_4_node_enemy7
-@onready var tier_5_node_boss: Button = $tier_5_node_boss
+@onready var tier_5_node_enemy_9: Button = $tier_5_node_enemy9
+@onready var tier_5_node_enemy_10: Button = $tier_5_node_enemy10
+@onready var tier_6_node_enemy_11: Button = $tier_6_node_enemy11
+@onready var tier_6_node_enemy_12: Button = $tier_6_node_enemy12
+@onready var tier_7_node_boss: Button = $tier_7_node_boss
+
+
+
+
 @onready var progression_indicator: Label = $"Progression Indicator"
 @onready var texture_enemy_health_bar: TextureProgressBar = $map_background/TextureEnemyHealthBar
 @onready var camp_1: Button = $Camp1
@@ -31,7 +39,12 @@ func _ready() -> void:
 			tier_3_node_enemy_5.disabled = true
 			tier_4_node_enemy_8.disabled = true
 			tier_4_node_enemy_7.disabled = true
-			tier_5_node_boss.disabled = true
+			tier_5_node_enemy_9.disabled = true
+			tier_5_node_enemy_9.disabled = true
+			tier_5_node_enemy_10.disabled = true
+			tier_6_node_enemy_11.disabled = true
+			tier_6_node_enemy_12.disabled = true
+			tier_7_node_boss.disabled = true
 			camp_1.disabled = true	
 			camp_2.disabled = true	
 			#enabled
@@ -43,7 +56,11 @@ func _ready() -> void:
 			node_start.disabled = true
 			tier_4_node_enemy_8.disabled = true
 			tier_4_node_enemy_7.disabled = true
-			tier_5_node_boss.disabled = true
+			tier_5_node_enemy_9.disabled = true
+			tier_5_node_enemy_10.disabled = true
+			tier_6_node_enemy_11.disabled = true
+			tier_6_node_enemy_12.disabled = true
+			tier_7_node_boss.disabled = true
 			camp_2.disabled = true	
 			#enabled
 			tier_2_node_enemy_3.disabled = false
@@ -56,7 +73,11 @@ func _ready() -> void:
 			node_start.disabled = true
 			tier_4_node_enemy_8.disabled = true
 			tier_4_node_enemy_7.disabled = true
-			tier_5_node_boss.disabled = true
+			tier_5_node_enemy_9.disabled = true
+			tier_5_node_enemy_10.disabled = true
+			tier_6_node_enemy_11.disabled = true
+			tier_6_node_enemy_12.disabled = true
+			tier_7_node_boss.disabled = true
 			camp_1.disabled = true	
 			camp_2.disabled = true	
 			#enabled
@@ -70,8 +91,12 @@ func _ready() -> void:
 			node_start.disabled = true
 			tier_3_node_enemy_4.disabled = true
 			tier_3_node_enemy_5.disabled = true
-			tier_5_node_boss.disabled = true
+			tier_5_node_enemy_9.disabled = true
+			tier_5_node_enemy_10.disabled = true
 			camp_1.disabled = true	
+			tier_6_node_enemy_11.disabled = true
+			tier_6_node_enemy_12.disabled = true
+			tier_7_node_boss.disabled = true
 			#enabled
 			tier_4_node_enemy_8.disabled = false
 			tier_4_node_enemy_7.disabled = false
@@ -86,12 +111,52 @@ func _ready() -> void:
 			tier_3_node_enemy_5.disabled = true
 			tier_4_node_enemy_8.disabled = true
 			tier_4_node_enemy_7.disabled = true
+			tier_5_node_enemy_9.disabled = true
+			tier_5_node_enemy_10.disabled = true
+			tier_6_node_enemy_11.disabled = true
+			tier_6_node_enemy_12.disabled = true
+			tier_7_node_boss.disabled = true
 			camp_1.disabled = true	
 			camp_2.disabled = true	
 			#enabled 
-			tier_5_node_boss.disabled = false
-			
-
+			tier_5_node_enemy_9.disabled = false	
+			tier_5_node_enemy_10.disabled = false
+		6:
+			#enabled
+			tier_6_node_enemy_11.disabled = false
+			tier_6_node_enemy_12.disabled = false
+			#disabled
+			tier_7_node_boss.disabled = true
+			tier_1_node_enemy_1.disabled = true
+			node_start.disabled = true
+			tier_2_node_enemy_2.disabled = true
+			tier_2_node_enemy_3.disabled = true
+			tier_3_node_enemy_4.disabled = true
+			tier_3_node_enemy_5.disabled = true
+			tier_4_node_enemy_8.disabled = true
+			tier_4_node_enemy_7.disabled = true
+			tier_5_node_enemy_9.disabled = true
+			tier_5_node_enemy_10.disabled = true
+			camp_1.disabled = true	
+			camp_2.disabled = true	
+		7: 
+			#enebeled
+			tier_7_node_boss.disabled = false
+			#disabled
+			tier_1_node_enemy_1.disabled = true
+			node_start.disabled = true
+			tier_2_node_enemy_2.disabled = true
+			tier_2_node_enemy_3.disabled = true
+			tier_3_node_enemy_4.disabled = true
+			tier_3_node_enemy_5.disabled = true
+			tier_4_node_enemy_8.disabled = true
+			tier_4_node_enemy_7.disabled = true
+			tier_5_node_enemy_9.disabled = true
+			tier_5_node_enemy_10.disabled = true
+			tier_6_node_enemy_11.disabled = true
+			tier_6_node_enemy_12.disabled = true
+			camp_1.disabled = true	
+			camp_2.disabled = true	
 
 func _on_tier_1_node_enemy_1_pressed() -> void:
 	GameManager.map_progression += 1
@@ -141,14 +206,50 @@ func _on_tier_4_node_enemy_7_pressed() -> void:
 	GameManager.start_combat()
 	get_tree().change_scene_to_file("res://Scenes/CombatScene.tscn")
 
-#tier 5 / Boss
 
-func _on_tier_5_node_boss_pressed() -> void:
+#tier 5
+
+func _on_tier_5_node_enemy_10_pressed() -> void:
 	GameManager.map_progression += 1
 	GameManager.reset_combat()
 	GameManager.start_combat()
 	get_tree().change_scene_to_file("res://Scenes/CombatScene.tscn")
 
+func _on_tier_5_node_enemy_9_pressed() -> void:
+	GameManager.map_progression += 1
+	GameManager.reset_combat()
+	GameManager.start_combat()
+	get_tree().change_scene_to_file("res://Scenes/CombatScene.tscn")
+
+
+#tier 6
+
+func _on_tier_6_node_enemy_11_pressed() -> void:
+	GameManager.map_progression += 1
+	GameManager.reset_combat()
+	GameManager.start_combat()
+	get_tree().change_scene_to_file("res://Scenes/CombatScene.tscn")
+
+
+func _on_tier_6_node_enemy_12_pressed() -> void:
+	GameManager.map_progression += 1
+	GameManager.reset_combat()
+	GameManager.start_combat()
+	get_tree().change_scene_to_file("res://Scenes/CombatScene.tscn")
+
+
+#tier 7 Boss
+
+func _on_tier_7_node_boss_pressed() -> void:
+	GameManager.map_progression += 1
+	GameManager.reset_combat()
+	GameManager.start_combat()
+	get_tree().change_scene_to_file("res://Scenes/CombatScene.tscn")
+
+
+
+
+#Campfires
 
 func _on_button_pressed() -> void:
 	if GameManager.player_health >= 51:
