@@ -18,15 +18,16 @@ extends Control
 @onready var sheild_animations: AnimationPlayer = $SheildAnimations
 @onready var player_blocked_animation_player: AnimationPlayer = $PlayerBlockedAnimationPlayer
 @onready var enemy_health_number: Label = $EnemyHealthNumber
+var enemymaxhealth = 0
 
 func _ready():
+	enemymaxhealth = GameManager.enemy_health_comparator
 	attackAnimation.visible = false
 	enemy_heal_animation.visible = false
 	print("Combat Scene Initialized")
 	master_update()
 	load_player_hand()
-	var CS_Enemy_Max_Health = GameManager.enemy_max_health
-	enemy_health_bar.max_value = CS_Enemy_Max_Health
+	texture_enemy_health_bar.max_value = enemymaxhealth
 
 func master_update():
 	var game_manager = get_tree().root.get_node_or_null("GameManager")

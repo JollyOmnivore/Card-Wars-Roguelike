@@ -3,7 +3,7 @@ extends Control
 @onready var button_1: Button = $Button1
 @onready var button_2: Button = $Button2
 @onready var button_3: Button = $Button3
-var HackCardArray = GameManager.Player_Deck
+
 @onready var deck_display: Label = $DeckDisplay
 @onready var discard_display: Label = $DiscardDisplay
 
