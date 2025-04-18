@@ -17,6 +17,7 @@ extends Control
 @onready var heal_overlay: Sprite2D = $HealOverlay
 @onready var sheild_animations: AnimationPlayer = $SheildAnimations
 @onready var player_blocked_animation_player: AnimationPlayer = $PlayerBlockedAnimationPlayer
+@onready var enemy_health_number: Label = $EnemyHealthNumber
 
 func _ready():
 	attackAnimation.visible = false
@@ -24,6 +25,8 @@ func _ready():
 	print("Combat Scene Initialized")
 	master_update()
 	load_player_hand()
+	var CS_Enemy_Max_Health = GameManager.enemy_max_health
+	enemy_health_bar.max_value = CS_Enemy_Max_Health
 
 func master_update():
 	var game_manager = get_tree().root.get_node_or_null("GameManager")
@@ -58,6 +61,8 @@ func update_turn_indicator(game_manager):
 	else:
 		print("ERROR: GameManager not found!")
 	
+func UpdateExactHealth():
+	pass
 	
 func playAttackAnimation():
 	attackAnimation.visible = true

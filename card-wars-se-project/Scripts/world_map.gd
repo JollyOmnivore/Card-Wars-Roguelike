@@ -154,7 +154,7 @@ func _on_button_pressed() -> void:
 	if GameManager.player_health >= 51:
 		GameManager.player_health = 100
 	else:
-		GameManager.player_health += 50
+		GameManager.player_health += 25
 	var healthLabelInt = GameManager.player_health
 	texture_enemy_health_bar.value = float(healthLabelInt)
 	GameManager.map_progression += 1
@@ -164,7 +164,7 @@ func _on_button_2_pressed() -> void:
 	if GameManager.player_health >= 51:
 		GameManager.player_health = 100
 	else:
-		GameManager.player_health += 50
+		GameManager.player_health += 25
 	var healthLabelInt = GameManager.player_health
 	texture_enemy_health_bar.value = float(healthLabelInt)
 	GameManager.map_progression += 1
