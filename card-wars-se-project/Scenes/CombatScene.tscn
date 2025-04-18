@@ -511,3 +511,8 @@ libraries = {
 &"": SubResource("AnimationLibrary_vp3lu")
 }
 speed_scale = 2.0
+
+[node name="EnemyHealthNumber" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0

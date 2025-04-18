@@ -15,6 +15,7 @@ const ENEMY_ACTION_HEAL = 1
 const ENEMY_ATTACK_BASE = 6
 const ENEMY_HEAL_BASE = 3
 var enemy_action_repeat = 0
+var enemy_max_health = 120
 var enemy_health: int = 100
 var player_health: int = 100
 var player_turn: bool = true
@@ -218,8 +219,9 @@ func end_turn(combat_scene: Node):
 # Resets the game, for debugging later down the line
 func reset_combat():
 	print("Resetting combat...")
-	if player_health <= 50:
-		difficulty_multiplier = 0.8
+	#if player_health <= 50:
+	#	difficulty_multiplier = 0.8
+	
 	if (map_progression > 5):
 		enemy_health = ENEMY_BOSS_MAX_HEALTH * difficulty_multiplier
 	else:
