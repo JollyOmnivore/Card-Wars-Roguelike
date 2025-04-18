@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Card Wars SE Project"
-run/main_scene="uid://rrtp77mt1ppv"
+run/main_scene="uid://baytxwplx4vbu"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 

@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://c2t3oou0lhiqv"]
+[gd_scene load_steps=5 format=3 uid="uid://c2t3oou0lhiqv"]
 
 [ext_resource type="Script" uid="uid://wun8mfs0l326" path="res://Scenes/player_hand_scene.gd" id="1_iqkki"]
+[ext_resource type="FontFile" uid="uid://bmy0dltdp5oyx" path="res://Assets/Harmonic.ttf" id="2_62ofp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_24p2e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_62ofp"]
 
 [node name="PlayerHandScene" type="Control"]
 layout_mode = 3
@@ -28,6 +33,32 @@ offset_top = -17.0
 offset_right = 167.0
 offset_bottom = 132.0
 
-[connection signal="pressed" from="Button1" to="." method="_on_button_1_pressed"]
-[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
-[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
+[node name="DeckDisplay" type="Label" parent="."]
+layout_mode = 0
+offset_left = -436.0
+offset_top = -100.0
+offset_right = -322.0
+offset_bottom = 37.0
+theme_override_fonts/font = ExtResource("2_62ofp")
+theme_override_styles/normal = SubResource("StyleBoxFlat_24p2e")
+text = "
+Deck
+
+
+5"
+horizontal_alignment = 1
+
+[node name="DiscardDisplay" type="Label" parent="."]
+layout_mode = 0
+offset_left = 300.0
+offset_top = -100.0
+offset_right = 414.0
+offset_bottom = 37.0
+theme_override_fonts/font = ExtResource("2_62ofp")
+theme_override_styles/normal = SubResource("StyleBoxFlat_62ofp")
+text = "
+Discard
+
+
+0"
+horizontal_alignment = 1
