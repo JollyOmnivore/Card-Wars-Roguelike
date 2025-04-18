@@ -28,6 +28,7 @@ func _ready():
 	master_update()
 	load_player_hand()
 	texture_enemy_health_bar.max_value = enemymaxhealth
+	texture_enemy_health_bar.value = enemymaxhealth #weird fix
 
 func master_update():
 	var game_manager = get_tree().root.get_node_or_null("GameManager")
