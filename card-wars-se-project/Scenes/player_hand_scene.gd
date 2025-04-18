@@ -4,6 +4,9 @@ extends Control
 @onready var button_2: Button = $Button2
 @onready var button_3: Button = $Button3
 var HackCardArray = GameManager.Player_Deck
+@onready var deck_display: Label = $DeckDisplay
+@onready var discard_display: Label = $DiscardDisplay
+
 
 #3 arrays
 #deck - pulled from GM (deck gm) pop 3 to player hand
@@ -96,11 +99,6 @@ func _on_button_3_pressed():
 	button_3.text = handCards[2]
 	button_3.visible = true
 	
-	
-	
-	
-	
-	
 func Button_Selected():
 	button_1.disabled = true
 	button_2.disabled = true
@@ -109,3 +107,8 @@ func Button_Selected():
 	button_1.disabled = false
 	button_2.disabled = false
 	button_3.disabled = false
+	UpdateDeckDisplay()
+
+func UpdateDeckDisplay():
+	deck_display.text = "\n Deck\n \n \n" + str(HackCardArray.size())
+	discard_display.text = "\n Discard\n \n \n" + str(discardCards.size())
