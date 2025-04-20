@@ -252,7 +252,7 @@ func _on_tier_7_node_boss_pressed() -> void:
 #Campfires
 
 func _on_button_pressed() -> void:
-	if GameManager.player_health >= 51:
+	if GameManager.player_health >= 76:
 		GameManager.player_health = 100
 	else:
 		GameManager.player_health += 25
@@ -262,7 +262,7 @@ func _on_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/world_map.tscn")
 
 func _on_button_2_pressed() -> void:
-	if GameManager.player_health >= 51:
+	if GameManager.player_health >= 76:
 		GameManager.player_health = 100
 	else:
 		GameManager.player_health += 25
