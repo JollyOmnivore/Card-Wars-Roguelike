@@ -17,7 +17,9 @@ extends Control
 @onready var heal_overlay: Sprite2D = $HealOverlay
 @onready var sheild_animations: AnimationPlayer = $SheildAnimations
 @onready var player_blocked_animation_player: AnimationPlayer = $PlayerBlockedAnimationPlayer
-@onready var enemy_health_number: Label = $EnemyHealthNumber
+@onready var enemy_health_number_max: Label = $EnemyHealthNumberMax
+@onready var enemy_health_current_number: Label = $EnemyHealthCurrentNumber
+
 var enemymaxhealth = 0
 
 func _ready():
@@ -29,6 +31,10 @@ func _ready():
 	load_player_hand()
 	
 	texture_enemy_health_bar.max_value = enemymaxhealth
+	enemy_health_number_max.text = "/" + str(int(enemymaxhealth))
+	enemy_health_current_number.text = str(int(enemymaxhealth))
+
+
 	texture_enemy_health_bar.value = enemymaxhealth #weird fix
 
 func master_update():
@@ -42,9 +48,11 @@ func master_update():
 func update_health_display(game_manager):
 	if game_manager:
 		print("Updating health bars - Player:", game_manager.player_health, "Enemy:", game_manager.enemy_health)
+		enemy_health_current_number.text=  str(game_manager.enemy_health)
 		texture_player_health_bar.value = game_manager.player_health
 		player_health_bar.value = game_manager.player_health
 		texture_enemy_health_bar.value = game_manager.enemy_health
+
 	else:
 		print("ERROR: GameManager not found!")
 

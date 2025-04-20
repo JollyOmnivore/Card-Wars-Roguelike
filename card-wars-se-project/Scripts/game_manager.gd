@@ -35,7 +35,8 @@ func _ready():
 	start_combat()
 
 func start_combat():
-
+	print("Player Deck Below")
+	print(Player_Deck)
 	enemy_health_comparator = (ENEMY_MAX_HEALTH + 5 * (map_progression - 2)) * difficulty_multiplier
 
 	print("Starting combat...")
@@ -118,7 +119,7 @@ func enemy_turn():
 	if enemy_health <= 0:
 			print("player wins. switch to victory scene")
 			#get_tree().root.get_node_or_null("PlayerHandScene").free()
-			get_tree().change_scene_to_file("res://Scenes/combat_victory.tscn")
+			get_tree().change_scene_to_file("res://Scenes/Deck_Manager.tscn")
 			#PlayerHandScene.free()
 			return
 	var combat_scene = get_tree().root.get_node_or_null("CombatScene")

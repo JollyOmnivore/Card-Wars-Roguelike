@@ -11,70 +11,53 @@ extends Node2D
 @onready var button_8: Button = $Button8
 @onready var confirm_button: Button = $ConfirmButton
 
-var newDeck = GameManager.Player_Deck
+
+var newDeck = []
+var originalDeck = GameManager.Player_Deck.duplicate()
+
+var CardList = ["Attack 50", "Attack 50", "Attack 58", "Heal 55", "Defend 55", "Defend 50"]
 
 func _ready():
+	newDeck = originalDeck.duplicate()
+
 	for i in range(min(newDeck.size(), 8)):
 		var card_data = newDeck[i].split(" ")
 		var card_type = card_data[0]
 		var card_value = card_data[1] if card_data.size() > 1 else "0"
-		
+
+		var label = "%s\n%s" % [card_type, card_value]
+
 		match i:
-			0: button_1.text = "%s\n%s" % [card_type, card_value]
-			1: button_2.text = "%s\n%s" % [card_type, card_value]
-			2: button_3.text = "%s\n%s" % [card_type, card_value]
-			3: button_4.text = "%s\n%s" % [card_type, card_value]
-			4: button_5.text = "%s\n%s" % [card_type, card_value]
-			5: button_6.text = "%s\n%s" % [card_type, card_value]
-			6: button_7.text = "%s\n%s" % [card_type, card_value]
-			7: button_8.text = "%s\n%s" % [card_type, card_value]
-	
+			0: button_1.text = label
+			1: button_2.text = label
+			2: button_3.text = label
+			3: button_4.text = label
+			4: button_5.text = label
+			5: button_6.text = label
+			6: button_7.text = label
+			7: button_8.text = label
+
 	var reward_index = randi() % CardList.size()
 	reward_card.text = CardList[reward_index]
-	
-	
-func _on_button_1_pressed() -> void:
-	var CardSwitch = button_1.text
-	button_1.text = reward_card.text
-	reward_card.text = CardSwitch
-	
-func _on_button_2_pressed() -> void:
-	var CardSwitch = button_2.text
-	button_2.text = reward_card.text
-	reward_card.text = CardSwitch
-	
-func _on_button_3_pressed() -> void:
-	var CardSwitch = button_3.text
-	button_3.text = reward_card.text
-	reward_card.text = CardSwitch
-	
-func _on_button_4_pressed() -> void:
-	var CardSwitch = button_4.text
-	button_4.text = reward_card.text
-	reward_card.text = CardSwitch
-	
-func _on_button_5_pressed() -> void:
-	var CardSwitch = button_5.text
-	button_5.text = reward_card.text
-	reward_card.text = CardSwitch
-	
-func _on_button_6_pressed() -> void:
-	var CardSwitch = button_6.text
-	button_6.text = reward_card.text
-	reward_card.text = CardSwitch
-	
-func _on_button_7_pressed() -> void:
-	var CardSwitch = button_7.text
-	button_7.text = reward_card.text
-	reward_card.text = CardSwitch
-	
-func _on_button_8_pressed() -> void:
-	var CardSwitch = button_8.text
-	button_8.text = reward_card.text
-	reward_card.text = CardSwitch
-	
-	
-var CardList = ["Attack 20", "Attack 20", "Attack 18", "Heal 15", "Defend 25", "Defend 20"]
+
+
+func swap_card(index: int, button: Button) -> void:
+	var temp = button.text
+	button.text = reward_card.text
+	reward_card.text = temp
+	newDeck[index] = button.text
+
+
+func _on_button_1_pressed(): swap_card(0, button_1)
+func _on_button_2_pressed(): swap_card(1, button_2)
+func _on_button_3_pressed(): swap_card(2, button_3)
+func _on_button_4_pressed(): swap_card(3, button_4)
+func _on_button_5_pressed(): swap_card(4, button_5)
+func _on_button_6_pressed(): swap_card(5, button_6)
+func _on_button_7_pressed(): swap_card(6, button_7)
+func _on_button_8_pressed(): swap_card(7, button_8)
+
 
 func _on_confirm_button_pressed() -> void:
-	pass # BACK TO MAP SCENE
+	GameManager.Player_Deck = newDeck
+	get_tree().change_scene_to_file("res://Scenes/world_map.tscn")

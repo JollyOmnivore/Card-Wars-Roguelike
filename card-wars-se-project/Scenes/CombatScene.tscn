@@ -512,7 +512,22 @@ libraries = {
 }
 speed_scale = 2.0
 
-[node name="EnemyHealthNumber" type="Label" parent="."]
+[node name="EnemyHealthNumberMax" type="Label" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 277.0
+offset_top = 78.0
+offset_right = 332.0
+offset_bottom = 114.0
+theme_override_fonts/font = ExtResource("13_7d6hk")
+theme_override_font_sizes/font_size = 35
+text = "/100"
+
+[node name="EnemyHealthCurrentNumber" type="Label" parent="."]
+layout_mode = 0
+offset_left = 232.0
+offset_top = 76.0
+offset_right = 274.0
+offset_bottom = 112.0
+theme_override_fonts/font = ExtResource("13_7d6hk")
+theme_override_font_sizes/font_size = 35
+text = "100"

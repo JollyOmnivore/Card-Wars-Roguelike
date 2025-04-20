@@ -16,12 +16,12 @@ theme_override_font_sizes/font_size = 26
 text = "Confirm"
 
 [node name="Label" type="Label" parent="."]
-offset_left = 466.0
+offset_left = 392.0
 offset_top = 37.0
-offset_right = 710.0
-offset_bottom = 60.0
+offset_right = 757.0
+offset_bottom = 68.0
 theme_override_fonts/font = ExtResource("2_d0y6b")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "You have recieved a new card!"
 
 [node name="Reward Card" type="Button" parent="."]
@@ -81,3 +81,10 @@ offset_bottom = 495.0
 [connection signal="pressed" from="ConfirmButton" to="." method="_on_confirm_button_pressed"]
 [connection signal="pressed" from="Reward Card" to="." method="_on_reward_card_pressed"]
 [connection signal="pressed" from="Button1" to="." method="_on_button_1_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="Button5" to="." method="_on_button_5_pressed"]
+[connection signal="pressed" from="Button6" to="." method="_on_button_6_pressed"]
+[connection signal="pressed" from="Button7" to="." method="_on_button_7_pressed"]
+[connection signal="pressed" from="Button8" to="." method="_on_button_8_pressed"]
