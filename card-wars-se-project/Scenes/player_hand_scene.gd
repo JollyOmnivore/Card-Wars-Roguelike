@@ -118,5 +118,5 @@ func Button_Selected():
 	UpdateDeckDisplay()
 
 func UpdateDeckDisplay():
-	deck_display.text = "\n Deck\n \n \n" + str(HackCardArray.size())
-	discard_display.text = "\n Discard\n \n \n" + str(discardCards.size())
+	deck_display.text = "\nDeck\n" + str(HackCardArray.size())
+	discard_display.text = "\nDiscard\n" + str(discardCards.size())

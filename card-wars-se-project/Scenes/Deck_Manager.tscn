@@ -1,10 +1,95 @@
-[gd_scene load_steps=3 format=3 uid="uid://rrtp77mt1ppv"]
+[gd_scene load_steps=16 format=3 uid="uid://rrtp77mt1ppv"]
 
 [ext_resource type="Script" uid="uid://ylihonmfxllv" path="res://Scripts/deck_manager_script.gd" id="1_3fjyc"]
 [ext_resource type="FontFile" uid="uid://bmy0dltdp5oyx" path="res://Assets/Harmonic.ttf" id="2_d0y6b"]
+[ext_resource type="Texture2D" uid="uid://bkbibjr2iasrr" path="res://Assets/background 2.png" id="2_j4frn"]
+[ext_resource type="Texture2D" uid="uid://0iq6hx8jfnc8" path="res://Assets/Pipoya VFX LightPillar/Pipoya VFX LightPillar/400x400/pipo-mapeffect013a-back.png" id="4_j4frn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yliql"]
+atlas = ExtResource("4_j4frn")
+region = Rect2(0, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qf12a"]
+atlas = ExtResource("4_j4frn")
+region = Rect2(400, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ssx8"]
+atlas = ExtResource("4_j4frn")
+region = Rect2(800, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6d112"]
+atlas = ExtResource("4_j4frn")
+region = Rect2(1200, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwvny"]
+atlas = ExtResource("4_j4frn")
+region = Rect2(1600, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2whr"]
+atlas = ExtResource("4_j4frn")
+region = Rect2(0, 400, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmlhs"]
+atlas = ExtResource("4_j4frn")
+region = Rect2(400, 400, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c85xj"]
+atlas = ExtResource("4_j4frn")
+region = Rect2(800, 400, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8oonw"]
+atlas = ExtResource("4_j4frn")
+region = Rect2(1200, 400, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_merlk"]
+atlas = ExtResource("4_j4frn")
+region = Rect2(1600, 400, 400, 400)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0wnsa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yliql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qf12a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ssx8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6d112")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwvny")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2whr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mmlhs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c85xj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8oonw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_merlk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [node name="DeckManagerNode2d" type="Node2D"]
 script = ExtResource("1_3fjyc")
+
+[node name="Background2" type="Sprite2D" parent="."]
+position = Vector2(585, 327)
+scale = Vector2(2.05247, 2.05247)
+texture = ExtResource("2_j4frn")
 
 [node name="ConfirmButton" type="Button" parent="."]
 offset_left = 469.0
@@ -20,15 +105,34 @@ offset_left = 392.0
 offset_top = 37.0
 offset_right = 757.0
 offset_bottom = 68.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_d0y6b")
 theme_override_font_sizes/font_size = 30
 text = "You have recieved a new card!"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.882353)
+position = Vector2(583, 149)
+scale = Vector2(0.7225, 0.7225)
+sprite_frames = SubResource("SpriteFrames_0wnsa")
+autoplay = "default"
+frame_progress = 0.504671
 
 [node name="Reward Card" type="Button" parent="."]
 offset_left = 525.0
 offset_top = 83.0
 offset_right = 631.0
 offset_bottom = 217.0
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 14.0
+offset_top = 325.0
+offset_right = 141.0
+offset_bottom = 356.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_d0y6b")
+theme_override_font_sizes/font_size = 30
+text = "Your Deck"
 
 [node name="Button1" type="Button" parent="."]
 offset_left = 33.5
