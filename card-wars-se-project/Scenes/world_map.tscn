@@ -309,6 +309,7 @@ offset_left = 750.0
 offset_top = 28.0
 offset_right = 819.0
 offset_bottom = 54.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_g8h5j")
 theme_override_font_sizes/font_size = 25
 

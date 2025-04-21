@@ -15,9 +15,9 @@ var newDeck = []
 var originalDeck = GameManager.Player_Deck.duplicate()
 var currentProgression = GameManager.map_progression
 
-var loot_pool_1 = ["Attack 35", "Defend 35", "Heal 40"]
-var loot_pool_2 = ["Attack 40", "Defend 55", "Heal 60"]
-var loot_pool_3 = ["Attack 50", "Defend 60", "Heal 70"]
+var loot_pool_1 = ["Attack 35", "Defend 35", "Heal 35"]
+var loot_pool_2 = ["Attack 35", "Defend 45", "Heal 40"]
+var loot_pool_3 = ["Attack 45", "Defend 50", "Heal 50"]
 var CardList = []
 
 func _ready():

@@ -19,6 +19,7 @@ extends Control
 @onready var player_blocked_animation_player: AnimationPlayer = $PlayerBlockedAnimationPlayer
 @onready var enemy_health_number_max: Label = $EnemyHealthNumberMax
 @onready var enemy_health_current_number: Label = $EnemyHealthCurrentNumber
+@onready var player_health_number: Label = $PlayerHealthNumber
 
 var enemymaxhealth = 0
 
@@ -32,6 +33,7 @@ func _ready():
 	
 	texture_enemy_health_bar.max_value = enemymaxhealth
 	enemy_health_number_max.text = "/" + str(int(enemymaxhealth))
+	player_health_number.text = str(GameManager.player_health) + "/100"
 	enemy_health_current_number.text = str(int(enemymaxhealth))
 
 
@@ -52,6 +54,7 @@ func update_health_display(game_manager):
 		texture_player_health_bar.value = game_manager.player_health
 		player_health_bar.value = game_manager.player_health
 		texture_enemy_health_bar.value = game_manager.enemy_health
+		player_health_number.text = str(GameManager.player_health) + "/100"
 
 	else:
 		print("ERROR: GameManager not found!")

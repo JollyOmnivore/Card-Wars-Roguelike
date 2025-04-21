@@ -119,7 +119,10 @@ func enemy_turn():
 	if enemy_health <= 0:
 			print("player wins. switch to victory scene")
 			#get_tree().root.get_node_or_null("PlayerHandScene").free()
-			get_tree().change_scene_to_file("res://Scenes/Deck_Manager.tscn")
+			if (map_progression < 8):
+				get_tree().change_scene_to_file("res://Scenes/Deck_Manager.tscn")
+			elif (map_progression >= 8):
+				get_tree().change_scene_to_file("res://Scenes/combat_victory.tscn")
 			#PlayerHandScene.free()
 			return
 	var combat_scene = get_tree().root.get_node_or_null("CombatScene")

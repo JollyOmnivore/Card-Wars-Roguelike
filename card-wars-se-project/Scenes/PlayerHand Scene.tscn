@@ -4,8 +4,10 @@
 [ext_resource type="FontFile" uid="uid://bmy0dltdp5oyx" path="res://Assets/Harmonic.ttf" id="2_62ofp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_24p2e"]
+bg_color = Color(0.227451, 0.227451, 0.227451, 0.596078)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_62ofp"]
+bg_color = Color(0.129559, 0.129558, 0.129558, 0.596078)
 
 [node name="PlayerHandScene" type="Control"]
 layout_mode = 3
@@ -39,7 +41,9 @@ offset_left = -436.0
 offset_top = -100.0
 offset_right = -322.0
 offset_bottom = 37.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_62ofp")
+theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = SubResource("StyleBoxFlat_24p2e")
 text = "
 Deck
@@ -47,6 +51,7 @@ Deck
 
 5"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="DiscardDisplay" type="Label" parent="."]
 layout_mode = 0
@@ -54,7 +59,9 @@ offset_left = 300.0
 offset_top = -100.0
 offset_right = 414.0
 offset_bottom = 37.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_62ofp")
+theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = SubResource("StyleBoxFlat_62ofp")
 text = "
 Discard
@@ -62,6 +69,7 @@ Discard
 
 0"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="Button1" to="." method="_on_button_1_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
