@@ -155,8 +155,8 @@ func enemy_turn():
 func enemy_action_choose() -> int:
 	var next = ENEMY_ACTIONS.pick_random()
 	var enemy_health_comparator = 0
-	if map_progression > 5:
-		enemy_health_comparator = ENEMY_BOSS_MAX_HEALTH * difficulty_multiplier
+	if map_progression >= 8:
+		enemy_health_comparator *= 1.5
 	else:
 		enemy_health_comparator = (ENEMY_MAX_HEALTH + 5 * (map_progression - 2)) * difficulty_multiplier
 	if enemy_health >= enemy_health_comparator:
@@ -231,7 +231,7 @@ func reset_combat():
 	#if player_health <= 50:
 	#	difficulty_multiplier = 0.8
 	if map_progression >= 8:
-		difficulty_multiplier += .5
+		difficulty_multiplier *= 1.5
 
 	enemy_health = (ENEMY_MAX_HEALTH + 5 * (map_progression - 2)) * difficulty_multiplier
 
