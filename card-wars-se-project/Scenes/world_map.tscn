@@ -337,7 +337,7 @@ theme_override_font_sizes/font_size = 25
 [connection signal="pressed" from="tier_6_node_enemy11" to="." method="_on_tier_6_node_enemy_11_pressed"]
 [connection signal="pressed" from="tier_6_node_enemy12" to="." method="_on_node_enemy_2_pressed"]
 [connection signal="pressed" from="tier_6_node_enemy12" to="." method="_on_tier_6_node_enemy_12_pressed"]
-[connection signal="pressed" from="tier_7_node_boss" to="." method="_on_node_enemy_2_pressed"]
 [connection signal="pressed" from="tier_7_node_boss" to="." method="_on_tier_7_node_boss_pressed"]
+[connection signal="pressed" from="tier_7_node_boss" to="." method="_on_node_enemy_2_pressed"]
 [connection signal="pressed" from="Camp1" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Camp2" to="." method="_on_button_2_pressed"]
