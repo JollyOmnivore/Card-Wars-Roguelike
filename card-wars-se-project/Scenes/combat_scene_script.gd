@@ -20,6 +20,7 @@ extends Control
 @onready var enemy_health_number_max: Label = $EnemyHealthNumberMax
 @onready var enemy_health_current_number: Label = $EnemyHealthCurrentNumber
 @onready var player_health_number: Label = $PlayerHealthNumber
+@onready var enemy_title: Label = $"Enemy Title"
 
 var enemymaxhealth = 0
 
@@ -30,6 +31,8 @@ func _ready():
 	print("Combat Scene Initialized")
 	master_update()
 	load_player_hand()
+	if GameManager.map_progression >=8:
+		enemy_title.text = "King of Cards"
 	
 	texture_enemy_health_bar.max_value = enemymaxhealth
 	enemy_health_number_max.text = "/" + str(int(enemymaxhealth))
@@ -40,11 +43,12 @@ func _ready():
 	texture_enemy_health_bar.value = enemymaxhealth #weird fix
 
 func master_update():
-	var game_manager = get_tree().root.get_node_or_null("GameManager")
-	
-	update_health_display(game_manager)
-	update_defense_display(game_manager)
-	update_turn_indicator(game_manager)
+	if GameManager.player_health >=1:
+		var game_manager = get_tree().root.get_node_or_null("GameManager")
+		
+		update_health_display(game_manager)
+		update_defense_display(game_manager)
+		update_turn_indicator(game_manager)
 	
 
 func update_health_display(game_manager):

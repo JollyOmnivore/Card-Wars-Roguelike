@@ -38,7 +38,7 @@ func start_combat():
 	print("Player Deck Below")
 	print(Player_Deck)
 	enemy_health_comparator = (ENEMY_MAX_HEALTH + 5 * (map_progression - 2)) * difficulty_multiplier
-
+	print(enemy_health_comparator)
 	print("Starting combat...")
 
 	await get_tree().process_frame  # Let the scene process for 1 frame
@@ -190,6 +190,9 @@ func enemy_action_execute(action: int, value: int, combat_scene: Node):
 		var damage = max(0, value - player_def) 
 		player_health -= damage
 		combat_scene.PlayerTakeDamage()
+		if player_health <= 0:
+			await get_tree().create_timer(0.3).timeout
+			get_tree().change_scene_to_file("res://Scenes/combat_defeat.tscn")
 		print("Enemy attacks! Player Health:", player_health)
 	elif action == ENEMY_ACTION_HEAL:
 		combat_scene.playEnemyHealAnimation()
@@ -227,8 +230,12 @@ func reset_combat():
 	print("Resetting combat...")
 	#if player_health <= 50:
 	#	difficulty_multiplier = 0.8
+	if map_progression >= 8:
+		difficulty_multiplier += .5
 
 	enemy_health = (ENEMY_MAX_HEALTH + 5 * (map_progression - 2)) * difficulty_multiplier
+
+		
 	player_def = 0
 	player_turn = true
 	print("Game Reset - Player Health:", player_health, "Enemy Health:", enemy_health)

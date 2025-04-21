@@ -49,7 +49,7 @@ func _ready():
 		var card_data = newDeck[i].split(" ")
 		var card_type = card_data[0]
 		var card_value = card_data[1] if card_data.size() > 1 else "0"
-		var label = "%s\n%s" % [card_type, card_value]
+		var label = "%s %s" % [card_type, card_value]
 		match i:
 			0: button_1.text = label
 			1: button_2.text = label
