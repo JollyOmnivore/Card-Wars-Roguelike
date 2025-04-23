@@ -40,30 +40,35 @@ scale = Vector2(0.1, 0.096)
 texture = ExtResource("2_b7gke")
 
 [node name="path2" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(218, 379)
 rotation = 0.785398
 scale = Vector2(0.0827615, 0.112615)
 texture = ExtResource("2_b7gke")
 
 [node name="path3" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(223, 284)
 rotation = -0.717128
 scale = Vector2(0.0827615, 0.112615)
 texture = ExtResource("2_b7gke")
 
 [node name="path4" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(394, 215)
 rotation = -0.00567657
 scale = Vector2(0.0827615, 0.112615)
 texture = ExtResource("2_b7gke")
 
 [node name="path5" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(405, 439)
 rotation = -0.00567657
 scale = Vector2(0.0827615, 0.112615)
 texture = ExtResource("2_b7gke")
 
 [node name="path6" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(595, 214)
 rotation = -0.00567657
 scale = Vector2(0.0827615, 0.112615)
@@ -78,42 +83,49 @@ skew = 0.00355232
 texture = ExtResource("2_b7gke")
 
 [node name="path7" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(588, 444)
 rotation = -0.00567657
 scale = Vector2(0.0827615, 0.112615)
 texture = ExtResource("2_b7gke")
 
 [node name="path8" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(1045, 253)
 rotation = 0.75564
 scale = Vector2(0.0827615, 0.112615)
 texture = ExtResource("2_b7gke")
 
 [node name="path11" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(763, 438)
 rotation = -0.00567657
 scale = Vector2(0.0827615, 0.112615)
 texture = ExtResource("2_b7gke")
 
 [node name="path9" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(1053, 393)
 rotation = -0.635863
 scale = Vector2(0.0827615, 0.112615)
 texture = ExtResource("2_b7gke")
 
 [node name="path13" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(939, 218)
 rotation = -0.00567657
 scale = Vector2(0.0827615, 0.112615)
 texture = ExtResource("2_b7gke")
 
 [node name="path12" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(762, 213)
 rotation = -0.00567657
 scale = Vector2(0.0827615, 0.112615)
 texture = ExtResource("2_b7gke")
 
 [node name="path14" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(930, 441)
 rotation = -0.00567657
 scale = Vector2(0.0827615, 0.112615)
@@ -132,124 +144,124 @@ text = "Start"
 
 [node name="tier_1_node_enemy1" type="Button" parent="."]
 layout_mode = 0
-offset_left = 42.0
-offset_top = 292.0
-offset_right = 193.0
-offset_bottom = 360.0
+offset_left = 18.0
+offset_top = 300.0
+offset_right = 128.0
+offset_bottom = 350.0
 theme_override_fonts/font = ExtResource("4_g8h5j")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "Enemy"
 
 [node name="player_indicator" type="Sprite2D" parent="."]
 
 [node name="tier_2_node_enemy2" type="Button" parent="."]
 layout_mode = 0
-offset_left = 211.0
-offset_top = 401.0
-offset_right = 362.0
-offset_bottom = 469.0
+offset_left = 186.0
+offset_top = 406.0
+offset_right = 296.0
+offset_bottom = 456.0
 theme_override_fonts/font = ExtResource("4_g8h5j")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "Enemy"
 
 [node name="tier_2_node_enemy3" type="Button" parent="."]
 layout_mode = 0
-offset_left = 201.0
+offset_left = 184.0
 offset_top = 172.0
-offset_right = 352.0
-offset_bottom = 240.0
+offset_right = 294.0
+offset_bottom = 222.0
 theme_override_fonts/font = ExtResource("4_g8h5j")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "Enemy"
 
 [node name="tier_3_node_enemy4" type="Button" parent="."]
 layout_mode = 0
-offset_left = 394.0
+offset_left = 373.0
 offset_top = 171.0
-offset_right = 545.0
-offset_bottom = 239.0
+offset_right = 483.0
+offset_bottom = 221.0
 theme_override_fonts/font = ExtResource("4_g8h5j")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "Enemy"
 
 [node name="tier_3_node_enemy5" type="Button" parent="."]
 layout_mode = 0
-offset_left = 397.0
+offset_left = 374.0
 offset_top = 402.0
-offset_right = 548.0
-offset_bottom = 470.0
+offset_right = 484.0
+offset_bottom = 452.0
 theme_override_fonts/font = ExtResource("4_g8h5j")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "Enemy"
 
 [node name="tier_4_node_enemy8" type="Button" parent="."]
 layout_mode = 0
-offset_left = 576.0
+offset_left = 540.0
 offset_top = 172.0
-offset_right = 727.0
-offset_bottom = 240.0
+offset_right = 650.0
+offset_bottom = 222.0
 theme_override_fonts/font = ExtResource("4_g8h5j")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "Enemy"
 
 [node name="tier_4_node_enemy7" type="Button" parent="."]
 layout_mode = 0
-offset_left = 575.0
+offset_left = 543.0
 offset_top = 403.0
-offset_right = 726.0
-offset_bottom = 471.0
+offset_right = 653.0
+offset_bottom = 453.0
 theme_override_fonts/font = ExtResource("4_g8h5j")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "Enemy"
 
 [node name="tier_5_node_enemy10" type="Button" parent="."]
 layout_mode = 0
-offset_left = 765.0
+offset_left = 707.0
 offset_top = 175.0
-offset_right = 916.0
-offset_bottom = 243.0
+offset_right = 817.0
+offset_bottom = 225.0
 theme_override_fonts/font = ExtResource("4_g8h5j")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "Enemy"
 
 [node name="tier_5_node_enemy9" type="Button" parent="."]
 layout_mode = 0
-offset_left = 769.0
+offset_left = 707.0
 offset_top = 404.0
-offset_right = 920.0
-offset_bottom = 472.0
+offset_right = 817.0
+offset_bottom = 454.0
 theme_override_fonts/font = ExtResource("4_g8h5j")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "Enemy"
 
 [node name="tier_6_node_enemy11" type="Button" parent="."]
 layout_mode = 0
-offset_left = 946.0
+offset_left = 864.0
 offset_top = 406.0
-offset_right = 1097.0
-offset_bottom = 474.0
+offset_right = 974.0
+offset_bottom = 456.0
 theme_override_fonts/font = ExtResource("4_g8h5j")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "Enemy"
 
 [node name="tier_6_node_enemy12" type="Button" parent="."]
 layout_mode = 0
-offset_left = 940.0
+offset_left = 860.0
 offset_top = 179.0
-offset_right = 1091.0
-offset_bottom = 247.0
+offset_right = 970.0
+offset_bottom = 229.0
 theme_override_fonts/font = ExtResource("4_g8h5j")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "Enemy"
 
 [node name="tier_7_node_boss" type="Button" parent="."]
 layout_mode = 0
-offset_left = 1008.0
+offset_left = 1015.0
 offset_top = 294.0
-offset_right = 1159.0
-offset_bottom = 362.0
+offset_right = 1125.0
+offset_bottom = 344.0
 theme_override_fonts/font = ExtResource("4_g8h5j")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "Boss"
 
 [node name="Player Health" type="Label" parent="."]
@@ -271,7 +283,7 @@ offset_bottom = 64.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_g8h5j")
 theme_override_font_sizes/font_size = 30
-text = "Player Level"
+text = "Player Depth"
 
 [node name="Progression Indicator" type="Label" parent="."]
 layout_mode = 0
@@ -287,23 +299,28 @@ text = "
 
 [node name="Camp1" type="Button" parent="."]
 layout_mode = 0
-offset_left = 207.0
+offset_left = 176.0
 offset_top = 305.0
-offset_right = 371.0
-offset_bottom = 353.0
+offset_right = 300.0
+offset_bottom = 344.0
 theme_override_fonts/font = ExtResource("4_g8h5j")
 theme_override_font_sizes/font_size = 30
 text = "Camp Fire"
 
 [node name="Camp2" type="Button" parent="."]
 layout_mode = 0
-offset_left = 571.0
+offset_left = 535.0
 offset_top = 302.0
-offset_right = 735.0
-offset_bottom = 350.0
+offset_right = 659.0
+offset_bottom = 341.0
 theme_override_fonts/font = ExtResource("4_g8h5j")
 theme_override_font_sizes/font_size = 30
 text = "Camp Fire"
+
+[node name="Line2D2" type="Line2D" parent="."]
+position = Vector2(160, 1)
+points = PackedVector2Array(182, 108, 184, 564)
+default_color = Color(0, 0, 0, 1)
 
 [node name="PlayerHealthNumberLabel" type="Label" parent="."]
 layout_mode = 0
@@ -314,6 +331,101 @@ offset_bottom = 54.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_g8h5j")
 theme_override_font_sizes/font_size = 25
+
+[node name="Line2D6" type="Line2D" parent="."]
+position = Vector2(811, 2)
+points = PackedVector2Array(182, 108, 184, 564)
+default_color = Color(0, 0, 0, 1)
+
+[node name="Line2D5" type="Line2D" parent="."]
+position = Vector2(655, 2)
+points = PackedVector2Array(182, 108, 184, 564)
+default_color = Color(0, 0, 0, 1)
+
+[node name="Line2D4" type="Line2D" parent="."]
+position = Vector2(499, 2)
+points = PackedVector2Array(182, 108, 184, 564)
+default_color = Color(0, 0, 0, 1)
+
+[node name="Line2D3" type="Line2D" parent="."]
+position = Vector2(334, 3)
+points = PackedVector2Array(182, 108, 184, 564)
+default_color = Color(0, 0, 0, 1)
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(-41, -3)
+points = PackedVector2Array(182, 108, 184, 564)
+default_color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 35.0
+offset_top = 80.0
+offset_right = 96.0
+offset_bottom = 103.0
+theme_override_fonts/font = ExtResource("4_g8h5j")
+theme_override_font_sizes/font_size = 25
+text = "Depth 1"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 195.0
+offset_top = 80.0
+offset_right = 256.0
+offset_bottom = 103.0
+theme_override_fonts/font = ExtResource("4_g8h5j")
+theme_override_font_sizes/font_size = 25
+text = "Depth 2"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 387.0
+offset_top = 80.0
+offset_right = 448.0
+offset_bottom = 103.0
+theme_override_fonts/font = ExtResource("4_g8h5j")
+theme_override_font_sizes/font_size = 25
+text = "Depth 3"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 560.0
+offset_top = 80.0
+offset_right = 621.0
+offset_bottom = 103.0
+theme_override_fonts/font = ExtResource("4_g8h5j")
+theme_override_font_sizes/font_size = 25
+text = "Depth 4"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="."]
+offset_left = 728.0
+offset_top = 80.0
+offset_right = 789.0
+offset_bottom = 103.0
+theme_override_fonts/font = ExtResource("4_g8h5j")
+theme_override_font_sizes/font_size = 25
+text = "Depth 5"
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="."]
+offset_left = 880.0
+offset_top = 80.0
+offset_right = 941.0
+offset_bottom = 103.0
+theme_override_fonts/font = ExtResource("4_g8h5j")
+theme_override_font_sizes/font_size = 25
+text = "Depth 6"
+horizontal_alignment = 1
+
+[node name="Label7" type="Label" parent="."]
+offset_left = 1040.0
+offset_top = 80.0
+offset_right = 1101.0
+offset_bottom = 103.0
+theme_override_fonts/font = ExtResource("4_g8h5j")
+theme_override_font_sizes/font_size = 25
+text = "Depth 7"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="tier_1_node_enemy1" to="." method="_on_tier_1_node_enemy_1_pressed"]
 [connection signal="pressed" from="tier_1_node_enemy1" to="." method="_on_node_enemy_1_pressed"]

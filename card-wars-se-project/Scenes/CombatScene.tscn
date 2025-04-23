@@ -396,7 +396,9 @@ offset_left = 706.0
 offset_top = 425.0
 offset_right = 751.0
 offset_bottom = 448.0
+theme_override_fonts/font = ExtResource("13_7d6hk")
 text = "Def: 0"
+horizontal_alignment = 1
 
 [node name="TurnIndicator" type="Label" parent="."]
 layout_mode = 0
