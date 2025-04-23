@@ -7,13 +7,13 @@ extends Node
 @export var WorldMap: PackedScene
 
 const PLAYER_MAX_HEALTH = 100
-const ENEMY_MAX_HEALTH = 100
+const ENEMY_MAX_HEALTH = 25
 const ENEMY_BOSS_MAX_HEALTH = 250
 const ENEMY_ACTIONS = [ENEMY_ACTION_ATTACK, ENEMY_ACTION_ATTACK, ENEMY_ACTION_ATTACK, ENEMY_ACTION_HEAL, ENEMY_ACTION_HEAL]
 const ENEMY_ACTION_ATTACK = 0
 const ENEMY_ACTION_HEAL = 1
-const ENEMY_ATTACK_BASE = 6
-const ENEMY_HEAL_BASE = 3
+const ENEMY_ATTACK_BASE = 3
+const ENEMY_HEAL_BASE = 2
 var enemy_action_repeat = 0
 var enemy_health: int = 100
 var player_health: int = 100
@@ -26,7 +26,7 @@ var enemy_action = ENEMY_ACTION_ATTACK
 var map_progression = 1
 var difficulty_multiplier = 1.0
 var enemy_health_comparator = 0
-var Player_Deck = ["Attack 20", "Defend 15", "Attack 20", "Attack 20", "Attack 20", "Defend 15", "Attack 30", "Heal 20"]
+var Player_Deck = ["Attack 5", "Defend 7", "Attack 5", "Attack 5", "Attack 5", "Defend 7", "Attack 5", "Heal 6"]
 
 
 
@@ -37,7 +37,7 @@ func _ready():
 func start_combat():
 	print("Player Deck Below")
 	print(Player_Deck)
-	enemy_health_comparator = (ENEMY_MAX_HEALTH + 5 * (map_progression - 2)) * difficulty_multiplier
+	enemy_health_comparator = (ENEMY_MAX_HEALTH + 2 * (map_progression - 2)) * difficulty_multiplier
 	print(enemy_health_comparator)
 	print("Starting combat...")
 
