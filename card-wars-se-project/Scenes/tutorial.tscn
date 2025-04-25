@@ -1,0 +1,321 @@
+[gd_scene load_steps=6 format=3 uid="uid://df1mua2nfdr5j"]
+
+[ext_resource type="Texture2D" uid="uid://b6tipxe3okxko" path="res://Assets/tutorialbg.png" id="1_ka2pi"]
+[ext_resource type="Script" uid="uid://c5g7vir6ng0op" path="res://Scripts/tutorial.gd" id="1_p8jf4"]
+[ext_resource type="FontFile" uid="uid://bmy0dltdp5oyx" path="res://Assets/Harmonic.ttf" id="2_feyax"]
+[ext_resource type="Texture2D" uid="uid://dilp76xmj4ku8" path="res://Assets/tutorialbg2.png" id="2_i6t4g"]
+[ext_resource type="Texture2D" uid="uid://b7vi8yqf7smed" path="res://Assets/tutorialbg3.png" id="3_p8jf4"]
+
+[node name="Tutorial" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p8jf4")
+
+[node name="Background1" type="Sprite2D" parent="."]
+position = Vector2(579, 329)
+texture = ExtResource("1_ka2pi")
+
+[node name="Background2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(579, 326)
+texture = ExtResource("2_i6t4g")
+
+[node name="Background3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(581, 333)
+texture = ExtResource("3_p8jf4")
+
+[node name="StartPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = -11.0
+offset_top = -7.0
+offset_right = 1165.0
+offset_bottom = 666.0
+
+[node name="StartTitle" type="Label" parent="StartPanel"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 83.0
+offset_right = 832.0
+offset_bottom = 184.0
+theme_override_fonts/font = ExtResource("2_feyax")
+theme_override_font_sizes/font_size = 72
+text = "Welcome to the Tutorial!"
+
+[node name="StartButton" type="Button" parent="StartPanel"]
+layout_mode = 0
+offset_left = 230.0
+offset_top = 232.0
+offset_right = 415.0
+offset_bottom = 288.0
+theme_override_fonts/font = ExtResource("2_feyax")
+theme_override_font_sizes/font_size = 32
+text = "Continue"
+
+[node name="BattlePanel" type="Panel" parent="."]
+visible = false
+offset_left = -22.0
+offset_top = -14.0
+offset_right = 1154.0
+offset_bottom = 659.0
+
+[node name="BattleTitle" type="Label" parent="BattlePanel"]
+layout_mode = 0
+offset_left = 237.0
+offset_top = 356.0
+offset_right = 990.0
+offset_bottom = 457.0
+theme_override_fonts/font = ExtResource("2_feyax")
+theme_override_font_sizes/font_size = 72
+text = "This is the Combat Screen"
+
+[node name="BattleButton" type="Button" parent="BattlePanel"]
+layout_mode = 0
+offset_left = 878.0
+offset_top = 241.0
+offset_right = 1063.0
+offset_bottom = 297.0
+theme_override_fonts/font = ExtResource("2_feyax")
+theme_override_font_sizes/font_size = 32
+text = "Continue"
+
+[node name="EnemyPanel" type="Panel" parent="."]
+visible = false
+offset_left = -22.0
+offset_top = -14.0
+offset_right = 1175.0
+offset_bottom = 661.0
+
+[node name="EnemyTitle" type="Label" parent="EnemyPanel"]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 521.0
+offset_right = 1055.0
+offset_bottom = 618.0
+theme_override_fonts/font = ExtResource("2_feyax")
+theme_override_font_sizes/font_size = 72
+text = "This is the enemy you're fighting"
+
+[node name="EnemyButton" type="Button" parent="EnemyPanel"]
+layout_mode = 0
+offset_left = 915.0
+offset_top = 604.0
+offset_right = 1100.0
+offset_bottom = 660.0
+theme_override_fonts/font = ExtResource("2_feyax")
+theme_override_font_sizes/font_size = 32
+text = "Continue"
+
+[node name="EnemyDescription2" type="Label" parent="EnemyPanel"]
+offset_left = 821.0
+offset_top = 142.0
+offset_right = 1167.0
+offset_bottom = 211.0
+theme_override_fonts/font = ExtResource("2_feyax")
+theme_override_font_sizes/font_size = 54
+text = "and next action"
+
+[node name="EnemyDescription1" type="Label" parent="EnemyPanel"]
+layout_mode = 0
+offset_left = 423.0
+offset_top = 42.0
+offset_right = 769.0
+offset_bottom = 111.0
+theme_override_fonts/font = ExtResource("2_feyax")
+theme_override_font_sizes/font_size = 54
+text = "it's health bar"
+
+[node name="PlayerPanel" type="Panel" parent="."]
+visible = false
+offset_left = -22.0
+offset_top = -14.0
+offset_right = 1175.0
+offset_bottom = 661.0
+
+[node name="PlayerTitle" type="Label" parent="PlayerPanel"]
+layout_mode = 0
+offset_left = 164.0
+offset_top = 202.0
+offset_right = 1129.0
+offset_bottom = 299.0
+theme_override_fonts/font = ExtResource("2_feyax")
+theme_override_font_sizes/font_size = 72
+text = "This is your hand of cards"
+
+[node name="PlayerButton" type="Button" parent="PlayerPanel"]
+layout_mode = 0
+offset_left = 890.0
+offset_top = 314.0
+offset_right = 1075.0
+offset_bottom = 370.0
+theme_override_fonts/font = ExtResource("2_feyax")
+theme_override_font_sizes/font_size = 32
+text = "Continue"
+
+[node name="PlayerDesc1" type="Label" parent="PlayerPanel"]
+offset_left = 36.0
+offset_top = 581.0
+offset_right = 382.0
+offset_bottom = 650.0
+theme_override_fonts/font = ExtResource("2_feyax")
+theme_override_font_sizes/font_size = 54
+text = "remaining deck"
+
+[node name="PlayerDesc3" type="Label" parent="PlayerPanel"]
+offset_left = 846.0
+offset_top = 587.0
+offset_right = 1192.0
+offset_bottom = 656.0
+theme_override_fonts/font = ExtResource("2_feyax")
+theme_override_font_sizes/font_size = 54
+text = "discard pile"
+
+[node name="PlayerDesc2" type="Label" parent="PlayerPanel"]
+layout_mode = 0
+offset_left = 407.0
+offset_top = 373.0
+offset_right = 753.0
+offset_bottom = 442.0
+theme_override_fonts/font = ExtResource("2_feyax")
+theme_override_font_sizes/font_size = 54
+text = "your health bar"
+
+[node name="CardPanel" type="Panel" parent="."]
+visible = false
+offset_left = -19.0
+offset_top = -10.0
+offset_right = 1178.0
+offset_bottom = 665.0
+
+[node name="CardTitle" type="Label" parent="CardPanel"]
+layout_mode = 0
+offset_left = 123.0
+offset_top = 66.0
+offset_right = 1088.0
+offset_bottom = 163.0
+theme_override_fonts/font = ExtResource("2_feyax")
+theme_override_font_sizes/font_size = 72
+text = "Play Cards to defeat the enemy!"
+
+[node name="CardButton" type="Button" parent="CardPanel"]
+layout_mode = 0
+offset_left = 929.0
+offset_top = 172.0
+offset_right = 1114.0
+offset_bottom = 228.0
+theme_override_fonts/font = ExtResource("2_feyax")
+theme_override_font_sizes/font_size = 32
+text = "Continue"
+
+[node name="CardDesc1" type="Label" parent="CardPanel"]
+offset_left = 60.0
+offset_top = 192.0
+offset_right = 549.0
+offset_bottom = 261.0
+theme_override_fonts/font = ExtResource("2_feyax")
+theme_override_font_sizes/font_size = 54
+text = "attack to deal damage"
+
+[node name="CardDesc2" type="Label" parent="CardPanel"]
+offset_left = 561.0
+offset_top = 410.0
+offset_right = 1151.0
+offset_bottom = 479.0
+theme_override_fonts/font = ExtResource("2_feyax")
+theme_override_font_sizes/font_size = 54
+text = "and heal to restore health"
+
+[node name="CardDesc3" type="Label" parent="CardPanel"]
+layout_mode = 0
+offset_left = 244.0
+offset_top = 303.0
+offset_right = 916.0
+offset_bottom = 372.0
+theme_override_fonts/font = ExtResource("2_feyax")
+theme_override_font_sizes/font_size = 54
+text = "defend to block enemy damage"
+
+[node name="RewardPanel" type="Panel" parent="."]
+visible = false
+offset_left = -19.0
+offset_top = -10.0
+offset_right = 1178.0
+offset_bottom = 665.0
+
+[node name="RewardTitle" type="Label" parent="RewardPanel"]
+layout_mode = 0
+offset_left = 274.0
+offset_top = 20.0
+offset_right = 1239.0
+offset_bottom = 117.0
+theme_override_fonts/font = ExtResource("2_feyax")
+theme_override_font_sizes/font_size = 72
+text = "Win to get a new card"
+
+[node name="RewardButton" type="Button" parent="RewardPanel"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 243.0
+offset_right = 221.0
+offset_bottom = 299.0
+theme_override_fonts/font = ExtResource("2_feyax")
+theme_override_font_sizes/font_size = 32
+text = "Continue"
+
+[node name="RewardDesc1" type="Label" parent="RewardPanel"]
+offset_left = 268.0
+offset_top = 542.0
+offset_right = 961.0
+offset_bottom = 611.0
+theme_override_fonts/font = ExtResource("2_feyax")
+theme_override_font_sizes/font_size = 54
+text = "then swap with one in your deck"
+
+[node name="MapPanel" type="Panel" parent="."]
+visible = false
+offset_left = -19.0
+offset_top = -10.0
+offset_right = 1178.0
+offset_bottom = 665.0
+
+[node name="MapTitle" type="Label" parent="MapPanel"]
+layout_mode = 0
+offset_left = 203.0
+offset_top = 562.0
+offset_right = 1037.0
+offset_bottom = 659.0
+theme_override_fonts/font = ExtResource("2_feyax")
+theme_override_font_sizes/font_size = 72
+text = "Click map nodes to advance"
+
+[node name="MapButton" type="Button" parent="MapPanel"]
+layout_mode = 0
+offset_left = 941.0
+offset_top = 105.0
+offset_right = 1126.0
+offset_bottom = 161.0
+theme_override_fonts/font = ExtResource("2_feyax")
+theme_override_font_sizes/font_size = 32
+text = "Continue"
+
+[node name="MapDesc1" type="Label" parent="MapPanel"]
+offset_left = 447.0
+offset_top = 290.0
+offset_right = 998.0
+offset_bottom = 403.0
+theme_override_fonts/font = ExtResource("2_feyax")
+theme_override_font_sizes/font_size = 54
+text = "defeat the boss to win
+and return home a hero!"
+
+[node name="SkipButton" type="Button" parent="."]
+layout_mode = 0
+offset_right = 132.0
+offset_bottom = 42.0
+theme_override_fonts/font = ExtResource("2_feyax")
+theme_override_font_sizes/font_size = 24
+text = "Skip Tutorial"
