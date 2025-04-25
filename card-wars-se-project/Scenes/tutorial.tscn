@@ -56,8 +56,20 @@ theme_override_fonts/font = ExtResource("2_feyax")
 theme_override_font_sizes/font_size = 32
 text = "Continue"
 
+[node name="RewardDesc2" type="Label" parent="StartPanel"]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 328.0
+offset_right = 518.0
+offset_bottom = 388.0
+theme_override_fonts/font = ExtResource("2_feyax")
+theme_override_font_sizes/font_size = 24
+text = "If you complete the tutorial
+you get a free card!"
+
 [node name="BattlePanel" type="Panel" parent="."]
 visible = false
+layout_mode = 0
 offset_left = -22.0
 offset_top = -14.0
 offset_right = 1154.0
@@ -85,6 +97,7 @@ text = "Continue"
 
 [node name="EnemyPanel" type="Panel" parent="."]
 visible = false
+layout_mode = 0
 offset_left = -22.0
 offset_top = -14.0
 offset_right = 1175.0
@@ -111,6 +124,7 @@ theme_override_font_sizes/font_size = 32
 text = "Continue"
 
 [node name="EnemyDescription2" type="Label" parent="EnemyPanel"]
+layout_mode = 0
 offset_left = 821.0
 offset_top = 142.0
 offset_right = 1167.0
@@ -131,6 +145,7 @@ text = "it's health bar"
 
 [node name="PlayerPanel" type="Panel" parent="."]
 visible = false
+layout_mode = 0
 offset_left = -22.0
 offset_top = -14.0
 offset_right = 1175.0
@@ -157,6 +172,7 @@ theme_override_font_sizes/font_size = 32
 text = "Continue"
 
 [node name="PlayerDesc1" type="Label" parent="PlayerPanel"]
+layout_mode = 0
 offset_left = 36.0
 offset_top = 581.0
 offset_right = 382.0
@@ -166,6 +182,7 @@ theme_override_font_sizes/font_size = 54
 text = "remaining deck"
 
 [node name="PlayerDesc3" type="Label" parent="PlayerPanel"]
+layout_mode = 0
 offset_left = 846.0
 offset_top = 587.0
 offset_right = 1192.0
@@ -186,6 +203,7 @@ text = "your health bar"
 
 [node name="CardPanel" type="Panel" parent="."]
 visible = false
+layout_mode = 0
 offset_left = -19.0
 offset_top = -10.0
 offset_right = 1178.0
@@ -212,6 +230,7 @@ theme_override_font_sizes/font_size = 32
 text = "Continue"
 
 [node name="CardDesc1" type="Label" parent="CardPanel"]
+layout_mode = 0
 offset_left = 60.0
 offset_top = 192.0
 offset_right = 549.0
@@ -221,6 +240,7 @@ theme_override_font_sizes/font_size = 54
 text = "attack to deal damage"
 
 [node name="CardDesc2" type="Label" parent="CardPanel"]
+layout_mode = 0
 offset_left = 561.0
 offset_top = 410.0
 offset_right = 1151.0
@@ -241,6 +261,7 @@ text = "defend to block enemy damage"
 
 [node name="RewardPanel" type="Panel" parent="."]
 visible = false
+layout_mode = 0
 offset_left = -19.0
 offset_top = -10.0
 offset_right = 1178.0
@@ -267,6 +288,7 @@ theme_override_font_sizes/font_size = 32
 text = "Continue"
 
 [node name="RewardDesc1" type="Label" parent="RewardPanel"]
+layout_mode = 0
 offset_left = 268.0
 offset_top = 542.0
 offset_right = 961.0
@@ -277,6 +299,7 @@ text = "then swap with one in your deck"
 
 [node name="MapPanel" type="Panel" parent="."]
 visible = false
+layout_mode = 0
 offset_left = -19.0
 offset_top = -10.0
 offset_right = 1178.0
@@ -303,6 +326,7 @@ theme_override_font_sizes/font_size = 32
 text = "Continue"
 
 [node name="MapDesc1" type="Label" parent="MapPanel"]
+layout_mode = 0
 offset_left = 447.0
 offset_top = 290.0
 offset_right = 998.0
@@ -319,3 +343,12 @@ offset_bottom = 42.0
 theme_override_fonts/font = ExtResource("2_feyax")
 theme_override_font_sizes/font_size = 24
 text = "Skip Tutorial"
+
+[connection signal="pressed" from="StartPanel/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="BattlePanel/BattleButton" to="." method="_on_battle_button_pressed"]
+[connection signal="pressed" from="EnemyPanel/EnemyButton" to="." method="_on_enemy_button_pressed"]
+[connection signal="pressed" from="PlayerPanel/PlayerButton" to="." method="_on_player_button_pressed"]
+[connection signal="pressed" from="CardPanel/CardButton" to="." method="_on_card_button_pressed"]
+[connection signal="pressed" from="RewardPanel/RewardButton" to="." method="_on_reward_button_pressed"]
+[connection signal="pressed" from="MapPanel/MapButton" to="." method="_on_map_button_pressed"]
+[connection signal="pressed" from="SkipButton" to="." method="_on_skip_button_pressed"]
