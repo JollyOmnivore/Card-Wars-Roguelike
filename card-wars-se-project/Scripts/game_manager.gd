@@ -207,8 +207,12 @@ func enemy_action_execute(action: int, value: int, combat_scene: Node):
 	if action == ENEMY_ACTION_ATTACK:
 		if player_def > 0:
 			combat_scene.sheildBlockAnimation()
-		var damage = max(0, value - player_def) 
-		player_health -= damage
+		if EnemyIsElite== true:
+			var damage = max(0, value*1.4 - player_def) # This handles the damage buff for elite enemys
+			player_health -= damage
+		else:
+			var damage = max(0, value - player_def)
+			player_health -= damage
 		combat_scene.PlayerTakeDamage()
 		if player_health <= 0:
 			await get_tree().create_timer(0.3).timeout
@@ -216,7 +220,7 @@ func enemy_action_execute(action: int, value: int, combat_scene: Node):
 		print("Enemy attacks! Player Health:", player_health)
 	elif action == ENEMY_ACTION_HEAL:
 		combat_scene.playEnemyHealAnimation()
-		if map_progression > 5:
+		if map_progression > 8:
 			if enemy_health < ENEMY_BOSS_MAX_HEALTH * difficulty_multiplier:
 				enemy_health += value
 			if enemy_health > ENEMY_BOSS_MAX_HEALTH * difficulty_multiplier:

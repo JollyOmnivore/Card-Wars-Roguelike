@@ -120,7 +120,7 @@ text = "Enemy"
 layout_mode = 0
 offset_left = 696.0
 offset_top = 248.0
-offset_right = 816.0
+offset_right = 824.0
 offset_bottom = 298.0
 theme_override_fonts/font = ExtResource("4_g8h5j")
 theme_override_font_sizes/font_size = 40
@@ -130,7 +130,7 @@ text = "Enemy"
 layout_mode = 0
 offset_left = 696.0
 offset_top = 360.0
-offset_right = 816.0
+offset_right = 824.0
 offset_bottom = 410.0
 theme_override_fonts/font = ExtResource("4_g8h5j")
 theme_override_font_sizes/font_size = 40
@@ -138,9 +138,9 @@ text = "Enemy"
 
 [node name="tier_6_node_enemy11" type="Button" parent="."]
 layout_mode = 0
-offset_left = 856.0
+offset_left = 848.0
 offset_top = 360.0
-offset_right = 976.0
+offset_right = 984.0
 offset_bottom = 410.0
 theme_override_fonts/font = ExtResource("4_g8h5j")
 theme_override_font_sizes/font_size = 40
@@ -148,9 +148,9 @@ text = "Enemy"
 
 [node name="tier_6_node_enemy12" type="Button" parent="."]
 layout_mode = 0
-offset_left = 856.0
+offset_left = 848.0
 offset_top = 248.0
-offset_right = 976.0
+offset_right = 984.0
 offset_bottom = 298.0
 theme_override_fonts/font = ExtResource("4_g8h5j")
 theme_override_font_sizes/font_size = 40
@@ -223,7 +223,7 @@ text = "Camp Fire"
 
 [node name="Line2D2" type="Line2D" parent="."]
 position = Vector2(160, 1)
-points = PackedVector2Array(182, 108, 184, 564)
+points = PackedVector2Array(184, 103, 184, 564)
 default_color = Color(0, 0, 0, 1)
 
 [node name="PlayerHealthNumberLabel" type="Label" parent="."]
@@ -237,28 +237,28 @@ theme_override_fonts/font = ExtResource("4_g8h5j")
 theme_override_font_sizes/font_size = 25
 
 [node name="Line2D6" type="Line2D" parent="."]
-position = Vector2(811, 2)
-points = PackedVector2Array(182, 108, 184, 564)
+position = Vector2(824, 0)
+points = PackedVector2Array(181, 110, 181, 304.653, 181, 566)
 default_color = Color(0, 0, 0, 1)
 
 [node name="Line2D5" type="Line2D" parent="."]
 position = Vector2(655, 2)
-points = PackedVector2Array(182, 108, 184, 564)
+points = PackedVector2Array(185, 110, 185, 566)
 default_color = Color(0, 0, 0, 1)
 
 [node name="Line2D4" type="Line2D" parent="."]
 position = Vector2(499, 2)
-points = PackedVector2Array(182, 108, 184, 564)
+points = PackedVector2Array(181, 118, 181, 558)
 default_color = Color(0, 0, 0, 1)
 
 [node name="Line2D3" type="Line2D" parent="."]
 position = Vector2(334, 3)
-points = PackedVector2Array(182, 108, 184, 564)
+points = PackedVector2Array(186, 109, 184, 564)
 default_color = Color(0, 0, 0, 1)
 
 [node name="Line2D" type="Line2D" parent="."]
 position = Vector2(-41, -3)
-points = PackedVector2Array(182, 108, 184, 564)
+points = PackedVector2Array(185, 107, 185, 563)
 default_color = Color(0, 0, 0, 1)
 
 [node name="Label" type="Label" parent="."]
@@ -274,10 +274,10 @@ horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="."]
 layout_mode = 0
-offset_left = 195.0
+offset_left = 200.0
 offset_top = 80.0
-offset_right = 256.0
-offset_bottom = 103.0
+offset_right = 278.0
+offset_bottom = 106.0
 theme_override_fonts/font = ExtResource("4_g8h5j")
 theme_override_font_sizes/font_size = 25
 text = "Depth 2"
@@ -285,10 +285,10 @@ horizontal_alignment = 1
 
 [node name="Label3" type="Label" parent="."]
 layout_mode = 0
-offset_left = 387.0
+offset_left = 392.0
 offset_top = 80.0
-offset_right = 448.0
-offset_bottom = 103.0
+offset_right = 470.0
+offset_bottom = 106.0
 theme_override_fonts/font = ExtResource("4_g8h5j")
 theme_override_font_sizes/font_size = 25
 text = "Depth 3"
@@ -318,10 +318,10 @@ horizontal_alignment = 1
 
 [node name="Label6" type="Label" parent="."]
 layout_mode = 0
-offset_left = 880.0
+offset_left = 896.0
 offset_top = 80.0
-offset_right = 941.0
-offset_bottom = 103.0
+offset_right = 974.0
+offset_bottom = 106.0
 theme_override_fonts/font = ExtResource("4_g8h5j")
 theme_override_font_sizes/font_size = 25
 text = "Depth 6"
@@ -329,10 +329,10 @@ horizontal_alignment = 1
 
 [node name="Label7" type="Label" parent="."]
 layout_mode = 0
-offset_left = 1040.0
+offset_left = 1048.0
 offset_top = 80.0
-offset_right = 1101.0
-offset_bottom = 103.0
+offset_right = 1126.0
+offset_bottom = 106.0
 theme_override_fonts/font = ExtResource("4_g8h5j")
 theme_override_font_sizes/font_size = 25
 text = "Depth 7"
@@ -344,23 +344,23 @@ horizontal_alignment = 1
 [connection signal="pressed" from="tier_2_node_enemy2" to="." method="_on_node_enemy_2_pressed"]
 [connection signal="pressed" from="tier_2_node_enemy3" to="." method="_on_tier_2_node_enemy_3_pressed"]
 [connection signal="pressed" from="tier_2_node_enemy3" to="." method="_on_node_enemy_2_pressed"]
-[connection signal="pressed" from="tier_3_node_enemy4" to="." method="_on_tier_3_node_enemy_4_pressed"]
 [connection signal="pressed" from="tier_3_node_enemy4" to="." method="_on_node_enemy_2_pressed"]
+[connection signal="pressed" from="tier_3_node_enemy4" to="." method="_on_tier_3_node_enemy_4_pressed"]
 [connection signal="pressed" from="tier_3_node_enemy5" to="." method="_on_tier_3_node_enemy_5_pressed"]
 [connection signal="pressed" from="tier_3_node_enemy5" to="." method="_on_node_enemy_2_pressed"]
-[connection signal="pressed" from="tier_4_node_enemy8" to="." method="_on_tier_4_node_enemy_8_pressed"]
 [connection signal="pressed" from="tier_4_node_enemy8" to="." method="_on_node_enemy_2_pressed"]
-[connection signal="pressed" from="tier_4_node_enemy7" to="." method="_on_tier_4_node_enemy_7_pressed"]
+[connection signal="pressed" from="tier_4_node_enemy8" to="." method="_on_tier_4_node_enemy_8_pressed"]
 [connection signal="pressed" from="tier_4_node_enemy7" to="." method="_on_node_enemy_2_pressed"]
-[connection signal="pressed" from="tier_5_node_enemy10" to="." method="_on_tier_5_node_enemy_10_pressed"]
+[connection signal="pressed" from="tier_4_node_enemy7" to="." method="_on_tier_4_node_enemy_7_pressed"]
 [connection signal="pressed" from="tier_5_node_enemy10" to="." method="_on_node_enemy_2_pressed"]
-[connection signal="pressed" from="tier_5_node_enemy9" to="." method="_on_tier_5_node_enemy_9_pressed"]
+[connection signal="pressed" from="tier_5_node_enemy10" to="." method="_on_tier_5_node_enemy_10_pressed"]
 [connection signal="pressed" from="tier_5_node_enemy9" to="." method="_on_node_enemy_2_pressed"]
-[connection signal="pressed" from="tier_6_node_enemy11" to="." method="_on_tier_6_node_enemy_11_pressed"]
+[connection signal="pressed" from="tier_5_node_enemy9" to="." method="_on_tier_5_node_enemy_9_pressed"]
 [connection signal="pressed" from="tier_6_node_enemy11" to="." method="_on_node_enemy_2_pressed"]
-[connection signal="pressed" from="tier_6_node_enemy12" to="." method="_on_tier_6_node_enemy_12_pressed"]
+[connection signal="pressed" from="tier_6_node_enemy11" to="." method="_on_tier_6_node_enemy_11_pressed"]
 [connection signal="pressed" from="tier_6_node_enemy12" to="." method="_on_node_enemy_2_pressed"]
-[connection signal="pressed" from="tier_7_node_boss" to="." method="_on_tier_7_node_boss_pressed"]
+[connection signal="pressed" from="tier_6_node_enemy12" to="." method="_on_tier_6_node_enemy_12_pressed"]
 [connection signal="pressed" from="tier_7_node_boss" to="." method="_on_node_enemy_2_pressed"]
+[connection signal="pressed" from="tier_7_node_boss" to="." method="_on_tier_7_node_boss_pressed"]
 [connection signal="pressed" from="Camp1" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Camp2" to="." method="_on_button_2_pressed"]
