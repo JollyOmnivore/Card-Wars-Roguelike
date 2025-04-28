@@ -27,12 +27,32 @@ var map_progression = 1
 var difficulty_multiplier = 1.0
 var enemy_health_comparator = 0
 var Player_Deck = ["Attack 20", "Defend 15", "Attack 20", "Attack 20", "Attack 20", "Defend 15", "Attack 30", "Heal 20"]
-
-
+var worldPathA = []
+var worldPathB= []
+var EnemyIsElite = false
 
 func _ready():
 	print("Game Manager Initialized")
 	start_combat()
+	generate_world_Map()
+	print("WORLD MAP")
+	print(worldPathA)
+	print(worldPathB)
+	
+func generate_world_Map():
+	var POIs = ["Enemy", "Elite", "Campfire","Enemy","Enemy"]
+	for i in range(0,5):
+		worldPathA.append(POIs.pick_random())
+		worldPathB.append(POIs.pick_random())
+		if worldPathA[i] == worldPathB[i] || worldPathA[i] != "Enemy":
+			var random_value = randf()
+			if random_value == 0:
+				worldPathA[i] = "Enemy"
+			else:
+				worldPathB[i] = "Enemy"
+			
+		
+	
 
 func start_combat():
 	print("Player Deck Below")

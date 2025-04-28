@@ -110,7 +110,7 @@ theme_override_fonts/font = ExtResource("2_d0y6b")
 theme_override_font_sizes/font_size = 30
 text = "You have recieved a new card!"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="RewardCardOneAura" type="AnimatedSprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.882353)
 position = Vector2(583, 149)
 scale = Vector2(0.7225, 0.7225)
@@ -118,11 +118,27 @@ sprite_frames = SubResource("SpriteFrames_0wnsa")
 autoplay = "default"
 frame_progress = 0.504671
 
+[node name="RewardCardOneAura2" type="AnimatedSprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.882353)
+position = Vector2(736, 152)
+scale = Vector2(0.690502, 0.690502)
+sprite_frames = SubResource("SpriteFrames_0wnsa")
+autoplay = "default"
+frame_progress = 0.504671
+
 [node name="Reward Card" type="Button" parent="."]
-offset_left = 525.0
-offset_top = 83.0
-offset_right = 631.0
-offset_bottom = 217.0
+offset_left = 528.0
+offset_top = 80.0
+offset_right = 634.0
+offset_bottom = 214.0
+
+[node name="Reward Card 2" type="Button" parent="."]
+visible = false
+offset_left = 680.0
+offset_top = 80.0
+offset_right = 786.0
+offset_bottom = 214.0
 
 [node name="Label2" type="Label" parent="."]
 offset_left = 14.0
@@ -183,20 +199,21 @@ offset_right = 1116.4
 offset_bottom = 495.0
 
 [node name="Label3" type="Label" parent="."]
-offset_left = 381.0
-offset_top = 311.0
-offset_right = 762.0
-offset_bottom = 347.0
+offset_left = 264.0
+offset_top = 312.0
+offset_right = 887.0
+offset_bottom = 348.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_d0y6b")
 theme_override_font_sizes/font_size = 30
-text = "Click Card In Deck To Swap"
+text = "Select Reward Card and Click Card In Deck To Swap"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="pressed" from="ConfirmButton" to="." method="_on_confirm_button_pressed"]
 [connection signal="pressed" from="Reward Card" to="." method="_on_reward_card_pressed"]
+[connection signal="pressed" from="Reward Card 2" to="." method="_on_reward_card_2_pressed"]
 [connection signal="pressed" from="Button1" to="." method="_on_button_1_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]

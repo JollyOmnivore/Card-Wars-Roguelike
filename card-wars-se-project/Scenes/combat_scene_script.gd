@@ -31,7 +31,9 @@ func _ready():
 	print("Combat Scene Initialized")
 	master_update()
 	load_player_hand()
-	if GameManager.map_progression >=8:
+	if GameManager.EnemyIsElite == true:
+		enemy_title.text = "Elite Cyber Ninja Guy"
+	elif GameManager.map_progression >=8:
 		enemy_title.text = "King of Cards"
 	
 	texture_enemy_health_bar.max_value = enemymaxhealth

@@ -31,6 +31,7 @@ func _ready() -> void:
 	player_health_number_label.text = str(healthLabelInt)+"/100"
 	var labelprogress = GameManager.map_progression
 	progression_indicator.text = str(labelprogress)
+	loadWorldData()
 	match GameManager.map_progression:
 		1:
 
@@ -159,94 +160,111 @@ func _ready() -> void:
 			tier_6_node_enemy_12.disabled = true
 			camp_1.disabled = true	
 			camp_2.disabled = true	
-
+#starting enemy
 func _on_tier_1_node_enemy_1_pressed() -> void:
 	GameManager.map_progression += 1
 	GameManager.reset_combat()
 	GameManager.start_combat()
 	get_tree().change_scene_to_file("res://Scenes/CombatScene.tscn")
 
+
+
 #tier 2 
 func _on_tier_2_node_enemy_2_pressed() -> void:
-	GameManager.map_progression += 1
-	GameManager.reset_combat()
-	GameManager.start_combat()
-	get_tree().change_scene_to_file("res://Scenes/CombatScene.tscn")
+	MapNodePressed(tier_2_node_enemy_2.text)
 
 func _on_tier_2_node_enemy_3_pressed() -> void:
-	GameManager.map_progression += 1
-	GameManager.reset_combat()
-	GameManager.start_combat()
-	get_tree().change_scene_to_file("res://Scenes/CombatScene.tscn")
+	MapNodePressed(tier_2_node_enemy_3.text)
 
 #tier 3
 
 func _on_tier_3_node_enemy_4_pressed() -> void:
-	GameManager.map_progression += 1
-	GameManager.reset_combat()
-	GameManager.start_combat()
-	get_tree().change_scene_to_file("res://Scenes/CombatScene.tscn")
+	MapNodePressed(tier_3_node_enemy_4.text)
 
 
 func _on_tier_3_node_enemy_5_pressed() -> void:
-	GameManager.map_progression += 1
-	GameManager.reset_combat()
-	GameManager.start_combat()
-	get_tree().change_scene_to_file("res://Scenes/CombatScene.tscn")
+	MapNodePressed(tier_3_node_enemy_5.text)
 
 #tier 4
 
 func _on_tier_4_node_enemy_8_pressed() -> void:
-	GameManager.map_progression += 1
-	GameManager.reset_combat()
-	GameManager.start_combat()
-	get_tree().change_scene_to_file("res://Scenes/CombatScene.tscn")
+	MapNodePressed(tier_4_node_enemy_8.text)
 	
 func _on_tier_4_node_enemy_7_pressed() -> void:
-	GameManager.map_progression += 1
-	GameManager.reset_combat()
-	GameManager.start_combat()
-	get_tree().change_scene_to_file("res://Scenes/CombatScene.tscn")
+	MapNodePressed(tier_4_node_enemy_7.text)
 
 
 #tier 5
 
 func _on_tier_5_node_enemy_10_pressed() -> void:
-	GameManager.map_progression += 1
-	GameManager.reset_combat()
-	GameManager.start_combat()
-	get_tree().change_scene_to_file("res://Scenes/CombatScene.tscn")
+	MapNodePressed(tier_5_node_enemy_10.text)
 
 func _on_tier_5_node_enemy_9_pressed() -> void:
-	GameManager.map_progression += 1
-	GameManager.reset_combat()
-	GameManager.start_combat()
-	get_tree().change_scene_to_file("res://Scenes/CombatScene.tscn")
+	MapNodePressed(tier_5_node_enemy_9.text)
 
 
 #tier 6
 
 func _on_tier_6_node_enemy_11_pressed() -> void:
-	GameManager.map_progression += 1
-	GameManager.reset_combat()
-	GameManager.start_combat()
-	get_tree().change_scene_to_file("res://Scenes/CombatScene.tscn")
+	MapNodePressed(tier_6_node_enemy_11.text)
 
 
 func _on_tier_6_node_enemy_12_pressed() -> void:
-	GameManager.map_progression += 1
-	GameManager.reset_combat()
-	GameManager.start_combat()
-	get_tree().change_scene_to_file("res://Scenes/CombatScene.tscn")
+	MapNodePressed(tier_6_node_enemy_12.text)
 
 
 #tier 7 Boss
 
 func _on_tier_7_node_boss_pressed() -> void:
+	GameManager.EnemyIsElite = false
 	GameManager.map_progression += 1
 	GameManager.reset_combat()
 	GameManager.start_combat()
 	get_tree().change_scene_to_file("res://Scenes/CombatScene.tscn")
+
+
+#load world map data
+func loadWorldData():
+	#top path
+	tier_2_node_enemy_2.text = GameManager.worldPathA[0]
+	tier_3_node_enemy_4.text = GameManager.worldPathA[1]
+	tier_4_node_enemy_8.text = GameManager.worldPathA[2]
+	tier_5_node_enemy_10.text = GameManager.worldPathA[3]
+	tier_6_node_enemy_12.text = GameManager.worldPathA[4]
+	#bottom path
+	tier_2_node_enemy_3.text = GameManager.worldPathB[0]
+	tier_3_node_enemy_5.text = GameManager.worldPathB[1]
+	tier_4_node_enemy_7.text = GameManager.worldPathB[2]
+	tier_5_node_enemy_9.text = GameManager.worldPathB[3]
+	tier_6_node_enemy_11.text = GameManager.worldPathB[4]
+
+
+
+# all node Logic
+func MapNodePressed(nodeText):
+	if nodeText == "Campfire":
+		if GameManager.player_health >= 76:
+			GameManager.player_health = 100
+		else:
+			GameManager.player_health += 25
+		var healthLabelInt = GameManager.player_health
+		texture_enemy_health_bar.value = float(healthLabelInt)
+		GameManager.map_progression += 1
+		get_tree().change_scene_to_file("res://Scenes/world_map.tscn")
+	elif nodeText == "Elite":
+		GameManager.EnemyIsElite = true
+		GameManager.map_progression += 1
+		GameManager.reset_combat()
+		GameManager.start_combat()
+		get_tree().change_scene_to_file("res://Scenes/CombatScene.tscn")
+	elif nodeText == "Enemy":
+		GameManager.EnemyIsElite = false
+		GameManager.map_progression += 1
+		GameManager.reset_combat()
+		GameManager.start_combat()
+		get_tree().change_scene_to_file("res://Scenes/CombatScene.tscn")
+	
+
 
 
 
