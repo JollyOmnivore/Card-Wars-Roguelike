@@ -19,6 +19,7 @@ var enemy_health: int = 100
 var player_health: int = 100
 var player_turn: bool = true
 var player_def: int = 0
+var current_atk_boost = 0
 var card_types = ["attack", "heal", "defend"] 
 var combat_instance = null  # Declare combat_instance globally
 var enemy_next_action = ENEMY_ACTION_ATTACK
@@ -26,7 +27,7 @@ var enemy_action = ENEMY_ACTION_ATTACK
 var map_progression = 1
 var difficulty_multiplier = 1.0
 var enemy_health_comparator = 0
-var Player_Deck = ["Attack 20", "Defend 15", "Attack 20", "Attack 20", "Attack 20", "Defend 15", "Attack 30", "Heal 20"]
+var Player_Deck = ["Attack 20", "Defend 15", "ATKBoost 5", "Attack 20", "Attack 20", "Defend 15", "Attack 30", "Heal 20"]
 var worldPathA = []
 var worldPathB= []
 var EnemyIsElite = false
@@ -102,6 +103,8 @@ func player_action(action: String, value: int):
 			player_action_heal(value, combat_scene)
 		"defend":
 			player_action_defend(value, combat_scene)
+		"atkboost":
+			current_atk_boost += value
 
 	if combat_scene:
 		combat_scene.master_update()
@@ -115,7 +118,7 @@ func player_action_attack(value: int, combat_scene: Node):
 		combat_scene.playAttackAnimation()  # Only call if combat_scene is valid
 		print("Player attacks! Enemy Health:", enemy_health)
 		await get_tree().create_timer(0.3).timeout # time to increase impact of attack effect causing damage
-		enemy_health -= value
+		enemy_health -= (value + current_atk_boost)
 		combat_scene.master_update()
 		print("Unit test check", enemy_health)
 
@@ -261,5 +264,6 @@ func reset_combat():
 
 		
 	player_def = 0
+	current_atk_boost = 0
 	player_turn = true
 	print("Game Reset - Player Health:", player_health, "Enemy Health:", enemy_health)

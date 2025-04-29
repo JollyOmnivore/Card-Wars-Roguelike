@@ -65,6 +65,14 @@ text = "Discard
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="AtkBoostLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = -496.0
+offset_top = 48.0
+offset_right = -289.0
+offset_bottom = 102.0
+text = "ATK Boost: 0"
+
 [connection signal="pressed" from="Button1" to="." method="_on_button_1_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]

@@ -6,6 +6,7 @@ extends Control
 
 @onready var deck_display: Label = $DeckDisplay
 @onready var discard_display: Label = $DiscardDisplay
+@onready var atk_boost_label: Label = $AtkBoostLabel
 
 
 #3 arrays
@@ -57,6 +58,7 @@ func _on_button_1_pressed():
 	discardCards.append(handCards.pop_at(0))
 	
 	CardUpdates()
+	update_atk_boost_display()
 	
 	if HackCardArray.size() > 0:
 		handCards.insert(0, HackCardArray.pop_back())
@@ -111,12 +113,21 @@ func Button_Selected():
 	button_1.disabled = true
 	button_2.disabled = true
 	button_3.disabled = true
+	UpdateDeckDisplay()
 	await get_tree().create_timer(1.5).timeout
 	button_1.disabled = false
 	button_2.disabled = false
 	button_3.disabled = false
-	UpdateDeckDisplay()
+	
 
 func UpdateDeckDisplay():
-	deck_display.text = "Deck\n" + str(HackCardArray.size())
+	await get_tree().create_timer(.1).timeout
+	update_atk_boost_display()
 	discard_display.text = "Discard\n" + str(discardCards.size())
+	await get_tree().create_timer(1.5).timeout
+	deck_display.text = "Deck\n" + str(HackCardArray.size())
+	
+	
+func update_atk_boost_display():
+	var game_manager = get_node("/root/GameManager")
+	atk_boost_label.text = "ATK Boost: " + str(game_manager.current_atk_boost)
