@@ -71,6 +71,8 @@ offset_left = -496.0
 offset_top = 48.0
 offset_right = -289.0
 offset_bottom = 102.0
+theme_override_fonts/font = ExtResource("2_62ofp")
+theme_override_font_sizes/font_size = 20
 text = "ATK Boost: 0"
 
 [connection signal="pressed" from="Button1" to="." method="_on_button_1_pressed"]
