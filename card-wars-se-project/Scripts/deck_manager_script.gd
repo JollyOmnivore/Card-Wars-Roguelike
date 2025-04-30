@@ -17,9 +17,9 @@ var newDeck = []
 var originalDeck = GameManager.Player_Deck.duplicate()
 var currentProgression = GameManager.map_progression
 
-var loot_pool_1 = ["Attack 35", "Defend 35", "Heal 35"]
-var loot_pool_2 = ["Attack 35", "Defend 45", "Heal 40"]
-var loot_pool_3 = ["Attack 45", "Defend 50", "Heal 50"]
+var loot_pool_1 = ["Attack 10", "Defend 10", "Heal 7", "Attack 10", "Defend 10", "ATKBoost 2"]
+var loot_pool_2 = ["Attack 14", "Defend 12", "Heal 10", "Attack 15", "Defend 15", "ATKBoost 3"]
+var loot_pool_3 = ["Attack 18", "Defend 17", "Heal 16", "Attack 20", "Defend 20", "ATKBoost 5"]
 var CardList = []
 
 var selected_reward_card: Button = null
