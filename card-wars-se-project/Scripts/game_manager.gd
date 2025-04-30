@@ -8,7 +8,7 @@ extends Node
 
 const PLAYER_MAX_HEALTH = 100
 const ENEMY_MAX_HEALTH = 100
-const ENEMY_BOSS_MAX_HEALTH = 250
+#const ENEMY_BOSS_MAX_HEALTH = 250
 const ENEMY_ACTIONS = [ENEMY_ACTION_ATTACK, ENEMY_ACTION_ATTACK, ENEMY_ACTION_ATTACK, ENEMY_ACTION_HEAL, ENEMY_ACTION_HEAL]
 const ENEMY_ACTION_ATTACK = 0
 const ENEMY_ACTION_HEAL = 1
@@ -223,15 +223,9 @@ func enemy_action_execute(action: int, value: int, combat_scene: Node):
 		print("Enemy attacks! Player Health:", player_health)
 	elif action == ENEMY_ACTION_HEAL:
 		combat_scene.playEnemyHealAnimation()
-		if map_progression > 8:
-			if enemy_health < ENEMY_BOSS_MAX_HEALTH * difficulty_multiplier:
-				enemy_health += value
-			if enemy_health > ENEMY_BOSS_MAX_HEALTH * difficulty_multiplier:
-				enemy_health = ENEMY_BOSS_MAX_HEALTH * difficulty_multiplier
-		else:
-			if enemy_health < ENEMY_MAX_HEALTH * difficulty_multiplier:
-				enemy_health += value
-			if enemy_health > ENEMY_MAX_HEALTH * difficulty_multiplier:
+		if enemy_health < ENEMY_MAX_HEALTH * difficulty_multiplier:
+			enemy_health += value
+		if enemy_health > ENEMY_MAX_HEALTH * difficulty_multiplier:
 				enemy_health = ENEMY_MAX_HEALTH * difficulty_multiplier
 		print("Enemy heals! Enemy Health:", enemy_health)
 
