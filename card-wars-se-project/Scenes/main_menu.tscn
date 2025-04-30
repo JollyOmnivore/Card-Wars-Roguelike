@@ -38,6 +38,6 @@ theme_override_fonts/font = ExtResource("3_1ehe0")
 theme_override_font_sizes/font_size = 90
 text = "New Game"
 
-[connection signal="pressed" from="quit_button" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="quit_button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="quit_button" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="new_game_button" to="." method="_on_new_game_button_pressed"]

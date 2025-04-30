@@ -9,6 +9,8 @@ extends Control
 @onready var player_button: Button = $PlayerPanel/PlayerButton
 @onready var card_panel: Panel = $CardPanel
 @onready var card_button: Button = $CardPanel/CardButton
+@onready var atk_boost_panel: Panel = $AtkBoostPanel
+@onready var atk_boost_button: Button = $AtkBoostPanel/AtkBoostButton
 @onready var reward_panel: Panel = $RewardPanel
 @onready var reward_button: Button = $RewardPanel/RewardButton
 @onready var map_panel: Panel = $MapPanel
@@ -17,6 +19,7 @@ extends Control
 @onready var background_1: Sprite2D = $Background1
 @onready var background_2: Sprite2D = $Background2
 @onready var background_3: Sprite2D = $Background3
+@onready var background_4: Sprite2D = $Background4
 
 func _ready():
 	# disable all unused buttons
@@ -32,6 +35,7 @@ func _ready():
 	card_button.disabled = true
 	reward_button.disabled = true
 	map_button.disabled = true
+	atk_boost_button.disabled = true
 
 
 func _on_skip_button_pressed() -> void:
@@ -68,9 +72,9 @@ func _on_card_button_pressed() -> void:
 	card_panel.visible = false
 	card_button.disabled = true
 	background_1.visible = false
-	background_2.visible = true
-	reward_panel.visible = true
-	reward_button.disabled = false
+	background_4.visible = true
+	atk_boost_panel.visible = true
+	atk_boost_button.disabled = false
 
 
 func _on_reward_button_pressed() -> void:
@@ -84,3 +88,12 @@ func _on_reward_button_pressed() -> void:
 
 func _on_map_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Deck_Manager.tscn")
+
+
+func _on_atk_boost_button_pressed() -> void:
+	atk_boost_panel.visible = false
+	atk_boost_button.disabled = true
+	background_4.visible = false
+	background_2.visible = true
+	reward_panel.visible = true
+	reward_button.disabled = false
