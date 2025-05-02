@@ -16,6 +16,7 @@ extends Control
 @onready var tier_7_node_boss: Button = $tier_7_node_boss
 @onready var player_health_number_label: Label = $PlayerHealthNumberLabel
 
+@onready var heal_overlay: Sprite2D = $HealOverlay
 
 
 
@@ -160,6 +161,17 @@ func _ready() -> void:
 			tier_6_node_enemy_12.disabled = true
 			camp_1.disabled = true	
 			camp_2.disabled = true	
+
+
+func PlayerHealEffect():
+	heal_overlay.modulate.a8 = 90
+	await get_tree().create_timer(0.9).timeout 
+	heal_overlay.modulate.a8 = 0
+
+
+
+
+
 #starting enemy
 func _on_tier_1_node_enemy_1_pressed() -> void:
 	GameManager.map_progression += 1
@@ -243,6 +255,8 @@ func loadWorldData():
 # all node Logic
 func MapNodePressed(nodeText):
 	if nodeText == "Campfire":
+		PlayerHealEffect()
+		await get_tree().create_timer(0.9).timeout 
 		if GameManager.player_health >= 76:
 			GameManager.player_health = 100
 		else:
