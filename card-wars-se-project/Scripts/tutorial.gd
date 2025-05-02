@@ -20,14 +20,10 @@ extends Control
 @onready var background_2: Sprite2D = $Background2
 @onready var background_3: Sprite2D = $Background3
 @onready var background_4: Sprite2D = $Background4
+@onready var finish_panel: Panel = $FinishPanel
+@onready var finish_button: Button = $FinishPanel/FinishButton
 
 func _ready():
-	# disable all unused buttons
-	# reenable and disable buttons with each press
-	# toggle visibility with button presses
-	# modify new game to go to tutorial
-	# have tutorial end with getting a card
-	# skip tutorial does not get a card
 	start_button.disabled = false
 	battle_button.disabled = true
 	enemy_button.disabled = true
@@ -36,6 +32,7 @@ func _ready():
 	reward_button.disabled = true
 	map_button.disabled = true
 	atk_boost_button.disabled = true
+	finish_button.disabled = true
 
 
 func _on_skip_button_pressed() -> void:
@@ -87,7 +84,11 @@ func _on_reward_button_pressed() -> void:
 
 
 func _on_map_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/Deck_Manager.tscn")
+	map_panel.visible = false
+	map_button.disabled = true
+	background_3.visible = false
+	finish_panel.visible = true
+	finish_button.disabled = false
 
 
 func _on_atk_boost_button_pressed() -> void:
@@ -97,3 +98,7 @@ func _on_atk_boost_button_pressed() -> void:
 	background_2.visible = true
 	reward_panel.visible = true
 	reward_button.disabled = false
+
+
+func _on_finish_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/Deck_Manager.tscn")
