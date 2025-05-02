@@ -177,34 +177,28 @@ func enemy_turn():
 
 func enemy_action_choose() -> int:
 	var next = ENEMY_ACTIONS.pick_random()
-	var enemy_health_comparator = 0
-	if map_progression >= 8:
-		enemy_health_comparator *= 1.0
-	else:
-		enemy_health_comparator = (ENEMY_MAX_HEALTH + 3 * (map_progression - 2)) * difficulty_multiplier
+	enemy_health_comparator = (ENEMY_MAX_HEALTH + 3 * (map_progression - 2)) * difficulty_multiplier
+
 	if enemy_health >= enemy_health_comparator:
-			enemy_action_repeat += 1
-			print("Enemy action repeat count:", enemy_action_repeat)
-			return ENEMY_ACTION_ATTACK
+		enemy_action_repeat += 1
+		print("Enemy is full health. Force attack.")
+		return ENEMY_ACTION_ATTACK
+
+	if enemy_action == next:
+		enemy_action_repeat += 1
 	else:
-		if enemy_action == next:
-			print("Enemy action is the same as last turn, incrementing repeat count")
-			enemy_action_repeat += 1
-		else:
-			enemy_action_repeat = 0
-			print("Enemy action changed, reset repeat count")
-		if enemy_action_repeat == 1: # if the enemy tries to heal twice in a row, it will attack instead
-			if next == ENEMY_ACTION_HEAL:
-				enemy_action_repeat = 0
-				print("Forced enemy action change to attack")
-				return ENEMY_ACTION_ATTACK
-		elif enemy_action_repeat > 2: # if the enemy tries to attack four times (or more) in a row, it will heal instead
-			if next == ENEMY_ACTION_ATTACK:
-				enemy_action_repeat = 0
-				print("Forced enemy action change to heal")
-				return ENEMY_ACTION_HEAL
-	print("Enemy action repeat count:", enemy_action_repeat)
+		enemy_action_repeat = 0
+
+	if enemy_action_repeat == 1 and next == ENEMY_ACTION_HEAL:
+		enemy_action_repeat = 0
+		return ENEMY_ACTION_ATTACK
+
+	if enemy_action_repeat > 2 and next == ENEMY_ACTION_ATTACK:
+		enemy_action_repeat = 0
+		return ENEMY_ACTION_HEAL
+
 	return next
+
 
 func enemy_action_execute(action: int, value: int, combat_scene: Node):
 	if action == ENEMY_ACTION_ATTACK:
