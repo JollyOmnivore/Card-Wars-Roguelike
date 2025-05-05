@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://baytxwplx4vbu"]
+
+[ext_resource type="Texture2D" uid="uid://bodxj40nl0bd" path="res://Assets/32 Backgrounds Free!/32 Backgrounds Free!/Horizontal/12.png" id="1_28flt"]
+[ext_resource type="Script" uid="uid://lw03e5c6sule" path="res://Scripts/main_menu_script.gd" id="1_48xlc"]
+[ext_resource type="FontFile" uid="uid://bmy0dltdp5oyx" path="res://Assets/Harmonic.ttf" id="3_1ehe0"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_48xlc")
+
+[node name="menu_background" type="Sprite2D" parent="."]
+position = Vector2(572.5, 324.688)
+scale = Vector2(1.81094, 1.52328)
+texture = ExtResource("1_28flt")
+
+[node name="quit_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 456.0
+offset_right = 759.0
+offset_bottom = 566.0
+theme_override_fonts/font = ExtResource("3_1ehe0")
+theme_override_font_sizes/font_size = 90
+text = "Quit"
+
+[node name="new_game_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 328.0
+offset_right = 800.0
+offset_bottom = 432.0
+theme_override_fonts/font = ExtResource("3_1ehe0")
+theme_override_font_sizes/font_size = 90
+text = "New Game"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 344.0
+offset_top = 32.0
+offset_right = 888.0
+offset_bottom = 315.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 5
+theme_override_fonts/font = ExtResource("3_1ehe0")
+theme_override_font_sizes/font_size = 140
+text = "KING OF
+CARDS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="quit_button" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="quit_button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="new_game_button" to="." method="_on_new_game_button_pressed"]

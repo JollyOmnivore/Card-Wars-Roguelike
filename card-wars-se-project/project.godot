@@ -11,9 +11,12 @@ config_version=5
 [application]
 
 config/name="Card Wars SE Project"
-run/main_scene="res://Scenes/CombatScene.tscn"
+run/main_scene="uid://baytxwplx4vbu"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/fullsize=false
+boot_splash/use_filter=false
+boot_splash/image="uid://u7647t43vuyc"
+config/icon="uid://u7647t43vuyc"
 
 [autoload]
 
@@ -34,3 +37,4 @@ enabled=PackedStringArray("res://addons/gut/plugin.cfg")
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+textures/vram_compression/import_etc2_astc=true

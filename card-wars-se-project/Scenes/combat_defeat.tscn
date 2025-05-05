@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://cqg2abh3kjnv"]
+[gd_scene load_steps=4 format=3 uid="uid://cqg2abh3kjnv"]
 
+[ext_resource type="Script" uid="uid://bhuwo7d458s1o" path="res://Scripts/combat_defeat.gd" id="1_ey2k0"]
 [ext_resource type="Texture2D" uid="uid://dwqpnx0cu66ao" path="res://Assets/32 Backgrounds Free!/32 Backgrounds Free!/Horizontal/4.png" id="1_m36sa"]
+[ext_resource type="FontFile" uid="uid://bmy0dltdp5oyx" path="res://Assets/Harmonic.ttf" id="3_ta3l0"]
 
 [node name="Combat Defeat" type="Control"]
 layout_mode = 3
@@ -10,6 +12,7 @@ offset_right = -620.664
 offset_bottom = -417.752
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ey2k0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(576.5, 324.75)
@@ -18,10 +21,23 @@ texture = ExtResource("1_m36sa")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 234.0
-offset_top = 336.0
-offset_right = 871.0
-offset_bottom = 533.0
+offset_left = 298.0
+offset_top = 137.0
+offset_right = 935.0
+offset_bottom = 334.0
 theme_override_colors/font_color = Color(0.988235, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_ta3l0")
 theme_override_font_sizes/font_size = 144
 text = "Defeated"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 441.0
+offset_top = 318.0
+offset_right = 716.0
+offset_bottom = 397.0
+theme_override_fonts/font = ExtResource("3_ta3l0")
+theme_override_font_sizes/font_size = 70
+text = "Exit Game"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

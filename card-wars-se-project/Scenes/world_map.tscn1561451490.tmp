@@ -1,0 +1,227 @@
+[gd_scene load_steps=8 format=3 uid="uid://dlf7cmuljvt8q"]
+
+[ext_resource type="Script" uid="uid://us6nbs48yn83" path="res://Scripts/world_map.gd" id="1_g8h5j"]
+[ext_resource type="Texture2D" uid="uid://7bxoo33k7mql" path="res://Assets/32 Backgrounds Free!/32 Backgrounds Free!/Horizontal/26.png" id="1_rvr0e"]
+[ext_resource type="Texture2D" uid="uid://bahiqwvx4urwy" path="res://Assets/simple-dotted-line-png.png" id="2_b7gke"]
+[ext_resource type="Texture2D" uid="uid://bjacycfms1arl" path="res://Assets/Pixel Health Bar/Pixel Health Bar/Bar/no health bar.png" id="3_ecn11"]
+[ext_resource type="Texture2D" uid="uid://btv0sr108dh38" path="res://Assets/Pixel Health Bar/Pixel Health Bar/Bar/empty health bar.png" id="4_3jykw"]
+[ext_resource type="FontFile" uid="uid://bmy0dltdp5oyx" path="res://Assets/Harmonic.ttf" id="4_g8h5j"]
+[ext_resource type="Texture2D" uid="uid://wsnf3st3c5uy" path="res://Assets/Pixel Health Bar/Pixel Health Bar/Bar/health bar.png" id="5_w1i7g"]
+
+[node name="WorldMap" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g8h5j")
+
+[node name="map_background" type="Sprite2D" parent="."]
+position = Vector2(578.5, 328.75)
+scale = Vector2(1.82344, 1.53678)
+texture = ExtResource("1_rvr0e")
+
+[node name="TextureEnemyHealthBar" type="TextureProgressBar" parent="map_background"]
+offset_left = -118.732
+offset_top = -209.366
+offset_right = 88.2684
+offset_bottom = -169.366
+scale = Vector2(1.24, 1.16)
+nine_patch_stretch = true
+texture_under = ExtResource("3_ecn11")
+texture_over = ExtResource("4_3jykw")
+texture_progress = ExtResource("5_w1i7g")
+
+[node name="path" type="Sprite2D" parent="."]
+position = Vector2(181, 326)
+scale = Vector2(0.1, 0.096)
+texture = ExtResource("2_b7gke")
+
+[node name="path2" type="Sprite2D" parent="."]
+position = Vector2(354, 393)
+rotation = 0.785398
+scale = Vector2(0.0827615, 0.112615)
+texture = ExtResource("2_b7gke")
+
+[node name="path3" type="Sprite2D" parent="."]
+position = Vector2(359, 279)
+rotation = -0.717128
+scale = Vector2(0.0827615, 0.112615)
+texture = ExtResource("2_b7gke")
+
+[node name="path4" type="Sprite2D" parent="."]
+position = Vector2(554, 214)
+rotation = -0.00567657
+scale = Vector2(0.0827615, 0.112615)
+texture = ExtResource("2_b7gke")
+
+[node name="path5" type="Sprite2D" parent="."]
+position = Vector2(555, 438)
+rotation = -0.00567657
+scale = Vector2(0.0827615, 0.112615)
+texture = ExtResource("2_b7gke")
+
+[node name="path6" type="Sprite2D" parent="."]
+position = Vector2(774, 213)
+rotation = -0.00567657
+scale = Vector2(0.0827615, 0.112615)
+texture = ExtResource("2_b7gke")
+
+[node name="path7" type="Sprite2D" parent="."]
+position = Vector2(773, 443)
+rotation = -0.00567657
+scale = Vector2(0.0827615, 0.112615)
+texture = ExtResource("2_b7gke")
+
+[node name="path8" type="Sprite2D" parent="."]
+position = Vector2(946, 264)
+rotation = 0.75564
+scale = Vector2(0.0827615, 0.112615)
+texture = ExtResource("2_b7gke")
+
+[node name="path9" type="Sprite2D" parent="."]
+position = Vector2(956, 405)
+rotation = -0.83236
+scale = Vector2(0.0827615, 0.112615)
+texture = ExtResource("2_b7gke")
+
+[node name="node_start" type="Button" parent="."]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 289.0
+offset_right = 151.0
+offset_bottom = 357.0
+theme_override_fonts/font = ExtResource("4_g8h5j")
+theme_override_font_sizes/font_size = 60
+text = "Start"
+
+[node name="tier_1_node_enemy1" type="Button" parent="."]
+layout_mode = 0
+offset_left = 182.0
+offset_top = 292.0
+offset_right = 333.0
+offset_bottom = 360.0
+theme_override_fonts/font = ExtResource("4_g8h5j")
+theme_override_font_sizes/font_size = 60
+text = "Enemy"
+
+[node name="player_indicator" type="Sprite2D" parent="."]
+
+[node name="tier_2_node_enemy2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 380.0
+offset_top = 401.0
+offset_right = 531.0
+offset_bottom = 469.0
+theme_override_fonts/font = ExtResource("4_g8h5j")
+theme_override_font_sizes/font_size = 60
+text = "Enemy"
+
+[node name="tier_2_node_enemy3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 375.0
+offset_top = 172.0
+offset_right = 526.0
+offset_bottom = 240.0
+theme_override_fonts/font = ExtResource("4_g8h5j")
+theme_override_font_sizes/font_size = 60
+text = "Enemy"
+
+[node name="tier_3_node_enemy4" type="Button" parent="."]
+layout_mode = 0
+offset_left = 591.0
+offset_top = 171.0
+offset_right = 742.0
+offset_bottom = 239.0
+theme_override_fonts/font = ExtResource("4_g8h5j")
+theme_override_font_sizes/font_size = 60
+text = "Enemy"
+
+[node name="tier_3_node_enemy5" type="Button" parent="."]
+layout_mode = 0
+offset_left = 596.0
+offset_top = 402.0
+offset_right = 747.0
+offset_bottom = 470.0
+theme_override_fonts/font = ExtResource("4_g8h5j")
+theme_override_font_sizes/font_size = 60
+text = "Enemy"
+
+[node name="tier_4_node_enemy8" type="Button" parent="."]
+layout_mode = 0
+offset_left = 790.0
+offset_top = 172.0
+offset_right = 941.0
+offset_bottom = 240.0
+theme_override_fonts/font = ExtResource("4_g8h5j")
+theme_override_font_sizes/font_size = 60
+text = "Enemy"
+
+[node name="tier_4_node_enemy7" type="Button" parent="."]
+layout_mode = 0
+offset_left = 790.0
+offset_top = 403.0
+offset_right = 941.0
+offset_bottom = 471.0
+theme_override_fonts/font = ExtResource("4_g8h5j")
+theme_override_font_sizes/font_size = 60
+text = "Enemy"
+
+[node name="tier_5_node_boss" type="Button" parent="."]
+layout_mode = 0
+offset_left = 984.0
+offset_top = 294.0
+offset_right = 1135.0
+offset_bottom = 362.0
+theme_override_fonts/font = ExtResource("4_g8h5j")
+theme_override_font_sizes/font_size = 60
+text = "Boss"
+
+[node name="Player Health" type="Label" parent="."]
+layout_mode = 0
+offset_left = 259.0
+offset_top = 33.0
+offset_right = 336.0
+offset_bottom = 64.0
+theme_override_fonts/font = ExtResource("4_g8h5j")
+theme_override_font_sizes/font_size = 30
+text = "Health"
+
+[node name="Player Level" type="Label" parent="."]
+layout_mode = 0
+offset_left = 919.0
+offset_top = 33.0
+offset_right = 1071.0
+offset_bottom = 64.0
+theme_override_fonts/font = ExtResource("4_g8h5j")
+theme_override_font_sizes/font_size = 30
+text = "Player Level"
+
+[node name="Progression Indicator" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1091.0
+offset_top = 28.0
+offset_right = 1131.0
+offset_bottom = 111.0
+theme_override_fonts/font = ExtResource("4_g8h5j")
+theme_override_font_sizes/font_size = 40
+text = "
+"
+
+[connection signal="pressed" from="tier_1_node_enemy1" to="." method="_on_tier_1_node_enemy_1_pressed"]
+[connection signal="pressed" from="tier_1_node_enemy1" to="." method="_on_node_enemy_1_pressed"]
+[connection signal="pressed" from="tier_2_node_enemy2" to="." method="_on_node_enemy_2_pressed"]
+[connection signal="pressed" from="tier_2_node_enemy2" to="." method="_on_tier_2_node_enemy_2_pressed"]
+[connection signal="pressed" from="tier_2_node_enemy3" to="." method="_on_tier_2_node_enemy_3_pressed"]
+[connection signal="pressed" from="tier_2_node_enemy3" to="." method="_on_node_enemy_2_pressed"]
+[connection signal="pressed" from="tier_3_node_enemy4" to="." method="_on_node_enemy_2_pressed"]
+[connection signal="pressed" from="tier_3_node_enemy4" to="." method="_on_tier_3_node_enemy_4_pressed"]
+[connection signal="pressed" from="tier_3_node_enemy5" to="." method="_on_node_enemy_2_pressed"]
+[connection signal="pressed" from="tier_3_node_enemy5" to="." method="_on_tier_3_node_enemy_5_pressed"]
+[connection signal="pressed" from="tier_4_node_enemy8" to="." method="_on_tier_4_node_enemy_8_pressed"]
+[connection signal="pressed" from="tier_4_node_enemy8" to="." method="_on_node_enemy_2_pressed"]
+[connection signal="pressed" from="tier_4_node_enemy7" to="." method="_on_node_enemy_2_pressed"]
+[connection signal="pressed" from="tier_4_node_enemy7" to="." method="_on_tier_4_node_enemy_7_pressed"]
+[connection signal="pressed" from="tier_5_node_boss" to="." method="_on_tier_5_node_boss_pressed"]
+[connection signal="pressed" from="tier_5_node_boss" to="." method="_on_node_enemy_2_pressed"]

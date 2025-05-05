@@ -18,6 +18,21 @@
 [ext_resource type="Texture2D" uid="uid://dy270qqw437uh" path="res://Assets/HealOverlay.png" id="16_7t358"]
 [ext_resource type="Shader" uid="uid://bl2bbe77c3uq5" path="res://Scenes/Hit_flash.gdshader" id="17_dv3n3"]
 
+[sub_resource type="Animation" id="Animation_dv3n3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3, 3)]
+}
+
 [sub_resource type="Animation" id="Animation_7t358"]
 resource_name = "SheildAnimationFlicker"
 length = 0.6
@@ -32,21 +47,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(3, 3), Vector2(5, 5), Vector2(3, 3)]
-}
-
-[sub_resource type="Animation" id="Animation_dv3n3"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(3, 3)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dv3n3"]
@@ -396,7 +396,9 @@ offset_left = 706.0
 offset_top = 425.0
 offset_right = 751.0
 offset_bottom = 448.0
+theme_override_fonts/font = ExtResource("13_7d6hk")
 text = "Def: 0"
+horizontal_alignment = 1
 
 [node name="TurnIndicator" type="Label" parent="."]
 layout_mode = 0
@@ -455,6 +457,8 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("13_7d6hk")
 theme_override_font_sizes/font_size = 25
 text = "Ugly Flying Eyeball's Health"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="EnragedIcon" type="Sprite2D" parent="."]
 position = Vector2(847, 92)
@@ -511,3 +515,38 @@ libraries = {
 &"": SubResource("AnimationLibrary_vp3lu")
 }
 speed_scale = 2.0
+
+[node name="PlayerHealthNumber" type="Label" parent="."]
+layout_mode = 0
+offset_left = 360.0
+offset_top = 431.0
+offset_right = 452.0
+offset_bottom = 462.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("13_7d6hk")
+theme_override_font_sizes/font_size = 30
+text = "100/100"
+horizontal_alignment = 2
+
+[node name="EnemyHealthNumberMax" type="Label" parent="."]
+layout_mode = 0
+offset_left = 277.0
+offset_top = 78.0
+offset_right = 332.0
+offset_bottom = 114.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("13_7d6hk")
+theme_override_font_sizes/font_size = 35
+text = "/100"
+
+[node name="EnemyHealthCurrentNumber" type="Label" parent="."]
+layout_mode = 0
+offset_left = 232.0
+offset_top = 76.0
+offset_right = 274.0
+offset_bottom = 112.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("13_7d6hk")
+theme_override_font_sizes/font_size = 35
+text = "100"
+horizontal_alignment = 2

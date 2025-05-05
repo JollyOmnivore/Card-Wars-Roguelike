@@ -17,26 +17,51 @@ extends Control
 @onready var heal_overlay: Sprite2D = $HealOverlay
 @onready var sheild_animations: AnimationPlayer = $SheildAnimations
 @onready var player_blocked_animation_player: AnimationPlayer = $PlayerBlockedAnimationPlayer
+@onready var enemy_health_number_max: Label = $EnemyHealthNumberMax
+@onready var enemy_health_current_number: Label = $EnemyHealthCurrentNumber
+@onready var player_health_number: Label = $PlayerHealthNumber
+@onready var enemy_title: Label = $"Enemy Title"
+
+var enemymaxhealth = 0
 
 func _ready():
+	enemymaxhealth = GameManager.enemy_health_comparator
 	attackAnimation.visible = false
 	enemy_heal_animation.visible = false
 	print("Combat Scene Initialized")
 	master_update()
 	load_player_hand()
+	if GameManager.EnemyIsElite == true:
+		enemy_title.text = "Elite Cyber Ninja Guy"
+	elif GameManager.map_progression >=8:
+		enemy_title.text = "King of Cards"
+	
+	texture_enemy_health_bar.max_value = enemymaxhealth
+	enemy_health_number_max.text = "/" + str(int(enemymaxhealth))
+	player_health_number.text = str(GameManager.player_health) + "/100"
+	enemy_health_current_number.text = str(int(enemymaxhealth))
+
+
+	texture_enemy_health_bar.value = enemymaxhealth #weird fix
 
 func master_update():
-	var game_manager = get_tree().root.get_node_or_null("GameManager")
-	update_health_display(game_manager)
-	update_defense_display(game_manager)
-	update_turn_indicator(game_manager)
+	if GameManager.player_health >=1:
+		var game_manager = get_tree().root.get_node_or_null("GameManager")
+		
+		update_health_display(game_manager)
+		update_defense_display(game_manager)
+		update_turn_indicator(game_manager)
+	
 
 func update_health_display(game_manager):
 	if game_manager:
 		print("Updating health bars - Player:", game_manager.player_health, "Enemy:", game_manager.enemy_health)
+		enemy_health_current_number.text=  str(game_manager.enemy_health)
 		texture_player_health_bar.value = game_manager.player_health
 		player_health_bar.value = game_manager.player_health
 		texture_enemy_health_bar.value = game_manager.enemy_health
+		player_health_number.text = str(GameManager.player_health) + "/100"
+
 	else:
 		print("ERROR: GameManager not found!")
 
@@ -56,6 +81,8 @@ func update_turn_indicator(game_manager):
 	else:
 		print("ERROR: GameManager not found!")
 	
+func UpdateExactHealth():
+	pass
 	
 func playAttackAnimation():
 	attackAnimation.visible = true

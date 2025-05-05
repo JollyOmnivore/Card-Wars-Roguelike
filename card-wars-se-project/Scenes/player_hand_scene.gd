@@ -3,56 +3,131 @@ extends Control
 @onready var button_1: Button = $Button1
 @onready var button_2: Button = $Button2
 @onready var button_3: Button = $Button3
-var HackCardArray = ["Attack","Attack","Attack","Attack","Attack","Defend","Defend","Heal"]
+
+@onready var deck_display: Label = $DeckDisplay
+@onready var discard_display: Label = $DiscardDisplay
+@onready var atk_boost_label: Label = $AtkBoostLabel
+
+
+#3 arrays
+#deck - pulled from GM (deck gm) pop 3 to player hand
+#player hand - stored in ph, check for max hand, and values for buttons, pop played hand into discard
+#discard pile - popped when played, push onto deck array when deck is empty
+var HackCardArray = GameManager.Player_Deck.duplicate()
+
+var handCards = []
+var discardCards = []
+
 
 func _ready() -> void:
-	# Connect signals manually
-	button_1.pressed.connect(_on_button_1_pressed)
-	button_2.pressed.connect(_on_button_2_pressed)
-	button_3.pressed.connect(_on_button_3_pressed)
-	button_1.text = "Defend"
-	button_2.text = "Attack"
-	button_3.text = "Heal"
+	HackCardArray = GameManager.Player_Deck.duplicate()
+	print("HEY LOOK HERE ")
+	print(HackCardArray)
+	handCards = []
+	discardCards = []
+	HackCardArray.shuffle()
+	for i in range(3):
+		if HackCardArray.size() > 0:
+			handCards.append(HackCardArray.pop_back())
+	if HackCardArray.size() > 0:
+		button_1.text = handCards[0]
+		button_2.text = handCards[1]
+		button_3.text = handCards[2]
+	
+
+
+	
+
+func CardUpdates():
+	if HackCardArray.size() == 0 and discardCards.size() > 0:
+		HackCardArray = discardCards.duplicate()
+		discardCards.clear()
+		HackCardArray.shuffle()
+		print("\n Deck shuffled")
 
 func _on_button_1_pressed():
 	Button_Selected()
 	var game_manager = get_node("/root/GameManager")
-	var button_1_card = button_1.text
-	game_manager.player_action(button_1_card.to_lower())
-	button_1.visible= false
-	button_1.text = HackCardArray.pick_random()
-	await get_tree().create_timer(1.5).timeout
-	button_1.visible= true
-	#print(button_1_card.to_lower())
+	var card_parts = handCards[0].split(" ")
+	var action_type = card_parts[0].to_lower()
+	var action_value = int(card_parts[1])
 
+	game_manager.player_action(action_type, action_value)
+	
+	button_1.visible = false
+	discardCards.append(handCards.pop_at(0))
+	
+	CardUpdates()
+	update_atk_boost_display()
+	
+	if HackCardArray.size() > 0:
+		handCards.insert(0, HackCardArray.pop_back())
+	
+	await get_tree().create_timer(1.5).timeout
+	button_1.text = handCards[0]
+	button_1.visible = true
 
 func _on_button_2_pressed():
 	Button_Selected()
 	var game_manager = get_node("/root/GameManager")
-	var button_2_card = button_2.text
-	game_manager.player_action(button_2_card.to_lower())
-	button_2.visible= false
-	button_2.text = HackCardArray.pick_random()
+	var card_parts = handCards[1].split(" ")
+	var action_type = card_parts[0].to_lower()
+	var action_value = int(card_parts[1])
+	
+	game_manager.player_action(action_type, action_value)
+	
+	button_2.visible = false
+	discardCards.append(handCards.pop_at(1))
+	
+	CardUpdates()
+	
+	if HackCardArray.size() > 0:
+		handCards.insert(1, HackCardArray.pop_back())
+	
 	await get_tree().create_timer(1.5).timeout
-	button_2.visible= true
-
+	button_2.text = handCards[1]
+	button_2.visible = true
 
 func _on_button_3_pressed():
 	Button_Selected()
 	var game_manager = get_node("/root/GameManager")
-	var button_3_card = button_3.text
-	game_manager.player_action(button_3_card.to_lower())
-	button_3.visible= false
-	button_3.text = HackCardArray.pick_random()
-	await get_tree().create_timer(1.5).timeout
-	button_3.visible= true
+	var card_parts = handCards[2].split(" ")
+	var action_type = card_parts[0].to_lower()
+	var action_value = int(card_parts[1])
 	
+	game_manager.player_action(action_type, action_value)
+	
+	button_3.visible = false
+	discardCards.append(handCards.pop_at(2))
+	
+	CardUpdates()
+	
+	if HackCardArray.size() > 0:
+		handCards.insert(2, HackCardArray.pop_back())
+	
+	await get_tree().create_timer(1.5).timeout
+	button_3.text = handCards[2]
+	button_3.visible = true
 	
 func Button_Selected():
 	button_1.disabled = true
 	button_2.disabled = true
 	button_3.disabled = true
+	UpdateDeckDisplay()
 	await get_tree().create_timer(1.5).timeout
 	button_1.disabled = false
 	button_2.disabled = false
 	button_3.disabled = false
+	
+
+func UpdateDeckDisplay():
+	await get_tree().create_timer(.1).timeout
+	update_atk_boost_display()
+	discard_display.text = "Discard\n" + str(discardCards.size())
+	await get_tree().create_timer(1.5).timeout
+	deck_display.text = "Deck\n" + str(HackCardArray.size())
+	
+	
+func update_atk_boost_display():
+	var game_manager = get_node("/root/GameManager")
+	atk_boost_label.text = "ATK Boost: " + str(game_manager.current_atk_boost)
